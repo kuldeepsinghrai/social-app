@@ -42,7 +42,7 @@
                     android:layout_height="wrap_content"
                     android:text="Name "
                     android:textColor="@color/black"
-                    android:textSize="@dimen/dimen_18"
+                    android:textSize="@dimen/text_size_18"
                     android:textStyle="bold">
 
                 </TextView>
@@ -92,8 +92,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableLeft="@drawable/ic_favorite"
-            android:drawablePadding="@dimen/dimen_10"
-            android:textSize="@dimen/dimen_12"
+            android:textSize="@dimen/text_size_12"
             android:text="54">
 
         </TextView>
@@ -105,8 +104,7 @@
             android:layout_alignRight="@id/like"
             android:layout_marginStart="@dimen/dimen_16"
             android:drawableLeft="@drawable/ic_comment"
-            android:drawablePadding="@dimen/dimen_10"
-            android:textSize="@dimen/dimen_12"
+            android:textSize="@dimen/text_size_12"
             android:text="12">
 
         </TextView>
@@ -118,8 +116,7 @@
             android:layout_alignRight="@id/comment"
             android:layout_marginStart="@dimen/dimen_16"
             android:drawableLeft="@drawable/ic_share"
-            android:drawablePadding="@dimen/dimen_10"
-            android:textSize="@dimen/dimen_12"
+            android:textSize="@dimen/text_size_12"
             android:text="2">
 
         </TextView>

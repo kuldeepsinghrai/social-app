@@ -21,9 +21,9 @@ import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
 
-    RecyclerView storyRecyclerView , dashboardRecyclerView;
-    ArrayList<StoryModel> storyList;
-    ArrayList<Dashboard> dashboardList;
+    private RecyclerView storyRecyclerView , dashboardRecyclerView;
+    private ArrayList<StoryModel> storyList;
+    private ArrayList<Dashboard> dashboardList;
 
     public HomeFragment() {
         //Required Public Constructor
