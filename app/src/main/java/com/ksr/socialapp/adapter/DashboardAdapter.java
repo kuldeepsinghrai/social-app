@@ -39,6 +39,7 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.view
         holder.profile.setImageResource(dashboard.getProfile());
         holder.userName.setText(dashboard.getName());
         holder.about.setText(dashboard.getAbout());
+        holder.like.setText(dashboard.getLike());
         holder.share.setText(dashboard.getShare());
         holder.comment.setText(dashboard.getComment());
     }
@@ -58,7 +59,7 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.view
             postImage  =itemView.findViewById(R.id.postImage);
             userName = itemView.findViewById(R.id.userName);
             about = itemView.findViewById(R.id.about);
-            like = itemView.findViewById(R.id.layout);
+            like = itemView.findViewById(R.id.like);
             comment = itemView.findViewById(R.id.comment);
             share = itemView.findViewById(R.id.share);
 

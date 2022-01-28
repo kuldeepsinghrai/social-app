@@ -75,14 +75,14 @@
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/postImage"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/dimen_460"
         android:layout_margin="@dimen/dimen_14"
-        android:scaleType="centerCrop"
         android:src="@drawable/profile_pic"
+        android:scaleType="centerCrop"
         app:riv_corner_radius="@dimen/dimen_14"
         app:riv_mutate_background="true" />
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_marginStart="@dimen/dimen_16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -124,7 +124,7 @@
 
         </TextView>
 
-    </RelativeLayout>
+    </LinearLayout>
 
 
 </LinearLayout>
