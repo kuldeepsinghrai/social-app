@@ -8,13 +8,14 @@ import android.view.View;
 
 import com.ksr.socialapp.R;
 
+import java.util.EmptyStackException;
+
 public class LoginActivity extends BaseActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
 
         findViewById(R.id.goToRegister).setOnClickListener(new View.OnClickListener() {
             @Override
