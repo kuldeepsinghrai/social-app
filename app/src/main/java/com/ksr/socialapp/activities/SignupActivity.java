@@ -8,25 +8,24 @@ import android.view.View;
 
 import com.ksr.socialapp.R;
 
-public class LoginActivity extends BaseActivity{
+public class SignupActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_signup);
 
-
-        findViewById(R.id.goToRegister).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.goToLogin).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),SignupActivity.class);
+                Intent intent = new Intent(getActivity(),LoginActivity.class);
                 startActivity(intent);
                 finish();
             }
         });
 
-    }
 
+    }
     @Override
     protected BaseActivity getActivity() {
         return this;

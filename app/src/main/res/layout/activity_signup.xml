@@ -57,6 +57,68 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-medium"
+                        android:text="Name"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_20">
+
+                    </TextView>
+
+
+                    <EditText
+                        android:id="@+id/nameET"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimen_45"
+                        android:layout_marginTop="@dimen/dimen_14"
+                        android:background="@drawable/shape_rect_box_et"
+                        android:hint="Enter your name"
+                        android:inputType="text"
+                        android:paddingLeft="@dimen/dimen_20"
+                        android:selectAllOnFocus="true">
+
+                    </EditText>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_8"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="Profession"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_20">
+
+                    </TextView>
+
+
+                    <EditText
+                        android:id="@+id/professionET"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimen_45"
+                        android:layout_marginTop="@dimen/dimen_14"
+                        android:background="@drawable/shape_rect_box_et"
+                        android:hint="Enter your profession"
+                        android:inputType="text"
+                        android:paddingLeft="@dimen/dimen_20"
+                        android:selectAllOnFocus="true">
+
+                    </EditText>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="@dimen/dimen_8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
                         android:text="Email Address"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_size_20">
@@ -79,10 +141,9 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/passwordLinear"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimen_23"
+                    android:layout_marginTop="@dimen/dimen_8"
                     android:orientation="vertical">
 
                     <TextView
@@ -118,11 +179,11 @@
 
 
                 <Button
-                    android:id="@+id/loginBT"
+                    android:id="@+id/signUpBT"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimen_50"
-                    android:text="Login"
+                    android:layout_marginTop="@dimen/dimen_8"
+                    android:text="Sign Up"
                     android:textSize="@dimen/text_size_16"
                     android:textStyle="bold">
 
@@ -142,18 +203,18 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Don't have an Account?">
+                    android:text="Already have an Account?">
 
                 </TextView>
 
                 <TextView
-                    android:id="@+id/goToRegister"
+                    android:id="@+id/goToLogin"
                     android:layout_marginStart="@dimen/dimen_4"
                     android:textSize="@dimen/text_size_18"
                     android:layout_width="wrap_content"
                     android:clickable="true"
                     android:layout_height="wrap_content"
-                    android:text="Register!"
+                    android:text="Login!"
                     android:textColor="@color/appBlue">
 
                 </TextView>
