@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.LoginActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/dimen_250"
+                android:layout_height="@dimen/dimen_180"
+                android:layout_gravity="center"
+                android:src="@drawable/codezlab_logo">
+
+            </ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="@dimen/dimen_24"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:text="Welcome to CoodezLab">
+            </TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="@dimen/dimen_12"
+                android:textColor="@color/black"
+                android:text="Keep Connected with your friends">
+            </TextView>
+
+            <LinearLayout
+                android:layout_margin="@dimen/dimen_18"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="Email Address"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_20">
+
+                    </TextView>
+
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimen_45"
+                        android:layout_marginTop="@dimen/dimen_14"
+                        android:background="@drawable/shape_rect_box_et"
+                        android:hint="Enter your email"
+                        android:inputType="textEmailAddress"
+                        android:paddingLeft="@dimen/dimen_20"
+                        android:selectAllOnFocus="true">
+
+                    </EditText>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/passwordLinear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_23"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="Password"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_20">
+
+                    </TextView>
+
+
+                    <EditText
+                        android:id="@+id/passwordET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_14"
+                        android:background="@drawable/shape_rect_box_et"
+                        android:drawableRight="@drawable/eye_off"
+                        android:drawablePadding="@dimen/dimen_16"
+                        android:hint="Enter your password"
+                        android:inputType="textPassword"
+                        android:minHeight="@dimen/dimen_45"
+                        android:paddingLeft="@dimen/dimen_20"
+                        android:paddingRight="@dimen/dimen_16"
+                        android:selectAllOnFocus="true">
+
+                    </EditText>
+
+                </LinearLayout>
+
+
+
+                <Button
+                    android:id="@+id/sendOtpBT"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_50"
+                    android:text="Login"
+                    android:textSize="@dimen/text_size_16"
+                    android:textStyle="bold">
+
+                </Button>
+
+
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Don't have an Account?">
+
+                </TextView>
+
+                <TextView
+                    android:layout_marginStart="@dimen/dimen_4"
+                    android:textSize="@dimen/text_size_18"
+                    android:layout_width="wrap_content"
+                    android:clickable="true"
+                    android:layout_height="wrap_content"
+                    android:text="Register!"
+                    android:textColor="@color/appBlue">
+
+                </TextView>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
