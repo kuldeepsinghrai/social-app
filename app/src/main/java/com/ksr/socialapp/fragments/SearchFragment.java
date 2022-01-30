@@ -59,8 +59,9 @@ public class SearchFragment extends Fragment {
                     User user = dataSnapshot.getValue(User.class);
                     user.setUserID(dataSnapshot.getKey());
                     userArrayList.add(user);
+                    usersAdapter.notifyDataSetChanged();
                 }
-                usersAdapter.notifyDataSetChanged();
+
             }
 
             @Override
