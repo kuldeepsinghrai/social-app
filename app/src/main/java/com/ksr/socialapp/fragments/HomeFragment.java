@@ -11,8 +11,13 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.ksr.socialapp.R;
-import com.ksr.socialapp.adapter.DashboardAdapter;
+import com.ksr.socialapp.adapter.PostAdapter;
 import com.ksr.socialapp.adapter.StoryAdapter;
 import com.ksr.socialapp.model.Post;
 import com.ksr.socialapp.model.StoryModel;
@@ -21,12 +26,22 @@ import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
 
+    private FirebaseDatabase firebaseDatabase;
+    private FirebaseAuth firebaseAuth;
+
     private RecyclerView storyRecyclerView , dashboardRecyclerView;
     private ArrayList<StoryModel> storyList;
-    private ArrayList<Post> dashboardList;
+    private ArrayList<Post> postArrayList;
 
     public HomeFragment() {
         //Required Public Constructor
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseDatabase = FirebaseDatabase.getInstance();
     }
 
     @Nullable
@@ -51,15 +66,29 @@ public class HomeFragment extends Fragment {
 
 
         dashboardRecyclerView = view.findViewById(R.id.dashboardRecyclerView);
-        dashboardList = new ArrayList<>();
-//        dashboardList.add(new Post(R.drawable.profile_pic,R.drawable.profile_pic,"Kuldeep Singh", "Android Developer", "30","4","2"));
-//        dashboardList.add(new Post(R.drawable.profile_pic,R.drawable.profile_pic,"Manpreet Singh", "Android Tester", "35","4","2"));
+        postArrayList = new ArrayList<>();
 
-        DashboardAdapter dashboardAdapter = new DashboardAdapter(dashboardList,getContext());
+        PostAdapter postAdapter = new PostAdapter(postArrayList,getContext());
         LinearLayoutManager dasboardLlm =new LinearLayoutManager(getContext());
         dashboardRecyclerView.setLayoutManager(dasboardLlm);
         dashboardRecyclerView.setNestedScrollingEnabled(false);
-        dashboardRecyclerView.setAdapter(dashboardAdapter);
+        dashboardRecyclerView.setAdapter(postAdapter);
+
+        firebaseDatabase.getReference().child("posts").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    Post post = dataSnapshot.getValue(Post.class);
+                    postArrayList.add(post);
+                }
+                postAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         return view;
 

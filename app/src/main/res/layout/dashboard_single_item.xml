@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/dimen_16"
     android:orientation="vertical">
 
 
@@ -20,14 +21,22 @@
             android:layout_weight="1"
             android:orientation="horizontal">
 
-            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/profile_image"
+            <com.makeramen.roundedimageview.RoundedImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/profileImage"
                 android:layout_width="@dimen/dimen_46"
                 android:layout_height="@dimen/dimen_46"
+                android:scaleType="centerCrop"
+                android:src="@drawable/placeholder"
                 android:layout_gravity="center"
-                android:src="@drawable/profile_pic"
-                app:civ_border_color="@color/black"
-                app:civ_border_width="2dp" />
+                app:riv_border_color="@android:color/darker_gray"
+                app:riv_border_width="2dip"
+                app:riv_corner_radius="30dip"
+                app:riv_mutate_background="true"
+                app:riv_oval="true">
+
+            </com.makeramen.roundedimageview.RoundedImageView>
+
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -71,13 +80,22 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/postDescription"
+        android:layout_marginTop="@dimen/dimen_14"
+        android:layout_marginHorizontal="@dimen/dimen_14"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </TextView>
 
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/postImage"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_460"
-        android:layout_margin="@dimen/dimen_14"
-        android:src="@drawable/profile_pic"
+        android:layout_marginHorizontal="@dimen/dimen_14"
+        android:layout_marginBottom="@dimen/dimen_14"
+        android:src="@drawable/placeholder"
         android:scaleType="centerCrop"
         app:riv_corner_radius="@dimen/dimen_14"
         app:riv_mutate_background="true" />
@@ -122,6 +140,16 @@
         </TextView>
 
     </LinearLayout>
+
+    <View
+        android:layout_marginHorizontal="@dimen/dimen_14"
+        android:layout_marginTop="@dimen/dimen_14"
+        android:layout_marginBottom="@dimen/dimen_6"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_1"
+        android:background="@android:color/darker_gray">
+
+    </View>
 
 
 </LinearLayout>
