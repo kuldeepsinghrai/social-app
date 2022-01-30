@@ -1,9 +1,12 @@
 package com.ksr.socialapp.fragments;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,6 +24,7 @@ public class ProfileFragment extends Fragment {
 
     private RecyclerView friendRecyclerView;
     private ArrayList<Friend> friendArrayList;
+    private ImageView coverPhoto, changeCoverPhoto;
 
     public ProfileFragment() {
         //required empty constructor
@@ -32,6 +36,8 @@ public class ProfileFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_profile,container,false);
 
         friendRecyclerView = view.findViewById(R.id.friendRecyclerView);
+        coverPhoto = view.findViewById(R.id.coverPhoto);
+        changeCoverPhoto = view.findViewById(R.id.changeCoverPhoto);
 
         friendArrayList = new ArrayList<>();
         friendArrayList.add(new Friend(R.drawable.profile_pic));
@@ -44,7 +50,25 @@ public class ProfileFragment extends Fragment {
         friendRecyclerView.setLayoutManager(linearLayoutManager);
         friendRecyclerView.setAdapter(friendAdapter);
 
-        return view;
+        changeCoverPhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                intent.setType("image/*");
+                startActivityForResult(intent,101);
+            }
+        });
 
+        return view;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (data.getData()!=null){
+            Uri uri = data.getData();
+            coverPhoto.setImageURI(uri);
+        }
     }
 }

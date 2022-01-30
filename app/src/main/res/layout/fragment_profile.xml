@@ -25,6 +25,7 @@
                 diagonal:diagonal_position="bottom">
 
                 <ImageView
+                    android:id="@+id/coverPhoto"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
@@ -34,6 +35,17 @@
 
             </com.github.florent37.diagonallayout.DiagonalLayout>
         </LinearLayout>
+
+        <ImageView
+            android:id="@+id/changeCoverPhoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/diagonalLinear"
+            android:layout_margin="@dimen/dimen_18"
+            android:src="@drawable/ic_image">
+
+        </ImageView>
+
 
         <RelativeLayout
             android:layout_width="wrap_content"

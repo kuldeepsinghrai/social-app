@@ -31,7 +31,7 @@
                 android:textSize="@dimen/dimen_24"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:text="Welcome to CoodezLab">
+                android:text="Welcome to CodezLab">
             </TextView>
             <TextView
                 android:layout_width="wrap_content"
