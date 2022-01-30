@@ -36,6 +36,28 @@
             </com.github.florent37.diagonallayout.DiagonalLayout>
         </LinearLayout>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My Profile"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_18"
+            android:layout_margin="@dimen/dimen_16"
+            android:layout_alignLeft="@+id/diagonalLinear">
+
+        </TextView>
+
+        <ImageView
+            android:id="@+id/logOutBT"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@id/diagonalLinear"
+            android:layout_margin="@dimen/dimen_18"
+            android:src="@drawable/ic_logout">
+
+        </ImageView>
+
         <ImageView
             android:id="@+id/changeCoverPhoto"
             android:layout_width="wrap_content"
@@ -156,10 +178,11 @@
                 </TextView>
 
                 <TextView
+                    android:id="@+id/followers"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="2345"
+                    android:text="0"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:textSize="@dimen/text_size_16">
@@ -184,10 +207,11 @@
                 </TextView>
 
                 <TextView
+                    android:id="@+id/friends"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="365"
+                    android:text="0"
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_16">
@@ -212,10 +236,11 @@
                 </TextView>
 
                 <TextView
+                    android:id="@+id/photos"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="24"
+                    android:text="0"
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_16">

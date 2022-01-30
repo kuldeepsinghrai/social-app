@@ -5,6 +5,7 @@ public class User {
     private String coverPhoto;
     private String userID;
     private String profile;
+    private int followerCount;
 
 
     public User() {
@@ -71,5 +72,13 @@ public class User {
 
     public void setProfile(String profile) {
         this.profile = profile;
+    }
+
+    public int getFollowerCount() {
+        return followerCount;
+    }
+
+    public void setFollowerCount(int followerCount) {
+        this.followerCount = followerCount;
     }
 }

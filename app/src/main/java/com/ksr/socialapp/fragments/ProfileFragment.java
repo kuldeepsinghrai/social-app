@@ -26,8 +26,9 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.ksr.socialapp.R;
-import com.ksr.socialapp.adapter.FriendAdapter;
-import com.ksr.socialapp.model.Friend;
+import com.ksr.socialapp.activities.LoginActivity;
+import com.ksr.socialapp.adapter.FollowersAdapter;
+import com.ksr.socialapp.model.Follow;
 import com.ksr.socialapp.model.User;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.squareup.picasso.Picasso;
@@ -41,9 +42,9 @@ public class ProfileFragment extends Fragment {
     private FirebaseStorage firebaseStorage;
 
     private RecyclerView friendRecyclerView;
-    private ArrayList<Friend> friendArrayList;
-    private ImageView coverPhoto, changeCoverPhoto;
-    private TextView userNameTV, professionTV;
+    private ArrayList<Follow> friendArrayList;
+    private ImageView coverPhoto, changeCoverPhoto,logOutBT;
+    private TextView userNameTV, professionTV,followers;
     private RoundedImageView profileImage;
 
     public ProfileFragment() {
@@ -71,17 +72,34 @@ public class ProfileFragment extends Fragment {
         coverPhoto = view.findViewById(R.id.coverPhoto);
         profileImage = view.findViewById(R.id.profileImage);
         changeCoverPhoto = view.findViewById(R.id.changeCoverPhoto);
+        followers = view.findViewById(R.id.followers);
+        logOutBT = view.findViewById(R.id.logOutBT);
 
         friendArrayList = new ArrayList<>();
-        friendArrayList.add(new Friend(R.drawable.profile_pic));
-        friendArrayList.add(new Friend(R.drawable.profile_pic));
-        friendArrayList.add(new Friend(R.drawable.profile_pic));
-        friendArrayList.add(new Friend(R.drawable.profile_pic));
 
-        FriendAdapter friendAdapter = new FriendAdapter(friendArrayList, getContext());
+
+        FollowersAdapter friendAdapter = new FollowersAdapter(friendArrayList, getContext());
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         friendRecyclerView.setLayoutManager(linearLayoutManager);
         friendRecyclerView.setAdapter(friendAdapter);
+
+        firebaseDatabase.getReference().child("Users")
+                .child(firebaseAuth.getUid())
+                .child("Followers").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    Follow follow = dataSnapshot.getValue(Follow.class);
+                    friendArrayList.add(follow);
+                }
+                friendAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
 
         firebaseDatabase.getReference().child("Users").child(firebaseAuth.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -93,12 +111,22 @@ public class ProfileFragment extends Fragment {
                     Picasso.get().load(user.getProfile()).placeholder(R.drawable.placeholder).into(profileImage);
                     userNameTV.setText(user.getName());
                     professionTV.setText(user.getProfession());
+                    followers.setText(user.getFollowerCount()+"");
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+
+        logOutBT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                firebaseAuth.signOut();
+                startActivity(new Intent(getActivity(), LoginActivity.class));
+                getActivity().finish();
             }
         });
 
