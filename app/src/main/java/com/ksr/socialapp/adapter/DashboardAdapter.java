@@ -11,16 +11,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ksr.socialapp.R;
-import com.ksr.socialapp.model.Dashboard;
+import com.ksr.socialapp.model.Post;
 
 import java.util.ArrayList;
 
 public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.viewHolder>{
 
-    ArrayList<Dashboard> arrayList;
+    ArrayList<Post> arrayList;
     Context context;
 
-    public DashboardAdapter(ArrayList<Dashboard> arrayList, Context context) {
+    public DashboardAdapter(ArrayList<Post> arrayList, Context context) {
         this.arrayList = arrayList;
         this.context = context;
     }
@@ -35,13 +35,13 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.view
 
     @Override
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
-        Dashboard dashboard = arrayList.get(position);
-        holder.profile.setImageResource(dashboard.getProfile());
-        holder.userName.setText(dashboard.getName());
-        holder.about.setText(dashboard.getAbout());
-        holder.like.setText(dashboard.getLike());
-        holder.share.setText(dashboard.getShare());
-        holder.comment.setText(dashboard.getComment());
+        Post dashboard = arrayList.get(position);
+//        holder.profile.setImageResource(dashboard.getProfile());
+//        holder.userName.setText(dashboard.getName());
+//        holder.about.setText(dashboard.getAbout());
+//        holder.like.setText(dashboard.getLike());
+//        holder.share.setText(dashboard.getShare());
+//        holder.comment.setText(dashboard.getComment());
     }
 
     @Override

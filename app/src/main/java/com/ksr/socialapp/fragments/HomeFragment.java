@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.ksr.socialapp.R;
 import com.ksr.socialapp.adapter.DashboardAdapter;
 import com.ksr.socialapp.adapter.StoryAdapter;
-import com.ksr.socialapp.model.Dashboard;
+import com.ksr.socialapp.model.Post;
 import com.ksr.socialapp.model.StoryModel;
 
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ public class HomeFragment extends Fragment {
 
     private RecyclerView storyRecyclerView , dashboardRecyclerView;
     private ArrayList<StoryModel> storyList;
-    private ArrayList<Dashboard> dashboardList;
+    private ArrayList<Post> dashboardList;
 
     public HomeFragment() {
         //Required Public Constructor
@@ -52,8 +52,8 @@ public class HomeFragment extends Fragment {
 
         dashboardRecyclerView = view.findViewById(R.id.dashboardRecyclerView);
         dashboardList = new ArrayList<>();
-        dashboardList.add(new Dashboard(R.drawable.profile_pic,R.drawable.profile_pic,"Kuldeep Singh", "Android Developer", "30","4","2"));
-        dashboardList.add(new Dashboard(R.drawable.profile_pic,R.drawable.profile_pic,"Manpreet Singh", "Android Tester", "35","4","2"));
+//        dashboardList.add(new Post(R.drawable.profile_pic,R.drawable.profile_pic,"Kuldeep Singh", "Android Developer", "30","4","2"));
+//        dashboardList.add(new Post(R.drawable.profile_pic,R.drawable.profile_pic,"Manpreet Singh", "Android Tester", "35","4","2"));
 
         DashboardAdapter dashboardAdapter = new DashboardAdapter(dashboardList,getContext());
         LinearLayoutManager dasboardLlm =new LinearLayoutManager(getContext());

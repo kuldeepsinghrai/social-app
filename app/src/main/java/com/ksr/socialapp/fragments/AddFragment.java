@@ -1,5 +1,6 @@
 package com.ksr.socialapp.fragments;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,26 +12,36 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.ksr.socialapp.R;
+import com.ksr.socialapp.model.Post;
 import com.ksr.socialapp.model.User;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.squareup.picasso.Picasso;
+
+import java.util.Date;
 
 public class AddFragment extends Fragment {
 
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
+    private FirebaseStorage firebaseStorage;
 
     private Button postBT;
     private EditText postDescriptionET;
@@ -38,6 +49,8 @@ public class AddFragment extends Fragment {
     private RoundedImageView profileImage;
     private TextView name, profession;
     private Uri uri;
+
+    private ProgressDialog dialog;
 
     public AddFragment() {
         //Required Empty Constructor
@@ -48,6 +61,8 @@ public class AddFragment extends Fragment {
         super.onCreate(savedInstanceState);
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
+        firebaseStorage = FirebaseStorage.getInstance();
+        dialog = new ProgressDialog(getContext());
     }
 
     @Nullable
@@ -55,6 +70,11 @@ public class AddFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_add, container, false);
 
+        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        dialog.setTitle("Post Uploading...");
+        dialog.setMessage("Please wait");
+        dialog.setCancelable(false);
+        dialog.setCanceledOnTouchOutside(false);
 
         postBT = view.findViewById(R.id.postBT);
         postDescriptionET = view.findViewById(R.id.postDescriptionET);
@@ -117,6 +137,42 @@ public class AddFragment extends Fragment {
             }
         });
 
+        postBT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.show();
+                final StorageReference storageReference = firebaseStorage.getReference().child("posts")
+                        .child(FirebaseAuth.getInstance().getUid())
+                        .child(new Date().getTime()+"");
+
+                storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                Post post = new Post();
+                                post.setPostImage(uri.toString());
+                                post.setPostedBy(FirebaseAuth.getInstance().getUid());
+                                post.setPostDescription(postDescriptionET.getText().toString());
+                                post.setPostedAt(new Date().getTime());
+
+                                firebaseDatabase.getReference().child("posts")
+                                        .push()
+                                        .setValue(post).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void unused) {
+                                        dialog.dismiss();
+                                        Toast.makeText(getContext(), "Posted Successfully!", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+
+            }
+        });
 
         return view;
 
