@@ -54,11 +54,11 @@
             android:layout_centerHorizontal="true">
 
             <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/imageView1"
+                android:id="@+id/profileImage"
                 android:layout_width="@dimen/dimen_96"
                 android:layout_height="@dimen/dimen_96"
                 android:scaleType="centerCrop"
-                android:src="@drawable/profile_pic"
+                android:src="@drawable/placeholder"
                 app:riv_border_color="@color/white"
                 app:riv_border_width="2dip"
                 app:riv_corner_radius="30dip"
@@ -70,8 +70,8 @@
             <View
                 android:layout_width="@dimen/dimen_20"
                 android:layout_height="@dimen/dimen_20"
-                android:layout_alignRight="@+id/imageView1"
-                android:layout_alignBottom="@+id/imageView1"
+                android:layout_alignRight="@+id/profileImage"
+                android:layout_alignBottom="@+id/profileImage"
                 android:layout_marginEnd="@dimen/dimen_2"
                 android:layout_marginBottom="@dimen/dimen_2"
                 android:background="@drawable/shape_circle_white"
@@ -82,8 +82,8 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignRight="@id/imageView1"
-                android:layout_alignBottom="@id/imageView1"
+                android:layout_alignRight="@id/profileImage"
+                android:layout_alignBottom="@id/profileImage"
                 android:layout_marginEnd="@dimen/dimen_2"
                 android:layout_marginBottom="@dimen/dimen_2"
                 android:src="@drawable/ic_check_filled">
@@ -100,9 +100,12 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/userNameTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Kuldeep Singh Rai"
+            android:textAlignment="center"
+            android:layout_gravity="center"
+            android:text="Name"
             android:textColor="@color/black"
             android:textSize="@dimen/text_size_18"
             android:textStyle="bold">
@@ -110,11 +113,12 @@
         </TextView>
 
         <TextView
+            android:id="@+id/professionTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/dimen_4"
-            android:text="Android Developer"
+            android:text="Profession"
             android:textAlignment="center"
             android:textSize="@dimen/text_size_12">
 

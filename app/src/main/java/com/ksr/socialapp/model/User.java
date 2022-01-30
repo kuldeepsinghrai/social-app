@@ -3,6 +3,7 @@ package com.ksr.socialapp.model;
 public class User {
     private String name,profession,email,password;
     private String coverPhoto;
+    private String profile;
 
 
     public User() {
@@ -53,5 +54,13 @@ public class User {
 
     public void setCoverPhoto(String coverPhoto) {
         this.coverPhoto = coverPhoto;
+    }
+
+    public String getProfile() {
+        return profile;
+    }
+
+    public void setProfile(String profile) {
+        this.profile = profile;
     }
 }
