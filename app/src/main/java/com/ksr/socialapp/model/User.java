@@ -1,10 +1,12 @@
 package com.ksr.socialapp.model;
 
 public class User {
-    private String name;
-    private String profession;
-    private String email;
-    private String password;
+    private String name,profession,email,password;
+    private String coverPhoto;
+
+
+    public User() {
+    }
 
     public User(String name, String profession, String email, String password) {
         this.name = name;
@@ -43,5 +45,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getCoverPhoto() {
+        return coverPhoto;
+    }
+
+    public void setCoverPhoto(String coverPhoto) {
+        this.coverPhoto = coverPhoto;
     }
 }

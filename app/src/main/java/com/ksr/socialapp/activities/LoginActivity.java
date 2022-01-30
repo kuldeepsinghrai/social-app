@@ -22,9 +22,9 @@ import java.util.EmptyStackException;
 
 public class LoginActivity extends BaseActivity{
 
-    FirebaseAuth firebaseAuth;
-    FirebaseDatabase firebaseDatabase;
-    FirebaseUser firebaseCurrentUser;
+    private FirebaseAuth firebaseAuth;
+    private FirebaseDatabase firebaseDatabase;
+    private FirebaseUser firebaseCurrentUser;
 
     private EditText emailET,passwordET;
     private Button loginBT;
