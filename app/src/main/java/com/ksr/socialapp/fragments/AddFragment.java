@@ -162,6 +162,7 @@ public class AddFragment extends Fragment {
                                         .setValue(post).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void unused) {
+                                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container,new HomeFragment()).commit();
                                         dialog.dismiss();
                                         Toast.makeText(getContext(), "Posted Successfully!", Toast.LENGTH_SHORT).show();
                                     }
