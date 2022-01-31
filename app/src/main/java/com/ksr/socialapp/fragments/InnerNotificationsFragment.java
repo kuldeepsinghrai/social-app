@@ -34,18 +34,18 @@ public class InnerNotificationsFragment extends Fragment {
         innerNotificationsRecyclerView = view.findViewById(R.id.innerNotificationsRecyclerView);
 
         notificationArrayList = new ArrayList<>();
-        notificationArrayList.add(new Notification(R.drawable.profile_pic,"<b>Kuldeep Singh Rai</b> Comment on your photo","Just Now"));
-        notificationArrayList.add(new Notification(R.drawable.profile_pic,"<b>Manpreet Singh</b> liked your photo","1 min"));
-        notificationArrayList.add(new Notification(R.drawable.profile_pic,"<b>Sonu</b> sent you a request","30 min"));
-        notificationArrayList.add(new Notification(R.drawable.profile_pic,"Kuldeep Singh Rai Comment on your photo","35 min"));
-        notificationArrayList.add(new Notification(R.drawable.profile_pic,"Manpreet Singh liked your photo","40 min"));
-        notificationArrayList.add(new Notification(R.drawable.profile_pic,"Sonu sent you a request","1 hr"));
-        notificationArrayList.add(new Notification(R.drawable.profile_pic,"Kuldeep Singh Rai Comment on your photo","2 hr"));
-        notificationArrayList.add(new Notification(R.drawable.profile_pic,"Manpreet Singh liked your photo","2 hr"));
-        notificationArrayList.add(new Notification(R.drawable.profile_pic,"Sonu sent you a request","2 hr"));
-        notificationArrayList.add(new Notification(R.drawable.profile_pic,"Kuldeep Singh Rai Comment on your photo","2 hr"));
-        notificationArrayList.add(new Notification(R.drawable.profile_pic,"Manpreet Singh liked your photo","2 hr"));
-        notificationArrayList.add(new Notification(R.drawable.profile_pic,"Sonu sent you a request","3 hr"));
+        notificationArrayList.add(new Notification(R.drawable.placeholder,"<b>Kuldeep Singh Rai</b> Comment on your photo","Just Now"));
+        notificationArrayList.add(new Notification(R.drawable.placeholder,"<b>Manpreet Singh</b> liked your photo","1 min"));
+        notificationArrayList.add(new Notification(R.drawable.placeholder,"<b>Sonu</b> sent you a request","30 min"));
+        notificationArrayList.add(new Notification(R.drawable.placeholder,"Kuldeep Singh Rai Comment on your photo","35 min"));
+        notificationArrayList.add(new Notification(R.drawable.placeholder,"Manpreet Singh liked your photo","40 min"));
+        notificationArrayList.add(new Notification(R.drawable.placeholder,"Sonu sent you a request","1 hr"));
+        notificationArrayList.add(new Notification(R.drawable.placeholder,"Kuldeep Singh Rai Comment on your photo","2 hr"));
+        notificationArrayList.add(new Notification(R.drawable.placeholder,"Manpreet Singh liked your photo","2 hr"));
+        notificationArrayList.add(new Notification(R.drawable.placeholder,"Sonu sent you a request","2 hr"));
+        notificationArrayList.add(new Notification(R.drawable.placeholder,"Kuldeep Singh Rai Comment on your photo","2 hr"));
+        notificationArrayList.add(new Notification(R.drawable.placeholder,"Manpreet Singh liked your photo","2 hr"));
+        notificationArrayList.add(new Notification(R.drawable.placeholder,"Sonu sent you a request","3 hr"));
 
         NotificationAdapter notificationAdapter = new NotificationAdapter(notificationArrayList,getContext());
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);

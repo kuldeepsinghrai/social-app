@@ -51,11 +51,11 @@ public class HomeFragment extends Fragment {
 
         storyRecyclerView = view.findViewById(R.id.storiesRecyclerView);
         storyList = new ArrayList<>();
-        storyList.add(new StoryModel(R.drawable.profile_pic,"Aryan"));
-        storyList.add(new StoryModel(R.drawable.profile_pic,"Sonu"));
-        storyList.add(new StoryModel(R.drawable.profile_pic,"Manpreet"));
-        storyList.add(new StoryModel(R.drawable.profile_pic,"Manpreet"));
-        storyList.add(new StoryModel(R.drawable.profile_pic,"Manpreet"));
+        storyList.add(new StoryModel(R.drawable.placeholder,"Aryan"));
+        storyList.add(new StoryModel(R.drawable.placeholder,"Sonu"));
+        storyList.add(new StoryModel(R.drawable.placeholder,"Manpreet"));
+        storyList.add(new StoryModel(R.drawable.placeholder,"Manpreet"));
+        storyList.add(new StoryModel(R.drawable.placeholder,"Manpreet"));
 
 
         StoryAdapter storyAdapter = new StoryAdapter(storyList,getContext());

@@ -23,7 +23,7 @@
 
             </TextView>
 
-            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/profile_image"
                 android:layout_width="@dimen/dimen_40"
                 android:layout_height="@dimen/dimen_40"
@@ -31,9 +31,15 @@
                 android:layout_marginTop="@dimen/dimen_8"
                 android:layout_marginEnd="@dimen/dimen_16"
                 android:layout_marginBottom="@dimen/dimen_8"
-                android:src="@drawable/profile_pic"
-                app:civ_border_color="@color/black"
-                app:civ_border_width="2dp" />
+                android:scaleType="centerCrop"
+                android:src="@drawable/placeholder"
+                app:riv_border_color="#333333"
+                app:riv_border_width="2dip"
+                app:riv_corner_radius="30dip"
+                app:riv_mutate_background="true"
+                app:riv_oval="true">
+
+            </com.makeramen.roundedimageview.RoundedImageView>
 
         </LinearLayout>
 
@@ -66,7 +72,7 @@
                         android:layout_width="@dimen/dimen_56"
                         android:layout_height="@dimen/dimen_56"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/profile_pic"
+                        android:src="@drawable/placeholder"
                         app:riv_border_color="#333333"
                         app:riv_border_width="2dip"
                         app:riv_corner_radius="30dip"
