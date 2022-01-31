@@ -8,8 +8,9 @@
     tools:context=".activities.CommentActivity">
 
     <ScrollView
+        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
 
         <LinearLayout
@@ -132,41 +133,41 @@
 
             </androidx.recyclerview.widget.RecyclerView>
 
-            <LinearLayout
-                android:layout_gravity="bottom"
-                android:gravity="bottom"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_50"
-                android:layout_alignParentBottom="true"
-                android:layout_margin="@dimen/dimen_8"
-                android:background="@drawable/shape_comment_et_bg">
 
-                <EditText
-                    android:layout_weight="1"
-                    android:id="@+id/commentET"
-                    android:layout_width="match_parent"
-                    android:layout_marginRight="@dimen/dimen_6"
-                    android:layout_height="match_parent"
-                    android:padding="@dimen/dimen_8"
-                    android:hint="Write a comment..."
-                    android:background="@android:color/transparent">
-
-                </EditText>
-
-                <ImageView
-                    android:id="@+id/postCommentBT"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_baseline_send_24"
-                    android:layout_marginHorizontal="@dimen/dimen_6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                </ImageView>
-
-
-            </LinearLayout>
         </LinearLayout>
-
-
     </ScrollView>
+
+    <LinearLayout
+        android:layout_gravity="bottom"
+        android:gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_50"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/dimen_8"
+        android:background="@drawable/shape_comment_et_bg">
+
+        <EditText
+            android:layout_weight="1"
+            android:id="@+id/commentET"
+            android:layout_width="match_parent"
+            android:layout_marginRight="@dimen/dimen_6"
+            android:layout_height="match_parent"
+            android:padding="@dimen/dimen_8"
+            android:hint="Write a comment..."
+            android:background="@android:color/transparent">
+
+        </EditText>
+
+        <ImageView
+            android:id="@+id/postCommentBT"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_baseline_send_24"
+            android:layout_marginHorizontal="@dimen/dimen_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </ImageView>
+
+
+    </LinearLayout>
 </LinearLayout>

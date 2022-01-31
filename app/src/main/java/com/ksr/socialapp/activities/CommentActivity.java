@@ -2,12 +2,15 @@ package com.ksr.socialapp.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,12 +21,14 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.ksr.socialapp.R;
+import com.ksr.socialapp.adapter.CommentAdapter;
 import com.ksr.socialapp.model.Comment;
 import com.ksr.socialapp.model.Post;
 import com.ksr.socialapp.model.User;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class CommentActivity extends BaseActivity {
@@ -35,10 +40,14 @@ public class CommentActivity extends BaseActivity {
     private String postId;
     private String postedBy;
 
+    private RecyclerView commentRecyclerView;
+
     private ImageView postImage,postCommentBT;
     private RoundedImageView profileImage;
     private TextView name,postDescription,like,comment,share;
     private EditText commentET;
+
+    private ArrayList<Comment> commentArrayList;
 
 
     @Override
@@ -58,6 +67,7 @@ public class CommentActivity extends BaseActivity {
         share = findViewById(R.id.share);
         commentET = findViewById(R.id.commentET);
         postCommentBT = findViewById(R.id.postCommentBT);
+        commentRecyclerView = findViewById(R.id.commentRecyclerView);
 
 
         intent = getIntent();
@@ -150,6 +160,31 @@ public class CommentActivity extends BaseActivity {
             }
         });
 
+        commentArrayList = new ArrayList<>();
+        CommentAdapter commentAdapter = new CommentAdapter(getActivity(),commentArrayList);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        commentRecyclerView.setLayoutManager(linearLayoutManager);
+        commentRecyclerView.setAdapter(commentAdapter);
+
+        firebaseDatabase.getReference()
+                .child("posts")
+                .child(postId)
+                .child("comments").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                commentArrayList.clear();
+                for (DataSnapshot dataSnapshot:snapshot.getChildren()){
+                    Comment comment = dataSnapshot.getValue(Comment.class);
+                    commentArrayList.add(comment);
+                }
+                commentAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
     }
 

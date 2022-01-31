@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -41,6 +43,29 @@ public class LoginActivity extends BaseActivity{
         emailET = findViewById(R.id.emailET);
         passwordET = findViewById(R.id.passwordET);
         loginBT = findViewById(R.id.loginBT);
+
+        passwordET.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (emailET.getText().toString().length()>0&&passwordET.getText().toString().length()>0){
+                    loginBT.setEnabled(true);
+                }else {
+                    loginBT.setEnabled(false);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+
 
         loginBT.setOnClickListener(new View.OnClickListener() {
             @Override
