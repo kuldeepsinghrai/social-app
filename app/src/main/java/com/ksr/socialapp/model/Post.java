@@ -3,6 +3,7 @@ package com.ksr.socialapp.model;
 public class Post {
     private String postID,postImage, postedBy,postDescription;
     private long postedAt;
+    private int postLike;
 
     public Post() {
     }
@@ -53,5 +54,13 @@ public class Post {
 
     public void setPostDescription(String postDescription) {
         this.postDescription = postDescription;
+    }
+
+    public int getPostLike() {
+        return postLike;
+    }
+
+    public void setPostLike(int postLike) {
+        this.postLike = postLike;
     }
 }

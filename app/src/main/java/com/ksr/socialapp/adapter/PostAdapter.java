@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -48,6 +50,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.viewHolder>{
             holder.postDescription.setText(post.getPostDescription());
         }
         Picasso.get().load(post.getPostImage()).placeholder(R.drawable.placeholder).into(holder.postImage);
+        holder.like.setText(post.getPostLike()+"");
         FirebaseDatabase.getInstance().getReference()
                 .child("Users")
                 .child(post.getPostedBy()).addValueEventListener(new ValueEventListener() {
@@ -67,6 +70,56 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.viewHolder>{
 
             }
         });
+
+        //when post is already liked
+        FirebaseDatabase.getInstance().getReference()
+                .child("posts")
+                .child(post.getPostID())
+                .child("likes")
+                .child(FirebaseAuth.getInstance().getUid())
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()){
+                            holder.like.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_favorite_filled,0,0,0);
+                        }else {
+                            //when user hits like button
+                            holder.like.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    FirebaseDatabase.getInstance().getReference()
+                                            .child("posts")
+                                            .child(post.getPostID())
+                                            .child("likes")
+                                            .child(FirebaseAuth.getInstance().getUid())
+                                            .setValue(true).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void unused) {
+                                            FirebaseDatabase.getInstance().getReference()
+                                                    .child("posts")
+                                                    .child(post.getPostID())
+                                                    .child("postLike")
+                                                    .setValue(post.getPostLike()+1).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                @Override
+                                                public void onSuccess(Void unused) {
+                                                    holder.like.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_favorite_filled,0,0,0);
+                                                }
+                                            });
+                                        }
+                                    });
+                                }
+                            });
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+
     }
 
     @Override
