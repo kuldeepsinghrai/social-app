@@ -1,6 +1,7 @@
 package com.ksr.socialapp.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.ksr.socialapp.R;
+import com.ksr.socialapp.activities.CommentActivity;
 import com.ksr.socialapp.model.Post;
 import com.ksr.socialapp.model.User;
 import com.makeramen.roundedimageview.RoundedImageView;
@@ -115,10 +117,15 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.viewHolder>{
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-
                     }
                 });
 
+        holder.comment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                context.startActivity(new Intent(context, CommentActivity.class));
+            }
+        });
 
     }
 
