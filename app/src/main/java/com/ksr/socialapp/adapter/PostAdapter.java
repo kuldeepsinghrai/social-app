@@ -53,6 +53,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.viewHolder>{
         }
         Picasso.get().load(post.getPostImage()).placeholder(R.drawable.placeholder).into(holder.postImage);
         holder.like.setText(post.getPostLike()+"");
+        holder.comment.setText(post.getCommentCount()+"");
         FirebaseDatabase.getInstance().getReference()
                 .child("Users")
                 .child(post.getPostedBy()).addValueEventListener(new ValueEventListener() {
