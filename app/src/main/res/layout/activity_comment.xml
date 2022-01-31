@@ -65,7 +65,7 @@
                             android:background="@drawable/shape_right_round_bg"
                             android:paddingHorizontal="@dimen/dimen_10"
                             android:paddingVertical="@dimen/dimen_4"
-                            android:text="Kuldeep"
+                            android:text="Name"
                             android:textColor="@color/black">
 
                         </TextView>
