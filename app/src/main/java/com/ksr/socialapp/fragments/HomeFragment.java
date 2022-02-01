@@ -46,11 +46,11 @@ public class HomeFragment extends Fragment {
     private FirebaseStorage firebaseStorage;
     private FirebaseAuth firebaseAuth;
 
-    private RecyclerView storyRecyclerView , dashboardRecyclerView;
+    private RecyclerView storyRecyclerView, dashboardRecyclerView;
     private ArrayList<Story> storyList;
     private ArrayList<Post> postArrayList;
 
-    private RoundedImageView addStory,topProfileImage;
+    private RoundedImageView addStory, topProfileImage;
     private ActivityResultLauncher<String> galleryLauncher;
     private ProgressDialog progressDialog;
 
@@ -72,7 +72,7 @@ public class HomeFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home,container,false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
 
 
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
@@ -102,12 +102,11 @@ public class HomeFragment extends Fragment {
         });
 
 
-
         storyRecyclerView = view.findViewById(R.id.storiesRecyclerView);
         storyList = new ArrayList<>();
 
-        StoryAdapter storyAdapter = new StoryAdapter(storyList,getContext());
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
+        StoryAdapter storyAdapter = new StoryAdapter(storyList, getContext());
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         storyRecyclerView.setLayoutManager(linearLayoutManager);
         storyRecyclerView.setNestedScrollingEnabled(false);
         storyRecyclerView.setAdapter(storyAdapter);
@@ -117,15 +116,15 @@ public class HomeFragment extends Fragment {
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.exists()){
+                        if (snapshot.exists()) {
                             storyList.clear();
-                            for (DataSnapshot storySnapshot : snapshot.getChildren()){
+                            for (DataSnapshot storySnapshot : snapshot.getChildren()) {
                                 Story story = new Story();
                                 story.setStoryBy(storySnapshot.getKey());
                                 story.setStoryAt(storySnapshot.child("postedBy").getValue(Long.class));
 
                                 ArrayList<UserStories> stories = new ArrayList<>();
-                                for (DataSnapshot snapshot1: storySnapshot.child("userStories").getChildren()){
+                                for (DataSnapshot snapshot1 : storySnapshot.child("userStories").getChildren()) {
                                     UserStories userStories = snapshot1.getValue(UserStories.class);
                                     stories.add(userStories);
                                 }
@@ -147,8 +146,8 @@ public class HomeFragment extends Fragment {
         dashboardRecyclerView = view.findViewById(R.id.dashboardRecyclerView);
         postArrayList = new ArrayList<>();
 
-        PostAdapter postAdapter = new PostAdapter(postArrayList,getContext());
-        LinearLayoutManager dasboardLlm =new LinearLayoutManager(getContext());
+        PostAdapter postAdapter = new PostAdapter(postArrayList, getContext());
+        LinearLayoutManager dasboardLlm = new LinearLayoutManager(getContext());
         dashboardRecyclerView.setLayoutManager(dasboardLlm);
         dashboardRecyclerView.setNestedScrollingEnabled(false);
         dashboardRecyclerView.setAdapter(postAdapter);
@@ -157,7 +156,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 postArrayList.clear();
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Post post = dataSnapshot.getValue(Post.class);
                     post.setPostID(dataSnapshot.getKey());
                     postArrayList.add(post);
@@ -174,48 +173,48 @@ public class HomeFragment extends Fragment {
         galleryLauncher = registerForActivityResult(new ActivityResultContracts.GetContent(), new ActivityResultCallback<Uri>() {
             @Override
             public void onActivityResult(Uri result) {
+                if (result != null) {
+                    progressDialog.show();
+                    final StorageReference reference = firebaseStorage.getReference()
+                            .child("stories")
+                            .child(FirebaseAuth.getInstance().getUid())
+                            .child(new Date().getTime() + "");
 
-                progressDialog.show();
-                final StorageReference reference =firebaseStorage.getReference()
-                        .child("stories")
-                        .child(FirebaseAuth.getInstance().getUid())
-                        .child(new Date().getTime()+"");
-
-                reference.putFile(result).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                            @Override
-                            public void onSuccess(Uri uri) {
-                                Story story = new Story();
-                                story.setStoryAt(new Date().getTime());
-                                firebaseDatabase.getReference()
-                                        .child("stories")
-                                        .child(FirebaseAuth.getInstance().getUid())
-                                        .child("postedBy")
-                                        .setValue(story.getStoryAt()).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void unused) {
-                                        UserStories userStories = new UserStories(uri.toString(),story.getStoryAt());
-                                        firebaseDatabase.getReference()
-                                                .child("stories")
-                                                .child(FirebaseAuth.getInstance().getUid())
-                                                .child("userStories")
-                                                .push()
-                                                .setValue(userStories).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                            @Override
-                                            public void onSuccess(Void unused) {
-                                                progressDialog.dismiss();
-                                                Toast.makeText(getContext(), "Story Uploaded", Toast.LENGTH_SHORT).show();
-                                            }
-                                        });
-                                    }
-                                });
-                            }
-                        });
-                    }
-                });
-
+                    reference.putFile(result).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    Story story = new Story();
+                                    story.setStoryAt(new Date().getTime());
+                                    firebaseDatabase.getReference()
+                                            .child("stories")
+                                            .child(FirebaseAuth.getInstance().getUid())
+                                            .child("postedBy")
+                                            .setValue(story.getStoryAt()).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void unused) {
+                                            UserStories userStories = new UserStories(uri.toString(), story.getStoryAt());
+                                            firebaseDatabase.getReference()
+                                                    .child("stories")
+                                                    .child(FirebaseAuth.getInstance().getUid())
+                                                    .child("userStories")
+                                                    .push()
+                                                    .setValue(userStories).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                @Override
+                                                public void onSuccess(Void unused) {
+                                                    progressDialog.dismiss();
+                                                    Toast.makeText(getContext(), "Story Uploaded", Toast.LENGTH_SHORT).show();
+                                                }
+                                            });
+                                        }
+                                    });
+                                }
+                            });
+                        }
+                    });
+                }
             }
         });
 
@@ -226,7 +225,6 @@ public class HomeFragment extends Fragment {
                 galleryLauncher.launch("image/*");
             }
         });
-
 
 
         return view;

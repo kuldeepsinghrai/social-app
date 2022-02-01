@@ -38,6 +38,8 @@
     <dimen name="dimen_200">200.0dip</dimen>
     <dimen name="dimen_25">25.0dip</dimen>
     <dimen name="dimen_250">250.0dip</dimen>
+    <dimen name="dimen_270">270.0dip</dimen>
+    <dimen name="dimen_280">280.0dip</dimen>
     <dimen name="dimen_160">160.0dip</dimen>
     <dimen name="dimen_3">3.0dip</dimen>
     <dimen name="dimen_12">12.0dip</dimen>

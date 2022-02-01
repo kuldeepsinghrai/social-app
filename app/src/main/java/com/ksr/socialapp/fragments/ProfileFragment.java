@@ -157,7 +157,7 @@ public class ProfileFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 101) {
-            if (data.getData() != null) {
+            if (data != null) {
                 Uri uri = data.getData();
                 coverPhoto.setImageURI(uri);
                 final StorageReference storageReference = firebaseStorage.getReference().child("cover_photo").child(FirebaseAuth.getInstance().getUid());
@@ -179,7 +179,7 @@ public class ProfileFragment extends Fragment {
         }
 
         if (requestCode == 102) {
-            if (data.getData() != null) {
+            if (data != null) {
                 Uri uri = data.getData();
                 profileImage.setImageURI(uri);
                 final StorageReference storageReference = firebaseStorage.getReference().child("profile_image").child(FirebaseAuth.getInstance().getUid());

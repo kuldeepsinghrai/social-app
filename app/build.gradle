@@ -51,7 +51,7 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.github.marlonlom:timeago:4.0.3'
 
-    // implementation 'com.github.sharish:ShimmerRecyclerView:v1.3'
+    // implementation 'com.github.sharish:ShimmerRecyclerView:v1.3-alpha'
     // implementation 'com.github.OMARIHAMZA:StoryView:1.0.2-alpha'
     // implementation 'com.github.3llomi:CircularStatusView:V1.0.2'
 

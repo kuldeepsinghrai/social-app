@@ -184,7 +184,7 @@ public class AddFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 101) {
-            if (data.getData() != null) {
+            if (data != null) {
                 uri = data.getData();
                 postImage.setImageURI(uri);
                 postBT.setEnabled(true);
