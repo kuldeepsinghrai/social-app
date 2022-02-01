@@ -21,6 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.ksr.socialapp.R;
 import com.ksr.socialapp.model.Follow;
+import com.ksr.socialapp.model.Notification;
 import com.ksr.socialapp.model.User;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.squareup.picasso.Picasso;
@@ -94,6 +95,17 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.viewHolder> 
                                                     holder.followBT.setTextColor(context.getResources().getColor(R.color.white));
                                                     holder.followBT.setEnabled(false);
                                                     Toast.makeText(context, "You followed " + user.getName(), Toast.LENGTH_SHORT).show();
+
+                                                    Notification notification = new Notification();
+                                                    notification.setNotificationBy(FirebaseAuth.getInstance().getUid());
+                                                    notification.setNotificationAt(new Date().getTime());
+                                                    notification.setType("follow");
+                                                    FirebaseDatabase.getInstance().getReference()
+                                                            .child("notification")
+                                                            .child(user.getUserID())
+                                                            .push()
+                                                            .setValue(notification);
+
                                                 }
                                             });
                                         }

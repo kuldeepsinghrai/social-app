@@ -11,8 +11,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.ksr.socialapp.R;
 import com.ksr.socialapp.model.Notification;
+import com.ksr.socialapp.model.User;
+import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
@@ -33,16 +39,38 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     public viewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(context).inflate(R.layout.notification_single_item, parent, false);
-
         return new viewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
         Notification notification = arrayList.get(position);
-        holder.profile.setImageResource(notification.getProfile());
-        holder.notification.setText(Html.fromHtml(notification.getNotification()));
-        holder.time.setText(notification.getTime());
+
+        String type = notification.getType();
+
+//        FirebaseDatabase.getInstance().getReference()
+//                .child("Users")
+//                .child(notification.getNotificationBy())
+//                .addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                User user = snapshot.getValue(User.class);
+//               // Picasso.get().load(user.getProfile()+"").placeholder(R.drawable.placeholder).into(holder.profile);
+//                if (type.equals("like")){
+//                    holder.notification.setText(Html.fromHtml("<b>"+user.getName()+"</b>"+"  "+"liked your post"));
+//                }else if (type.equals("comment")){
+//                    holder.notification.setText(Html.fromHtml("<b>"+user.getName()+"</b>"+"  "+"commented on your post"));
+//                }else if (type.equals("follow")){
+//                    holder.notification.setText(Html.fromHtml("<b>"+user.getName()+"</b>"+"  "+"starts following you"));
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+
     }
 
     @Override

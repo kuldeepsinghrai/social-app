@@ -25,6 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.ksr.socialapp.R;
 import com.ksr.socialapp.adapter.CommentAdapter;
 import com.ksr.socialapp.model.Comment;
+import com.ksr.socialapp.model.Notification;
 import com.ksr.socialapp.model.Post;
 import com.ksr.socialapp.model.User;
 import com.makeramen.roundedimageview.RoundedImageView;
@@ -154,6 +155,18 @@ public class CommentActivity extends BaseActivity {
                                     public void onSuccess(Void unused) {
                                         commentET.setText("");
                                         Toast.makeText(getActivity(), "Commented!", Toast.LENGTH_SHORT).show();
+
+                                        Notification notification = new Notification();
+                                        notification.setNotificationBy(FirebaseAuth.getInstance().getUid());
+                                        notification.setNotificationAt(new Date().getTime());
+                                        notification.setPostId(postId);
+                                        notification.setPostedBy(postedBy);
+                                        notification.setType("comment");
+
+                                        FirebaseDatabase.getInstance().getReference()
+                                                .child("notification")
+                                                .child(postedBy)
+                                                .push().setValue(notification);
                                     }
                                 });
                             }

@@ -1,36 +1,64 @@
 package com.ksr.socialapp.model;
 
 public class Notification {
-    int profile;
-    String notification,time;
+    private String notificationBy;
+    private long notificationAt;
+    private String type,postId,postedBy,notificationId;
+    private boolean isOpened;
 
-    public Notification(int profile, String notification, String time) {
-        this.profile = profile;
-        this.notification = notification;
-        this.time = time;
+    public String getNotificationBy() {
+        return notificationBy;
     }
 
-    public int getProfile() {
-        return profile;
+    public void setNotificationBy(String notificationBy) {
+        this.notificationBy = notificationBy;
     }
 
-    public void setProfile(int profile) {
-        this.profile = profile;
+    public long getNotificationAt() {
+        return notificationAt;
     }
 
-    public String getNotification() {
-        return notification;
+    public void setNotificationAt(long notificationAt) {
+        this.notificationAt = notificationAt;
     }
 
-    public void setNotification(String notification) {
-        this.notification = notification;
+    public String getType() {
+        return type;
     }
 
-    public String getTime() {
-        return time;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public String getPostId() {
+        return postId;
+    }
+
+    public void setPostId(String postId) {
+        this.postId = postId;
+    }
+
+    public String getPostedBy() {
+        return postedBy;
+    }
+
+    public void setPostedBy(String postedBy) {
+        this.postedBy = postedBy;
+    }
+
+    public boolean isOpened() {
+        return isOpened;
+    }
+
+    public void setOpened(boolean opened) {
+        isOpened = opened;
+    }
+
+    public String getNotificationId() {
+        return notificationId;
+    }
+
+    public void setNotificationId(String notificationId) {
+        this.notificationId = notificationId;
     }
 }

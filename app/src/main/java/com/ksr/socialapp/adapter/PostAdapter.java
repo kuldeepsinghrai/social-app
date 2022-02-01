@@ -19,12 +19,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.ksr.socialapp.R;
 import com.ksr.socialapp.activities.CommentActivity;
+import com.ksr.socialapp.model.Notification;
 import com.ksr.socialapp.model.Post;
 import com.ksr.socialapp.model.User;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.viewHolder>{
 
@@ -106,6 +108,17 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.viewHolder>{
                                                 @Override
                                                 public void onSuccess(Void unused) {
                                                     holder.like.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_favorite_filled,0,0,0);
+
+                                                    Notification notification = new Notification();
+                                                    notification.setNotificationBy(FirebaseAuth.getInstance().getUid());
+                                                    notification.setNotificationAt(new Date().getTime());
+                                                    notification.setPostId(post.getPostID());
+                                                    notification.setPostedBy(post.getPostedBy());
+                                                    notification.setType("like");
+                                                    FirebaseDatabase.getInstance().getReference()
+                                                            .child("notification")
+                                                            .child(post.getPostedBy())
+                                                            .push().setValue(notification);
                                                 }
                                             });
                                         }
