@@ -97,7 +97,7 @@ public class SignupActivity extends BaseActivity {
                     startActivity(new Intent(getActivity(), MainActivity.class));
                     finish();
                 } else {
-                    Toast.makeText(getActivity(), "Wrong User Details!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Error Occured!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
