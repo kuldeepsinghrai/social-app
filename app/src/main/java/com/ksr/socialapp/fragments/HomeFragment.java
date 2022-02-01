@@ -18,6 +18,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.cooltechworks.views.shimmer.ShimmerRecyclerView;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -46,7 +47,8 @@ public class HomeFragment extends Fragment {
     private FirebaseStorage firebaseStorage;
     private FirebaseAuth firebaseAuth;
 
-    private RecyclerView storyRecyclerView, dashboardRecyclerView;
+    private RecyclerView storyRecyclerView;
+    private ShimmerRecyclerView dashboardRecyclerView;
     private ArrayList<Story> storyList;
     private ArrayList<Post> postArrayList;
 
@@ -83,6 +85,7 @@ public class HomeFragment extends Fragment {
 
         topProfileImage = view.findViewById(R.id.topProfileImage);
         addStory = view.findViewById(R.id.addStory);
+        dashboardRecyclerView = view.findViewById(R.id.dashboardRecyclerView);
 
 
         firebaseDatabase.getReference().child("Users").child(firebaseAuth.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -143,14 +146,15 @@ public class HomeFragment extends Fragment {
                 });
 
 
-        dashboardRecyclerView = view.findViewById(R.id.dashboardRecyclerView);
+        ShimmerRecyclerView shimmerRecycler = (ShimmerRecyclerView) view.findViewById(R.id.dashboardRecyclerView);
+        shimmerRecycler.showShimmerAdapter();
         postArrayList = new ArrayList<>();
 
         PostAdapter postAdapter = new PostAdapter(postArrayList, getContext());
         LinearLayoutManager dasboardLlm = new LinearLayoutManager(getContext());
         dashboardRecyclerView.setLayoutManager(dasboardLlm);
         dashboardRecyclerView.setNestedScrollingEnabled(false);
-        dashboardRecyclerView.setAdapter(postAdapter);
+
 
         firebaseDatabase.getReference().child("posts").addValueEventListener(new ValueEventListener() {
             @Override
@@ -162,6 +166,7 @@ public class HomeFragment extends Fragment {
                     postArrayList.add(post);
                 }
                 postAdapter.notifyDataSetChanged();
+                dashboardRecyclerView.setAdapter(postAdapter);
             }
 
             @Override

@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
 
@@ -121,13 +122,16 @@
 
         </View>
 
-        <androidx.recyclerview.widget.RecyclerView
+        <com.cooltechworks.views.shimmer.ShimmerRecyclerView
             android:id="@+id/dashboardRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:shimmer_demo_child_count="10"
+            app:shimmer_demo_layout="@layout/shimmer_dashboard"
+            app:shimmer_demo_angle="20"
             android:layout_marginStart="@dimen/dimen_16"
             android:layout_marginTop="@dimen/dimen_16"
             android:layout_marginEnd="@dimen/dimen_16">
 
-        </androidx.recyclerview.widget.RecyclerView>
+        </com.cooltechworks.views.shimmer.ShimmerRecyclerView>
 </LinearLayout>

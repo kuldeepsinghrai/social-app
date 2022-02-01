@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/dimen_16"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_8"
+        android:layout_marginTop="@dimen/dimen_8"
+        android:layout_marginEnd="@dimen/dimen_8"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <View
+                android:id="@+id/profileImage"
+                android:layout_width="@dimen/dimen_46"
+                android:layout_height="@dimen/dimen_46"
+                android:scaleType="centerCrop"
+                android:background="@drawable/shape_circle_grey"
+                android:src="@drawable/placeholder"
+                android:layout_gravity="center"
+                app:riv_border_color="@android:color/darker_gray"
+                app:riv_border_width="2dip"
+                app:riv_corner_radius="30dip"
+                app:riv_mutate_background="true"
+                app:riv_oval="true">
+
+            </View>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/dimen_8"
+                android:orientation="vertical">
+
+                <View
+                    android:id="@+id/userName"
+                    android:layout_width="@dimen/dimen_100"
+                    android:layout_height="@dimen/dimen_18"
+                    android:text="Name "
+                    android:layout_marginBottom="@dimen/dimen_5"
+                    android:background="@color/appGray"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_18"
+                    android:textStyle="bold">
+
+                </View>
+
+                <View
+                    android:id="@+id/about"
+                    android:layout_width="@dimen/dimen_50"
+                    android:layout_height="@dimen/dimen_14"
+                    android:background="@color/appGray"
+                    android:layout_marginStart="@dimen/dimen_2"
+                    android:text="about">
+
+                </View>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/postDescription"
+        android:layout_marginTop="@dimen/dimen_14"
+        android:layout_marginHorizontal="@dimen/dimen_14"
+        android:layout_width="@dimen/dimen_270"
+        android:layout_height="@dimen/dimen_14"
+        android:layout_marginBottom="@dimen/dimen_6"
+        android:background="@color/appGray">
+
+    </View>
+
+    <View
+        android:id="@+id/postImage"
+        android:layout_width="320dp"
+        android:layout_height="@dimen/dimen_460"
+        android:layout_marginHorizontal="@dimen/dimen_14"
+        android:layout_marginBottom="@dimen/dimen_14"
+        android:layout_gravity="center"
+        android:background="@color/appGray"
+        android:scaleType="centerCrop"
+        app:riv_corner_radius="@dimen/dimen_14"
+        app:riv_mutate_background="true" />
+
+
+
+    <View
+        android:layout_marginHorizontal="@dimen/dimen_14"
+        android:layout_marginTop="@dimen/dimen_14"
+        android:layout_marginBottom="@dimen/dimen_6"
+        android:layout_width="380dp"
+        android:layout_height="@dimen/dimen_1"
+        android:background="@android:color/darker_gray">
+
+    </View>
+
+
+</LinearLayout>
