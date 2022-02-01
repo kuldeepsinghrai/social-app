@@ -89,7 +89,7 @@ public class AddFragment extends Fragment {
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.exists()){
+                        if (snapshot.exists()) {
                             User user = snapshot.getValue(User.class);
                             Picasso.get().load(user.getProfile()).placeholder(R.drawable.placeholder).into(profileImage);
                             name.setText(user.getName());
@@ -102,7 +102,6 @@ public class AddFragment extends Fragment {
 
                     }
                 });
-
 
 
         postDescriptionET.addTextChangedListener(new TextWatcher() {
@@ -140,38 +139,43 @@ public class AddFragment extends Fragment {
         postBT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dialog.show();
-                final StorageReference storageReference = firebaseStorage.getReference().child("posts")
-                        .child(FirebaseAuth.getInstance().getUid())
-                        .child(new Date().getTime()+"");
+                if (uri != null) {
+                    dialog.show();
+                    final StorageReference storageReference = firebaseStorage.getReference().child("posts")
+                            .child(FirebaseAuth.getInstance().getUid())
+                            .child(new Date().getTime() + "");
 
-                storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                            @Override
-                            public void onSuccess(Uri uri) {
-                                Post post = new Post();
-                                post.setPostImage(uri.toString());
-                                post.setPostedBy(FirebaseAuth.getInstance().getUid());
-                                post.setPostDescription(postDescriptionET.getText().toString());
-                                post.setPostedAt(new Date().getTime());
 
-                                firebaseDatabase.getReference().child("posts")
-                                        .push()
-                                        .setValue(post).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void unused) {
-                                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container,new HomeFragment()).commit();
-                                        dialog.dismiss();
-                                        Toast.makeText(getContext(), "Posted Successfully!", Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-                            }
-                        });
-                    }
-                });
+                    storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    Post post = new Post();
+                                    post.setPostImage(uri.toString());
+                                    post.setPostedBy(FirebaseAuth.getInstance().getUid());
+                                    post.setPostDescription(postDescriptionET.getText().toString());
+                                    post.setPostedAt(new Date().getTime());
 
+                                    firebaseDatabase.getReference().child("posts")
+                                            .push()
+                                            .setValue(post).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void unused) {
+                                            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, new HomeFragment()).commit();
+                                            dialog.dismiss();
+                                            Toast.makeText(getContext(), "Posted Successfully!", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                                }
+                            });
+                        }
+                    });
+
+                }else {
+                    Toast.makeText(getContext(), "PLease select photo!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

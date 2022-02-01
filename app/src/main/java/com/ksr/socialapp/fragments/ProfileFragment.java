@@ -1,5 +1,7 @@
 package com.ksr.socialapp.fragments;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -43,8 +45,8 @@ public class ProfileFragment extends Fragment {
 
     private RecyclerView friendRecyclerView;
     private ArrayList<Follow> friendArrayList;
-    private ImageView coverPhoto, changeCoverPhoto,logOutBT;
-    private TextView userNameTV, professionTV,followers;
+    private ImageView coverPhoto, changeCoverPhoto, logOutBT;
+    private TextView userNameTV, professionTV, followers;
     private RoundedImageView profileImage;
 
     public ProfileFragment() {
@@ -88,7 +90,7 @@ public class ProfileFragment extends Fragment {
                 .child("Followers").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Follow follow = dataSnapshot.getValue(Follow.class);
                     friendArrayList.add(follow);
                 }
@@ -111,7 +113,7 @@ public class ProfileFragment extends Fragment {
                     Picasso.get().load(user.getProfile()).placeholder(R.drawable.placeholder).into(profileImage);
                     userNameTV.setText(user.getName());
                     professionTV.setText(user.getProfession());
-                    followers.setText(user.getFollowerCount()+"");
+                    followers.setText(user.getFollowerCount() + "");
                 }
             }
 
@@ -124,9 +126,25 @@ public class ProfileFragment extends Fragment {
         logOutBT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                firebaseAuth.signOut();
-                startActivity(new Intent(getActivity(), LoginActivity.class));
-                getActivity().finish();
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getContext());
+                alertDialogBuilder.setTitle("Confirm Exit..!!!");
+                alertDialogBuilder.setMessage("Are you sure, You want to logout?");
+                alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        firebaseAuth.signOut();
+                        getActivity().finish();
+                        startActivity(new Intent(getActivity(), LoginActivity.class));
+                    }
+                });
+                alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
             }
         });
 
@@ -152,6 +170,7 @@ public class ProfileFragment extends Fragment {
 
         return view;
     }
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
