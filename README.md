@@ -5,3 +5,16 @@ User can create post and it will be stored in database. We are fetching all user
 In search, we are showing all users from app where the current user can follow another users. We are showing current user's follower's Profile picture in his own profile.
 
 
+## Technologies Used
+
+ - [Firebase Authentication](https://firebase.google.com/docs/auth)
+
+ - [Firebase Realtime Database](https://firebase.google.com/docs/database/)
+
+ - [Firebase Storage](https://firebase.google.com/docs/storage)
+
+ - [Firebase Crashlytics](https://firebase.google.com/docs/crashlytics)
+
+
+
+
