@@ -121,7 +121,6 @@
                     android:id="@+id/loginBT"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:enabled="false"
                     android:layout_marginTop="@dimen/dimen_50"
                     android:text="Login"
                     android:textSize="@dimen/text_size_16"

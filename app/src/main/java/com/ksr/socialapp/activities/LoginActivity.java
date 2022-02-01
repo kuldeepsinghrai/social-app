@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,6 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 import com.ksr.socialapp.R;
+import com.ksr.socialapp.tools.Methods;
 
 import java.util.EmptyStackException;
 
@@ -44,33 +46,22 @@ public class LoginActivity extends BaseActivity{
         passwordET = findViewById(R.id.passwordET);
         loginBT = findViewById(R.id.loginBT);
 
-        passwordET.addTextChangedListener(new TextWatcher() {
+        passwordET.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (emailET.getText().toString().length()>0&&passwordET.getText().toString().length()>0){
-                    loginBT.setEnabled(true);
-                }else {
-                    loginBT.setEnabled(false);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                return Methods.togglePasswordVisibility(getActivity(), motionEvent, passwordET);
             }
         });
-
 
 
         loginBT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                attemptLogin(emailET.getText().toString(),passwordET.getText().toString());
+                if (!emailET.getText().toString().equals("")&&!passwordET.getText().toString().equals("")) {
+                    attemptLogin(emailET.getText().toString(), passwordET.getText().toString());
+                }else {
+                    Toast.makeText(getActivity(), "Please fill all the fields!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -94,7 +85,7 @@ public class LoginActivity extends BaseActivity{
                     startActivity(new Intent(getActivity(),MainActivity.class));
                     finish();
                 }else {
-                    Toast.makeText(getActivity(), "Error Occured!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Wrong User Details!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
