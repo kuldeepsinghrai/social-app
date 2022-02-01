@@ -18,6 +18,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.cooltechworks.views.shimmer.ShimmerRecyclerView;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -93,8 +94,10 @@ public class HomeFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     User user = snapshot.getValue(User.class);
-                    Picasso.get().load(user.getProfile()).placeholder(R.drawable.placeholder).into(addStory);
-                    Picasso.get().load(user.getProfile()).placeholder(R.drawable.placeholder).into(topProfileImage);
+                    //Picasso.get().load(user.getProfile()).placeholder(R.drawable.placeholder).into(addStory);
+                    //Picasso.get().load(user.getProfile()).placeholder(R.drawable.placeholder).into(topProfileImage);
+                    Glide.with(getContext()).load(user.getProfile()).into(addStory);
+                    Glide.with(getContext()).load(user.getProfile()).into(topProfileImage);
                 }
             }
 

@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -49,8 +50,8 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.viewHolder>{
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User user = snapshot.getValue(User.class);
-                Picasso.get().load(user.getProfile())
-                        .placeholder(R.drawable.placeholder).into(holder.story);
+                //Picasso.get().load(user.getProfile()).placeholder(R.drawable.placeholder).into(holder.story);
+                Glide.with(context).load(user.getProfile()).placeholder(R.drawable.placeholder).into(holder.story);
                 holder.name.setText(user.getName());
 
                 holder.story.setOnClickListener(new View.OnClickListener() {

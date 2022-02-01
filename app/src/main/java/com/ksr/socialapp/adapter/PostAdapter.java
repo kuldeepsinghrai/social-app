@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -53,7 +54,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.viewHolder>{
             holder.postDescription.setVisibility(View.VISIBLE);
             holder.postDescription.setText(post.getPostDescription());
         }
-        Picasso.get().load(post.getPostImage()).placeholder(R.drawable.placeholder).into(holder.postImage);
+
+        //Picasso.get().load(post.getPostImage()).placeholder(R.drawable.placeholder).into(holder.postImage);
+        Glide.with(context).load(post.getPostImage()).placeholder(R.drawable.placeholder).into(holder.postImage);
         holder.like.setText(post.getPostLike()+"");
         holder.comment.setText(post.getCommentCount()+"");
         FirebaseDatabase.getInstance().getReference()
@@ -62,10 +65,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.viewHolder>{
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User user = snapshot.getValue(User.class);
-                Picasso.get()
-                        .load(user.getProfile())
-                        .placeholder(R.drawable.placeholder)
-                        .into(holder.profile);
+                //Picasso.get().load(user.getProfile()).placeholder(R.drawable.placeholder).into(holder.profile);
+                Glide.with(context).load(user.getProfile()).placeholder(R.drawable.placeholder).into(holder.profile);
                 holder.userName.setText(user.getName());
                 holder.about.setText(user.getProfession());
             }

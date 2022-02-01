@@ -18,6 +18,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -109,8 +110,10 @@ public class ProfileFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     User user = snapshot.getValue(User.class);
-                    Picasso.get().load(user.getCoverPhoto()).placeholder(R.drawable.placeholder).into(coverPhoto);
-                    Picasso.get().load(user.getProfile()).placeholder(R.drawable.placeholder).into(profileImage);
+                    //Picasso.get().load(user.getCoverPhoto()).placeholder(R.drawable.placeholder).into(coverPhoto);
+                    //Picasso.get().load(user.getProfile()).placeholder(R.drawable.placeholder).into(profileImage);
+                    Glide.with(getContext()).load(user.getCoverPhoto()).placeholder(R.drawable.placeholder).into(coverPhoto);
+                    Glide.with(getContext()).load(user.getProfile()).placeholder(R.drawable.placeholder).into(profileImage);
                     userNameTV.setText(user.getName());
                     professionTV.setText(user.getProfession());
                     followers.setText(user.getFollowerCount() + "");
