@@ -80,7 +80,7 @@
     <View
         android:id="@+id/postDescription"
         android:layout_marginTop="@dimen/dimen_14"
-        android:layout_marginHorizontal="@dimen/dimen_14"
+        android:layout_marginHorizontal="@dimen/dimen_16"
         android:layout_width="@dimen/dimen_270"
         android:layout_height="@dimen/dimen_14"
         android:layout_marginBottom="@dimen/dimen_6"
@@ -90,7 +90,7 @@
 
     <View
         android:id="@+id/postImage"
-        android:layout_width="320dp"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_460"
         android:layout_marginHorizontal="@dimen/dimen_14"
         android:layout_marginBottom="@dimen/dimen_14"

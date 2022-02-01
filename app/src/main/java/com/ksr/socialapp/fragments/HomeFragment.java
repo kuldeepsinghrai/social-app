@@ -47,8 +47,7 @@ public class HomeFragment extends Fragment {
     private FirebaseStorage firebaseStorage;
     private FirebaseAuth firebaseAuth;
 
-    private RecyclerView storyRecyclerView;
-    private ShimmerRecyclerView dashboardRecyclerView;
+    private ShimmerRecyclerView dashboardRecyclerView,storyRecyclerView;
     private ArrayList<Story> storyList;
     private ArrayList<Post> postArrayList;
 
@@ -86,6 +85,7 @@ public class HomeFragment extends Fragment {
         topProfileImage = view.findViewById(R.id.topProfileImage);
         addStory = view.findViewById(R.id.addStory);
         dashboardRecyclerView = view.findViewById(R.id.dashboardRecyclerView);
+        storyRecyclerView = view.findViewById(R.id.storiesRecyclerView);
 
 
         firebaseDatabase.getReference().child("Users").child(firebaseAuth.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -105,14 +105,15 @@ public class HomeFragment extends Fragment {
         });
 
 
-        storyRecyclerView = view.findViewById(R.id.storiesRecyclerView);
+        ShimmerRecyclerView shimmerStoriesRecycler = (ShimmerRecyclerView) view.findViewById(R.id.dashboardRecyclerView);
+        shimmerStoriesRecycler.showShimmerAdapter();
         storyList = new ArrayList<>();
 
         StoryAdapter storyAdapter = new StoryAdapter(storyList, getContext());
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         storyRecyclerView.setLayoutManager(linearLayoutManager);
         storyRecyclerView.setNestedScrollingEnabled(false);
-        storyRecyclerView.setAdapter(storyAdapter);
+
 
         firebaseDatabase.getReference()
                 .child("stories")
@@ -136,6 +137,7 @@ public class HomeFragment extends Fragment {
                                 storyList.add(story);
                             }
                             storyAdapter.notifyDataSetChanged();
+                            storyRecyclerView.setAdapter(storyAdapter);
                         }
                     }
 
@@ -146,8 +148,8 @@ public class HomeFragment extends Fragment {
                 });
 
 
-        ShimmerRecyclerView shimmerRecycler = (ShimmerRecyclerView) view.findViewById(R.id.dashboardRecyclerView);
-        shimmerRecycler.showShimmerAdapter();
+        ShimmerRecyclerView shimmerDashboardRecycler = (ShimmerRecyclerView) view.findViewById(R.id.dashboardRecyclerView);
+        shimmerDashboardRecycler.showShimmerAdapter();
         postArrayList = new ArrayList<>();
 
         PostAdapter postAdapter = new PostAdapter(postArrayList, getContext());
