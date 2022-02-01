@@ -10,8 +10,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.ksr.socialapp.R;
 import com.ksr.socialapp.model.Story;
+import com.ksr.socialapp.model.User;
+import com.ksr.socialapp.model.UserStories;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -36,7 +43,29 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.viewHolder>{
     @Override
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
         Story story = arrayList.get(position);
+        FirebaseDatabase.getInstance().getReference()
+                .child("Users")
+                .child(story.getStoryBy()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User user = snapshot.getValue(User.class);
+                Picasso.get().load(user.getProfile())
+                        .placeholder(R.drawable.placeholder).into(holder.story);
+                holder.name.setText(user.getName());
 
+                holder.story.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        //Open Stories here
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     @Override

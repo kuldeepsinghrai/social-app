@@ -1,10 +1,12 @@
 package com.ksr.socialapp.fragments;
 
+import android.app.ProgressDialog;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -30,6 +32,7 @@ import com.ksr.socialapp.adapter.PostAdapter;
 import com.ksr.socialapp.adapter.StoryAdapter;
 import com.ksr.socialapp.model.Post;
 import com.ksr.socialapp.model.Story;
+import com.ksr.socialapp.model.User;
 import com.ksr.socialapp.model.UserStories;
 import com.makeramen.roundedimageview.RoundedImageView;
 
@@ -48,6 +51,7 @@ public class HomeFragment extends Fragment {
 
     private RoundedImageView addStory;
     private ActivityResultLauncher<String> galleryLauncher;
+    private ProgressDialog progressDialog;
 
     public HomeFragment() {
         //Required Public Constructor
@@ -59,6 +63,8 @@ public class HomeFragment extends Fragment {
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
         firebaseStorage = FirebaseStorage.getInstance();
+
+        progressDialog = new ProgressDialog(getContext());
     }
 
     @Nullable
@@ -67,16 +73,53 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home,container,false);
 
 
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.setTitle("Story Uploading");
+        progressDialog.setMessage("Please wait...");
+        progressDialog.setCancelable(false);
+        progressDialog.setCanceledOnTouchOutside(false);
+
+
+
         storyRecyclerView = view.findViewById(R.id.storiesRecyclerView);
         storyList = new ArrayList<>();
-
-
 
         StoryAdapter storyAdapter = new StoryAdapter(storyList,getContext());
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false);
         storyRecyclerView.setLayoutManager(linearLayoutManager);
         storyRecyclerView.setNestedScrollingEnabled(false);
         storyRecyclerView.setAdapter(storyAdapter);
+
+        firebaseDatabase.getReference()
+                .child("stories")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()){
+                            storyList.clear();
+                            for (DataSnapshot storySnapshot : snapshot.getChildren()){
+                                Story story = new Story();
+                                story.setStoryBy(storySnapshot.getKey());
+                                story.setStoryAt(storySnapshot.child("postedBy").getValue(Long.class));
+
+                                ArrayList<UserStories> stories = new ArrayList<>();
+                                for (DataSnapshot snapshot1: storySnapshot.child("userStories").getChildren()){
+                                    UserStories userStories = snapshot1.getValue(UserStories.class);
+                                    stories.add(userStories);
+                                }
+
+                                story.setUserStories(stories);
+                                storyList.add(story);
+                            }
+                            storyAdapter.notifyDataSetChanged();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
 
 
         dashboardRecyclerView = view.findViewById(R.id.dashboardRecyclerView);
@@ -110,6 +153,8 @@ public class HomeFragment extends Fragment {
             @Override
             public void onActivityResult(Uri result) {
                 addStory.setImageURI(result);
+
+                progressDialog.show();
                 final StorageReference reference =firebaseStorage.getReference()
                         .child("stories")
                         .child(FirebaseAuth.getInstance().getUid())
@@ -136,7 +181,13 @@ public class HomeFragment extends Fragment {
                                                 .child(FirebaseAuth.getInstance().getUid())
                                                 .child("userStories")
                                                 .push()
-                                                .setValue(userStories);
+                                                .setValue(userStories).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void unused) {
+                                                progressDialog.dismiss();
+                                                Toast.makeText(getContext(), "Story Uploaded", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
                                     }
                                 });
                             }
