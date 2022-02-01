@@ -35,6 +35,7 @@ import com.ksr.socialapp.model.Story;
 import com.ksr.socialapp.model.User;
 import com.ksr.socialapp.model.UserStories;
 import com.makeramen.roundedimageview.RoundedImageView;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -49,9 +50,10 @@ public class HomeFragment extends Fragment {
     private ArrayList<Story> storyList;
     private ArrayList<Post> postArrayList;
 
-    private RoundedImageView addStory;
+    private RoundedImageView addStory,topProfileImage;
     private ActivityResultLauncher<String> galleryLauncher;
     private ProgressDialog progressDialog;
+
 
     public HomeFragment() {
         //Required Public Constructor
@@ -78,6 +80,26 @@ public class HomeFragment extends Fragment {
         progressDialog.setMessage("Please wait...");
         progressDialog.setCancelable(false);
         progressDialog.setCanceledOnTouchOutside(false);
+
+        topProfileImage = view.findViewById(R.id.topProfileImage);
+        addStory = view.findViewById(R.id.addStory);
+
+
+        firebaseDatabase.getReference().child("Users").child(firebaseAuth.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    User user = snapshot.getValue(User.class);
+                    Picasso.get().load(user.getProfile()).placeholder(R.drawable.placeholder).into(addStory);
+                    Picasso.get().load(user.getProfile()).placeholder(R.drawable.placeholder).into(topProfileImage);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
 
 
@@ -152,7 +174,6 @@ public class HomeFragment extends Fragment {
         galleryLauncher = registerForActivityResult(new ActivityResultContracts.GetContent(), new ActivityResultCallback<Uri>() {
             @Override
             public void onActivityResult(Uri result) {
-                addStory.setImageURI(result);
 
                 progressDialog.show();
                 final StorageReference reference =firebaseStorage.getReference()
@@ -198,7 +219,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        addStory = view.findViewById(R.id.addStory);
+
         addStory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
