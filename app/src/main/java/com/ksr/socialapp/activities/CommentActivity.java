@@ -2,11 +2,13 @@ package com.ksr.socialapp.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -40,6 +42,7 @@ public class CommentActivity extends BaseActivity {
     private String postId;
     private String postedBy;
 
+    private Toolbar toolbar;
     private RecyclerView commentRecyclerView;
 
     private ImageView postImage,postCommentBT;
@@ -58,6 +61,7 @@ public class CommentActivity extends BaseActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
 
+        toolbar = findViewById(R.id.toolbar);
         postImage = findViewById(R.id.postImage);
         profileImage = findViewById(R.id.profileImage);
         name = findViewById(R.id.name);
@@ -68,6 +72,11 @@ public class CommentActivity extends BaseActivity {
         commentET = findViewById(R.id.commentET);
         postCommentBT = findViewById(R.id.postCommentBT);
         commentRecyclerView = findViewById(R.id.commentRecyclerView);
+
+        setSupportActionBar(toolbar);
+        CommentActivity.this.setTitle("Comments");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
 
         intent = getIntent();
@@ -186,6 +195,12 @@ public class CommentActivity extends BaseActivity {
             }
         });
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        finish();
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

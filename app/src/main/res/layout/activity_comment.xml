@@ -7,6 +7,14 @@
     android:orientation="vertical"
     tools:context=".activities.CommentActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/appBlue">
+
+    </androidx.appcompat.widget.Toolbar>
+
     <ScrollView
         android:layout_weight="1"
         android:layout_width="match_parent"
