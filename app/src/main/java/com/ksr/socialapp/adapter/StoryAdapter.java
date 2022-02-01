@@ -11,16 +11,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ksr.socialapp.R;
-import com.ksr.socialapp.model.StoryModel;
+import com.ksr.socialapp.model.Story;
 
 import java.util.ArrayList;
 
 public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.viewHolder>{
 
-    ArrayList<StoryModel> arrayList;
+    ArrayList<Story> arrayList;
     Context context;
 
-    public StoryAdapter(ArrayList<StoryModel> arrayList, Context context) {
+    public StoryAdapter(ArrayList<Story> arrayList, Context context) {
         this.arrayList = arrayList;
         this.context = context;
     }
@@ -35,9 +35,8 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.viewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
-        StoryModel storyModel = arrayList.get(position);
-        holder.story.setImageResource(storyModel.getStory());
-        holder.name.setText(storyModel.getName());
+        Story story = arrayList.get(position);
+
     }
 
     @Override

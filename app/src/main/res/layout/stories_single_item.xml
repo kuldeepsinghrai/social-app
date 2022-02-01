@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:layout_centerHorizontal="true"
-        android:text="Kuldeep">
+        android:text="Name">
 
     </TextView>
 
