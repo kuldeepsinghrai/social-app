@@ -179,7 +179,6 @@ public class ProfileFragment extends Fragment {
         }
 
         if (requestCode == 102) {
-
             if (data.getData() != null) {
                 Uri uri = data.getData();
                 profileImage.setImageURI(uri);

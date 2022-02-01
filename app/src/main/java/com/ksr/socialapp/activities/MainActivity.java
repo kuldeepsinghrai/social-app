@@ -10,7 +10,7 @@ import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.ksr.socialapp.R;
 import com.ksr.socialapp.fragments.AddFragment;
-import com.ksr.socialapp.fragments.NotificationFragment;
+import com.ksr.socialapp.fragments.NotificationsFragment;
 import com.ksr.socialapp.fragments.HomeFragment;
 import com.ksr.socialapp.fragments.ProfileFragment;
 import com.ksr.socialapp.fragments.SearchFragment;
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
                             selectedFragment = new AddFragment();
                             break;
                         case R.id.nav_notification:
-                            selectedFragment = new NotificationFragment();
+                            selectedFragment = new NotificationsFragment();
                             break;
                         case R.id.nav_profile:
                             selectedFragment = new ProfileFragment();

@@ -23,13 +23,13 @@ import com.ksr.socialapp.model.Notification;
 
 import java.util.ArrayList;
 
-public class InnerNotificationsFragment extends Fragment {
+public class NotificationsFragment extends Fragment {
 
     private RecyclerView innerNotificationsRecyclerView;
     private ArrayList<Notification> notificationArrayList;
     private FirebaseDatabase firebaseDatabase;
 
-    public InnerNotificationsFragment() {
+    public NotificationsFragment() {
         // Required empty public constructor
     }
 
@@ -42,7 +42,7 @@ public class InnerNotificationsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_inner_notifications, container, false);
+        View view = inflater.inflate(R.layout.fragment_notifications, container, false);
 
         innerNotificationsRecyclerView = view.findViewById(R.id.innerNotificationsRecyclerView);
 

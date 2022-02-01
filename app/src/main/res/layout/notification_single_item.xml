@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/text_size_14"
             android:textColor="@color/black"
-            android:text="Comment">
+            android:text="Notification">
         </TextView>
 
         <TextView

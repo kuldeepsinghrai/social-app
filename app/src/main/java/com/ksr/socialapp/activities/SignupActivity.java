@@ -9,6 +9,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,6 +25,8 @@ public class SignupActivity extends BaseActivity {
 
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
+
+    private LinearLayout mainParentContainer;
     private EditText nameET, professionET, emailET, passwordET;
     private Button signUpBT;
 
@@ -34,6 +37,14 @@ public class SignupActivity extends BaseActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
+
+        mainParentContainer = findViewById(R.id.mainParentContainer);
+        mainParentContainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Methods.hideSoftKeyboard(getActivity());
+            }
+        });
 
         nameET = findViewById(R.id.nameET);
         professionET = findViewById(R.id.professionET);

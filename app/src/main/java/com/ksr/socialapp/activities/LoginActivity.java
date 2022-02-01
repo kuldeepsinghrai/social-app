@@ -11,6 +11,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -30,6 +31,7 @@ public class LoginActivity extends BaseActivity{
     private FirebaseDatabase firebaseDatabase;
     private FirebaseUser firebaseCurrentUser;
 
+    private LinearLayout mainParentContainer;
     private EditText emailET,passwordET;
     private Button loginBT;
 
@@ -41,6 +43,14 @@ public class LoginActivity extends BaseActivity{
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseCurrentUser = firebaseAuth.getCurrentUser();
         firebaseDatabase = FirebaseDatabase.getInstance();
+
+        mainParentContainer = findViewById(R.id.mainParentContainer);
+        mainParentContainer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Methods.hideSoftKeyboard(getActivity());
+            }
+        });
 
         emailET = findViewById(R.id.emailET);
         passwordET = findViewById(R.id.passwordET);
