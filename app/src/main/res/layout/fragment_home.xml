@@ -17,7 +17,7 @@
                 android:layout_gravity="center"
                 android:layout_marginStart="@dimen/dimen_16"
                 android:layout_weight="1"
-                android:text="Discover"
+                android:text="Feed"
                 android:textColor="@color/black"
                 android:textSize="@dimen/dimen_24"
                 android:textStyle="bold">

@@ -4,21 +4,30 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.makeramen.roundedimageview.RoundedImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/story"
-        android:layout_width="@dimen/dimen_60"
-        android:layout_height="@dimen/dimen_60"
+        android:layout_width="@dimen/dimen_75"
+        android:layout_height="@dimen/dimen_75"
         android:layout_centerHorizontal="true"
-        android:layout_marginEnd="@dimen/dimen_16"
+        android:padding="6dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/placeholder"
-        app:riv_border_color="@color/appBlue"
-        app:riv_border_width="2dip"
-        app:riv_corner_radius="30dip"
-        app:riv_mutate_background="true"
-        app:riv_oval="true">
+        android:src="@drawable/placeholder">
 
-    </com.makeramen.roundedimageview.RoundedImageView>
+    </de.hdodenhof.circleimageview.CircleImageView>
+
+    <com.devlomi.circularstatusview.CircularStatusView
+        android:id="@+id/statusCircle"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_centerHorizontal="true"
+        app:portion_color="@color/appBlue"
+        app:portion_spacing="2dp"
+        app:portion_width="2dp"
+        app:portions_count="4" >
+
+    </com.devlomi.circularstatusview.CircularStatusView>
+
+
 
     <TextView
         android:id="@+id/name"
