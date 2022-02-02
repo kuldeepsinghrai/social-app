@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:id="@+id/openNotification"
     android:layout_marginHorizontal="@dimen/dimen_16"
     android:layout_marginTop="@dimen/dimen_8"
     android:orientation="horizontal">

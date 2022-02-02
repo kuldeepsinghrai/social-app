@@ -63,7 +63,7 @@ public class NotificationsFragment extends Fragment {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         notificationArrayList.clear();
                         for (DataSnapshot dataSnapshot: snapshot.getChildren()){
-                            Notification notification = snapshot.getValue(Notification.class);
+                            Notification notification = dataSnapshot.getValue(Notification.class);
                             notification.setNotificationId(dataSnapshot.getKey());
                             notificationArrayList.add(notification);
                         }
