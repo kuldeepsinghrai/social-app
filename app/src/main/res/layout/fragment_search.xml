@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-   <androidx.recyclerview.widget.RecyclerView
+   <com.cooltechworks.views.shimmer.ShimmerRecyclerView
        android:layout_marginTop="@dimen/dimen_16"
        android:id="@+id/usersRecyclerView"
        android:layout_width="match_parent"
        android:layout_height="match_parent"
+       app:shimmer_demo_child_count="10"
+       app:shimmer_demo_layout="@layout/shimmer_search_users"
+       app:shimmer_demo_angle="20"
        android:layout_centerHorizontal="true">
 
-   </androidx.recyclerview.widget.RecyclerView>
+   </com.cooltechworks.views.shimmer.ShimmerRecyclerView>
 
 
 </RelativeLayout>

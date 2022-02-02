@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.github.marlonlom.utilities.timeago.TimeAgo;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -53,7 +54,8 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.viewHold
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User user = snapshot.getValue(User.class);
-                Picasso.get().load(user.getProfile()).placeholder(R.drawable.placeholder).into(holder.profileImage);
+                //Picasso.get().load(user.getProfile()).placeholder(R.drawable.placeholder).into(holder.profileImage);
+                Glide.with(context).load(user.getProfile()).placeholder(R.drawable.placeholder).into(holder.profileImage);
                 holder.comment.setText(Html.fromHtml("<b>"+user.getName()+"</b>"+"  "+comment.getCommentBody()));
             }
 

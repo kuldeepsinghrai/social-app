@@ -37,7 +37,6 @@ import com.ksr.socialapp.model.Story;
 import com.ksr.socialapp.model.User;
 import com.ksr.socialapp.model.UserStories;
 import com.makeramen.roundedimageview.RoundedImageView;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -94,8 +93,6 @@ public class HomeFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     User user = snapshot.getValue(User.class);
-                    //Picasso.get().load(user.getProfile()).placeholder(R.drawable.placeholder).into(addStory);
-                    //Picasso.get().load(user.getProfile()).placeholder(R.drawable.placeholder).into(topProfileImage);
                     Glide.with(getContext()).load(user.getProfile()).into(addStory);
                     Glide.with(getContext()).load(user.getProfile()).into(topProfileImage);
                 }

@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -49,7 +50,8 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.viewHolder> 
     @Override
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
         User user = arrayList.get(position);
-        Picasso.get().load(user.getProfile()).placeholder(R.drawable.placeholder).into(holder.profileImage);
+        //Picasso.get().load(user.getProfile()).placeholder(R.drawable.placeholder).into(holder.profileImage);
+        Glide.with(context).load(user.getProfile()).placeholder(R.drawable.placeholder).into(holder.profileImage);
         holder.name.setText(user.getName());
         holder.profession.setText(user.getProfession());
 

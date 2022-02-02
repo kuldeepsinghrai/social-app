@@ -7,14 +7,14 @@
     android:layout_marginTop="@dimen/dimen_8"
     android:orientation="horizontal">
 
-    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+    <View
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/profile_image"
         android:layout_width="@dimen/dimen_50"
         android:layout_height="@dimen/dimen_50"
         android:layout_gravity="center"
-        android:src="@drawable/placeholder"
-        app:civ_border_color="@color/lightGreyBorder"
-        app:civ_border_width="2dp" />
+        android:background="@drawable/shape_circle_grey"
+         />
 
     <LinearLayout
         android:layout_marginStart="@dimen/dimen_12"
@@ -23,20 +23,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <TextView
+        <View
             android:id="@+id/notification"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/text_size_14"
-            android:textColor="@color/black"
-            android:text="Notification">
-        </TextView>
+            android:layout_width="@dimen/dimen_250"
+            android:layout_height="@dimen/dimen_18"
+            android:background="@color/appGray">
+        </View>
 
         <TextView
+            android:layout_marginTop="@dimen/dimen_4"
             android:id="@+id/time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="time">
+            android:layout_width="@dimen/dimen_50"
+            android:layout_height="@dimen/dimen_16"
+            android:background="@color/appGray">
 
         </TextView>
 

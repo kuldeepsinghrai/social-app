@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.cooltechworks.views.shimmer.ShimmerRecyclerView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -25,7 +26,7 @@ import java.util.ArrayList;
 
 public class NotificationsFragment extends Fragment {
 
-    private RecyclerView innerNotificationsRecyclerView;
+    private ShimmerRecyclerView innerNotificationsRecyclerView;
     private ArrayList<Notification> notificationArrayList;
     private FirebaseDatabase firebaseDatabase;
 
@@ -46,13 +47,15 @@ public class NotificationsFragment extends Fragment {
 
         innerNotificationsRecyclerView = view.findViewById(R.id.innerNotificationsRecyclerView);
 
+
+        ShimmerRecyclerView shimmerNotificationRecycler = (ShimmerRecyclerView) view.findViewById(R.id.innerNotificationsRecyclerView);
+        shimmerNotificationRecycler.showShimmerAdapter();
         notificationArrayList = new ArrayList<>();
 
 
         NotificationAdapter notificationAdapter = new NotificationAdapter(notificationArrayList,getContext());
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         innerNotificationsRecyclerView.setLayoutManager(linearLayoutManager);
-        innerNotificationsRecyclerView.setAdapter(notificationAdapter);
 
 
         firebaseDatabase.getReference()
@@ -68,6 +71,7 @@ public class NotificationsFragment extends Fragment {
                             notificationArrayList.add(notification);
                         }
                         notificationAdapter.notifyDataSetChanged();
+                        innerNotificationsRecyclerView.setAdapter(notificationAdapter);
                     }
 
                     @Override

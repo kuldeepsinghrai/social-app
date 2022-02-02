@@ -34,7 +34,6 @@ import com.ksr.socialapp.adapter.FollowersAdapter;
 import com.ksr.socialapp.model.Follow;
 import com.ksr.socialapp.model.User;
 import com.makeramen.roundedimageview.RoundedImageView;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -110,8 +109,6 @@ public class ProfileFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     User user = snapshot.getValue(User.class);
-                    //Picasso.get().load(user.getCoverPhoto()).placeholder(R.drawable.placeholder).into(coverPhoto);
-                    //Picasso.get().load(user.getProfile()).placeholder(R.drawable.placeholder).into(profileImage);
                     Glide.with(getContext()).load(user.getCoverPhoto()).placeholder(R.drawable.placeholder).into(coverPhoto);
                     Glide.with(getContext()).load(user.getProfile()).placeholder(R.drawable.placeholder).into(profileImage);
                     userNameTV.setText(user.getName());

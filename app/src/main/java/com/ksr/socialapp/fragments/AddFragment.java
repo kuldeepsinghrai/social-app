@@ -20,6 +20,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -91,7 +92,8 @@ public class AddFragment extends Fragment {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.exists()) {
                             User user = snapshot.getValue(User.class);
-                            Picasso.get().load(user.getProfile()).placeholder(R.drawable.placeholder).into(profileImage);
+                            //Picasso.get().load(user.getProfile()).placeholder(R.drawable.placeholder).into(profileImage);
+                            Glide.with(getContext()).load(user.getProfile()).placeholder(R.drawable.placeholder).into(profileImage);
                             name.setText(user.getName());
                             profession.setText(user.getProfession());
                         }

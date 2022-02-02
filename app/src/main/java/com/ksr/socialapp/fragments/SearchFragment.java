@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.cooltechworks.views.shimmer.ShimmerRecyclerView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -27,7 +28,7 @@ public class SearchFragment extends Fragment {
     private ArrayList<User> userArrayList = new ArrayList<>();
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
-    private RecyclerView usersRecyclerView;
+    private ShimmerRecyclerView usersRecyclerView;
 
     public SearchFragment() {
         //Required empty public constructer
@@ -47,10 +48,13 @@ public class SearchFragment extends Fragment {
 
         usersRecyclerView = view.findViewById(R.id.usersRecyclerView);
 
+
+        ShimmerRecyclerView shimmerSearchUsersRecycler = (ShimmerRecyclerView) view.findViewById(R.id.usersRecyclerView);
+        shimmerSearchUsersRecycler.showShimmerAdapter();
+
         UsersAdapter usersAdapter = new UsersAdapter(getContext(),userArrayList);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         usersRecyclerView.setLayoutManager(linearLayoutManager);
-        usersRecyclerView.setAdapter(usersAdapter);
 
         firebaseDatabase.getReference().child("Users").addValueEventListener(new ValueEventListener() {
             @Override
@@ -65,7 +69,7 @@ public class SearchFragment extends Fragment {
 
                 }
                 usersAdapter.notifyDataSetChanged();
-
+                usersRecyclerView.setAdapter(usersAdapter);
             }
 
             @Override

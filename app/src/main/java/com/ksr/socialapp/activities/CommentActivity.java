@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -92,7 +93,8 @@ public class CommentActivity extends BaseActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         Post post = snapshot.getValue(Post.class);
-                        Picasso.get().load(post.getPostImage()).placeholder(R.drawable.placeholder).into(postImage);
+                       // Picasso.get().load(post.getPostImage()).placeholder(R.drawable.placeholder).into(postImage);
+                        Glide.with(getActivity()).load(post.getPostImage()).placeholder(R.drawable.placeholder).into(postImage);
                         postDescription.setText(post.getPostDescription());
                         like.setText(post.getPostLike()+"");
                         comment.setText(post.getCommentCount()+"");
@@ -110,7 +112,8 @@ public class CommentActivity extends BaseActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User user = snapshot.getValue(User.class);
-                Picasso.get().load(user.getProfile()).placeholder(R.drawable.placeholder).into(profileImage);
+                //Picasso.get().load(user.getProfile()).placeholder(R.drawable.placeholder).into(profileImage);
+                Glide.with(getActivity()).load(user.getProfile()).placeholder(R.drawable.placeholder).into(profileImage);
                 name.setText(user.getName());
             }
 
