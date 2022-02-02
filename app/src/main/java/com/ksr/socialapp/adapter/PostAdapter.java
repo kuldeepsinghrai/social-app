@@ -167,7 +167,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.viewHolder>{
             postDescription = itemView.findViewById(R.id.postDescription);
             like = itemView.findViewById(R.id.like);
             comment = itemView.findViewById(R.id.comment);
-            share = itemView.findViewById(R.id.share);
 
         }
     }

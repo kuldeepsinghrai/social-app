@@ -14,6 +14,8 @@ import com.ksr.socialapp.R;
 
 public class Methods {
 
+    public static String PLACEHOLDER_IMAGE_URL ="https://firebasestorage.googleapis.com/v0/b/social-app-49740.appspot.com/o/defaults_assets%2Finitials%2Fplaceholder.jpg?alt=media&token=76f0623d-0547-4d02-85c0-a46b535f4274";
+
     public static void hideSoftKeyboard(Activity paramActivity) {
         InputMethodManager localInputMethodManager = (InputMethodManager) paramActivity.getSystemService(Context.INPUT_METHOD_SERVICE);
         View localView = paramActivity.getCurrentFocus();

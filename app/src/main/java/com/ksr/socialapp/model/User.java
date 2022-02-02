@@ -11,6 +11,7 @@ public class User {
     public User() {
     }
 
+
     public User(String name, String profession, String email, String password) {
         this.name = name;
         this.profession = profession;

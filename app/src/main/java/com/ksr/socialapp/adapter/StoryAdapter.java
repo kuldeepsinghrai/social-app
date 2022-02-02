@@ -21,9 +21,11 @@ import com.ksr.socialapp.R;
 import com.ksr.socialapp.model.Story;
 import com.ksr.socialapp.model.User;
 import com.ksr.socialapp.model.UserStories;
+import com.ksr.socialapp.tools.Methods;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import omari.hamza.storyview.StoryView;
@@ -72,7 +74,8 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.viewHolder>{
 
                         for(UserStories stories : story.getUserStories()){
                             myStories.add(new MyStory(
-                                   stories.getImage()
+                                   stories.getImage(),
+                                   new Date( stories.getStoryAt())
                             ));
                         }
                         new StoryView.Builder(((AppCompatActivity)context).getSupportFragmentManager())
@@ -80,7 +83,7 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.viewHolder>{
                                 .setStoryDuration(5000) // Default is 2000 Millis (2 Seconds)
                                 .setTitleText(user.getName()) // Default is Hidden
                                 .setSubtitleText("") // Default is Hidden
-                                .setTitleLogoUrl(user.getProfile()) // Default is Hidden
+                                .setTitleLogoUrl(user.getProfile()!=null? user.getProfile() : Methods.PLACEHOLDER_IMAGE_URL) // Default is Hidden
                                 .setStoryClickListeners(new StoryClickListeners() {
                                     @Override
                                     public void onDescriptionClickListener(int position) {

@@ -127,18 +127,6 @@
 
         </TextView>
 
-        <TextView
-            android:id="@+id/share"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignRight="@id/comment"
-            android:layout_marginStart="@dimen/dimen_16"
-            android:drawableLeft="@drawable/ic_share"
-            android:textSize="@dimen/text_size_12"
-            android:text="">
-
-        </TextView>
-
     </LinearLayout>
 
     <View

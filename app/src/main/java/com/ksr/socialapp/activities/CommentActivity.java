@@ -70,7 +70,6 @@ public class CommentActivity extends BaseActivity {
         postDescription = findViewById(R.id.postDescription);
         like = findViewById(R.id.like);
         comment = findViewById(R.id.comment);
-        share = findViewById(R.id.share);
         commentET = findViewById(R.id.commentET);
         postCommentBT = findViewById(R.id.postCommentBT);
         commentRecyclerView = findViewById(R.id.commentRecyclerView);

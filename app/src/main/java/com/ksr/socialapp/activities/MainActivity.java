@@ -2,7 +2,6 @@ package com.ksr.socialapp.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -14,11 +13,12 @@ import com.ksr.socialapp.fragments.NotificationsFragment;
 import com.ksr.socialapp.fragments.HomeFragment;
 import com.ksr.socialapp.fragments.ProfileFragment;
 import com.ksr.socialapp.fragments.SearchFragment;
+import com.ksr.socialapp.tools.FragmentManager;
 
 public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
-
+    private FragmentManager fragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,10 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottomNavigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
 
-        getSupportFragmentManager().beginTransaction().add(R.id.main_fragment_container,new HomeFragment()).commit();
+
+        fragmentManager = new FragmentManager(getSupportFragmentManager());
+        fragmentManager.openHomeFragment(false,false);
+
 
     }
 
@@ -36,34 +39,29 @@ public class MainActivity extends AppCompatActivity {
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-                    Fragment selectedFragment;
-
                     switch (item.getItemId()){
                         case R.id.nav_home:
-                            selectedFragment = new HomeFragment();
+                            fragmentManager.openHomeFragment(false,false);
                             break;
                         case R.id.nav_search:
-                            selectedFragment = new SearchFragment();
+                            fragmentManager.openSearchFragment(false,false);
                             break;
                         case R.id.nav_add:
-                            selectedFragment = new AddFragment();
+                            fragmentManager.openAddFragment(false,false);
                             break;
                         case R.id.nav_notification:
-                            selectedFragment = new NotificationsFragment();
+                            fragmentManager.openNotificationsFragment(false,false);
                             break;
                         case R.id.nav_profile:
-                            selectedFragment = new ProfileFragment();
+                            fragmentManager.openProfileFragment(false,false);
                             break;
                         default:
-                            selectedFragment = new HomeFragment();
+                            fragmentManager.openHomeFragment(false,false);
                             break;
                     }
-                    getSupportFragmentManager().beginTransaction().replace(R.id.main_fragment_container, selectedFragment).commit();
                     return true;
                 }
             };
-
 
 
 }
