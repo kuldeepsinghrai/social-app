@@ -96,6 +96,19 @@ dependencies {
 
 ```
 
+ ### [StoryView](https://github.com/OMARIHAMZA/StoryView) 
+
+```gradle
+repositories {
+    maven { url "https://jitpack.io" }
+}
+
+dependencies {
+    implementation 'com.github.OMARIHAMZA:StoryView:1.0.2-alpha'
+}
+
+```
+
 
 
 
