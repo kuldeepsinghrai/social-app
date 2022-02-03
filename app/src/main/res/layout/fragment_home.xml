@@ -24,7 +24,8 @@
 
             </TextView>
 
-            <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+            <com.makeramen.roundedimageview.RoundedImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/topProfileImage"
                 android:layout_width="@dimen/dimen_40"
                 android:layout_height="@dimen/dimen_40"
@@ -34,7 +35,7 @@
                 android:layout_marginBottom="@dimen/dimen_8"
                 android:scaleType="centerCrop"
                 android:src="@drawable/placeholder"
-                app:riv_border_color="@android:color/darker_gray"
+                app:riv_border_color="@color/appBlueLight"
                 app:riv_border_width="2dip"
                 app:riv_corner_radius="30dip"
                 app:riv_mutate_background="true"
@@ -74,7 +75,7 @@
                         android:layout_height="@dimen/dimen_60"
                         android:scaleType="centerCrop"
                         android:src="@drawable/placeholder"
-                        app:riv_border_color="@android:color/darker_gray"
+                        app:riv_border_color="@color/appBlueLight"
                         app:riv_border_width="2dip"
                         app:riv_corner_radius="30dip"
                         app:riv_mutate_background="true"
