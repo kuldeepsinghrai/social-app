@@ -59,6 +59,16 @@ dependencies {
 ```
 
 
+ ### [DiagonalLayout](https://github.com/florent37/DiagonalLayout) 
+With Diagonal Layout explore new styles and approaches on material design
+
+```gradle
+dependencies {
+    implementation 'com.github.florent37:diagonallayout:1.0.9'
+}
+```
+
+
 
 
 
