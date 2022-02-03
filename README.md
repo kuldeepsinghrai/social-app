@@ -109,13 +109,19 @@ dependencies {
 
 ```
 
+ ### [CircularStatusView](https://github.com/3llomi/CircularStatusView) 
+A Simple View that draws portions of a Circle depending on a number , just like what WhatsApp has done for Status
 
 
+```gradle
+repositories {
+    maven { url "https://jitpack.io" }
+}
 
+dependencies {
+  implementation 'com.github.3llomi:CircularStatusView:V1.0.2'
+}
 
-
-
-
-
+```
 
 
