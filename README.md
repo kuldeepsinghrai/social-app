@@ -16,5 +16,25 @@ In search, we are showing all users from app where the current user can follow a
  - [Firebase Crashlytics](https://firebase.google.com/docs/crashlytics)
 
 
+## Dependencies Added
+
+ ### [Glide](https://github.com/bumptech/glide) 
+ Glide is a fast and efficient open source media management and image loading framework for Android that wraps media decoding, memory and disk caching, and resource pooling into a simple and easy to use interface.
+
+
+```gradle
+repositories {
+  google()
+  mavenCentral()
+}
+
+dependencies {
+  implementation 'com.github.bumptech.glide:glide:4.12.0'
+  annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+}
+```
+
+
+
 
 
