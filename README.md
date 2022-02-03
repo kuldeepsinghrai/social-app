@@ -77,6 +77,26 @@ dependencies {
 }
 ```
 
+ ### [ShimmerRecyclerView](https://github.com/sharish/ShimmerRecyclerView) 
+A custom recycler view with shimmer views to indicate that views are loading. The recycler view has a built-in adapter to control the shimmer appearance and provide two methods -
+
+* showShimmerAdapter() - set up a demo adapter a predefined number of child demo views.
+* hideShimmerAdapter() - restores your adapter to show the actual child elements.
+
+
+```gradle
+repositories {
+    jcenter()
+    maven { url "https://jitpack.io" }
+}
+
+dependencies {
+    implementation 'com.github.sharish:ShimmerRecyclerView:v1.3'
+}
+
+```
+
+
 
 
 
