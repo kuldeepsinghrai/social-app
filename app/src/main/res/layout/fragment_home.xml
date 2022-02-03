@@ -132,9 +132,7 @@
             app:shimmer_demo_child_count="10"
             app:shimmer_demo_layout="@layout/shimmer_dashboard"
             app:shimmer_demo_angle="20"
-            android:layout_marginStart="@dimen/dimen_16"
-            android:layout_marginTop="@dimen/dimen_16"
-            android:layout_marginEnd="@dimen/dimen_16">
+            android:layout_marginTop="@dimen/dimen_16">
 
         </com.cooltechworks.views.shimmer.ShimmerRecyclerView>
 </LinearLayout>

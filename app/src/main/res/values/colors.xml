@@ -5,7 +5,9 @@
     <color name="purple_700">#FF3700B3</color>
 
     <color name="appBlue">#0078ff</color>
+    <color name="appBlueLight">#800078FF</color>
     <color name="appGray">#D7D7D7</color>
+    <color name="appLightGray">#EBEBEB</color>
 
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>

@@ -16,9 +16,9 @@
     </androidx.appcompat.widget.Toolbar>
 
     <ScrollView
-        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
 
 
         <LinearLayout
@@ -39,15 +39,30 @@
 
                 </ImageView>
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/postImage"
                     android:layout_margin="@dimen/dimen_8"
                     android:orientation="horizontal">
 
-                    <com.makeramen.roundedimageview.RoundedImageView
-                        xmlns:app="http://schemas.android.com/apk/res-auto"
+
+                    <TextView
+                        android:id="@+id/name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="-8dp"
+                        android:layout_toRightOf="@+id/profileImage"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/shape_right_round_bg"
+                        android:paddingHorizontal="@dimen/dimen_14"
+                        android:paddingVertical="@dimen/dimen_4"
+                        android:text="Name"
+                        android:textColor="@color/black">
+
+                    </TextView>
+                    <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                         android:id="@+id/profileImage"
                         android:layout_width="@dimen/dimen_50"
                         android:layout_height="@dimen/dimen_50"
@@ -61,26 +76,7 @@
 
                     </com.makeramen.roundedimageview.RoundedImageView>
 
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center">
-
-                        <TextView
-                            android:id="@+id/name"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:background="@drawable/shape_right_round_bg"
-                            android:paddingHorizontal="@dimen/dimen_10"
-                            android:paddingVertical="@dimen/dimen_4"
-                            android:text="Name"
-                            android:textColor="@color/black">
-
-                        </TextView>
-
-                    </RelativeLayout>
-                </LinearLayout>
+                </RelativeLayout>
             </RelativeLayout>
 
             <TextView
@@ -123,9 +119,9 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/commentRecyclerView"
-                android:layout_marginHorizontal="@dimen/dimen_6"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginHorizontal="@dimen/dimen_6"
                 android:layout_marginVertical="@dimen/dimen_8">
 
             </androidx.recyclerview.widget.RecyclerView>
@@ -135,34 +131,34 @@
     </ScrollView>
 
     <LinearLayout
-        android:layout_gravity="bottom"
-        android:gravity="bottom"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_50"
         android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
         android:layout_margin="@dimen/dimen_8"
-        android:background="@drawable/shape_comment_et_bg">
+        android:background="@drawable/shape_comment_et_bg"
+        android:gravity="bottom">
 
         <EditText
-            android:layout_weight="1"
             android:id="@+id/commentET"
             android:layout_width="match_parent"
-            android:layout_marginRight="@dimen/dimen_6"
             android:layout_height="match_parent"
-            android:padding="@dimen/dimen_8"
+            android:layout_marginRight="@dimen/dimen_6"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
             android:hint="Write a comment..."
-            android:background="@android:color/transparent">
+            android:padding="@dimen/dimen_8">
 
         </EditText>
 
         <ImageView
             android:id="@+id/postCommentBT"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_baseline_send_24"
-            android:layout_marginHorizontal="@dimen/dimen_6"
-
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+
+            android:layout_marginHorizontal="@dimen/dimen_6"
+            android:src="@drawable/ic_baseline_send_24">
 
         </ImageView>
 

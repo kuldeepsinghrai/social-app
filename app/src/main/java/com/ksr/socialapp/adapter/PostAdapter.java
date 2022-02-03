@@ -2,6 +2,7 @@ package com.ksr.socialapp.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,10 +50,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.viewHolder>{
     @Override
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
         Post post = arrayList.get(position);
-        if (!post.getPostDescription().equals("")){
-            holder.postDescription.setVisibility(View.VISIBLE);
-            holder.postDescription.setText(post.getPostDescription());
-        }
 
         //Picasso.get().load(post.getPostImage()).placeholder(R.drawable.placeholder).into(holder.postImage);
         Glide.with(context).load(post.getPostImage()).placeholder(R.drawable.placeholder).into(holder.postImage);
@@ -68,6 +65,10 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.viewHolder>{
                 Glide.with(context).load(user.getProfile()).placeholder(R.drawable.placeholder).into(holder.profile);
                 holder.userName.setText(user.getName());
                 holder.about.setText(user.getProfession());
+                if (!post.getPostDescription().equals("")){
+                    holder.postDescription.setVisibility(View.VISIBLE);
+                    holder.postDescription.setText(Html.fromHtml("<b>"+user.getName()+"</b>"+"  "+post.getPostDescription()));
+                }
             }
 
             @Override

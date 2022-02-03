@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="@dimen/dimen_16"
+    android:layout_marginBottom="@dimen/dimen_8"
     android:orientation="vertical">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dimen_8"
+        android:layout_marginStart="@dimen/dimen_4"
         android:layout_marginTop="@dimen/dimen_8"
         android:layout_marginEnd="@dimen/dimen_8"
         android:orientation="horizontal">
@@ -29,7 +29,7 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/placeholder"
                 android:layout_gravity="center"
-                app:riv_border_color="@android:color/darker_gray"
+                app:riv_border_color="@color/appBlueLight"
                 app:riv_border_width="2dip"
                 app:riv_corner_radius="30dip"
                 app:riv_mutate_background="true"
@@ -80,28 +80,20 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/postDescription"
-        android:layout_marginTop="@dimen/dimen_14"
-        android:layout_marginHorizontal="@dimen/dimen_14"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
-    </TextView>
 
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/postImage"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_460"
-        android:layout_marginHorizontal="@dimen/dimen_14"
-        android:layout_marginBottom="@dimen/dimen_14"
+        android:layout_marginBottom="@dimen/dimen_8"
         android:src="@drawable/placeholder"
         android:scaleType="centerCrop"
-        app:riv_corner_radius="@dimen/dimen_14"
+        app:riv_corner_radius="@dimen/dimen_2"
         app:riv_mutate_background="true" />
 
     <LinearLayout
-        android:layout_marginStart="@dimen/dimen_16"
+        android:layout_marginStart="@dimen/dimen_8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
@@ -109,8 +101,10 @@
             android:id="@+id/like"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:drawablePadding="@dimen/dimen_4"
             android:drawableLeft="@drawable/ic_favorite"
-            android:textSize="@dimen/text_size_12"
+            android:textSize="@dimen/text_size_14"
             android:text="">
 
         </TextView>
@@ -121,21 +115,34 @@
             android:layout_height="wrap_content"
             android:layout_alignRight="@id/like"
             android:layout_marginStart="@dimen/dimen_16"
+            android:gravity="center_vertical"
+            android:drawablePadding="@dimen/dimen_4"
             android:drawableLeft="@drawable/ic_comment"
-            android:textSize="@dimen/text_size_12"
+            android:textSize="@dimen/text_size_14"
             android:text="">
 
         </TextView>
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/postDescription"
+        android:layout_marginHorizontal="@dimen/dimen_6"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:textColor="@color/black"
+        android:layout_height="wrap_content">
+
+    </TextView>
+
     <View
-        android:layout_marginHorizontal="@dimen/dimen_14"
+        android:layout_marginHorizontal="@dimen/dimen_6"
         android:layout_marginTop="@dimen/dimen_14"
         android:layout_marginBottom="@dimen/dimen_6"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_1"
-        android:background="@android:color/darker_gray">
+        android:background="@color/appLightGray">
 
     </View>
 
