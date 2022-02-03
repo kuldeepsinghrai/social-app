@@ -68,6 +68,16 @@ dependencies {
 }
 ```
 
+ ### [TimeAgo](https://github.com/marlonlom/timeago) 
+Simple java library for displaying dates as relative time ago language.
+
+```gradle
+dependencies {
+    implementation 'com.github.marlonlom:timeago:4.0.3'
+}
+```
+
+
 
 
 
