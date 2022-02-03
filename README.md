@@ -49,6 +49,19 @@ dependencies {
 ```
 
 
+ ### [CircleImageView](https://github.com/hdodenhof/CircleImageView) 
+A fast circular ImageView perfect for profile images. This is based on [RoundedImageView from Vince Mi](https://github.com/vinc3m1/RoundedImageView) which itself is based on [techniques recommended by Romain Guy](http://www.curious-creature.org/2012/12/11/android-recipe-1-image-with-rounded-corners/).
+
+```gradle
+dependencies {
+   implementation 'de.hdodenhof:circleimageview:3.1.0'
+}
+```
+
+
+
+
+
 
 
 
