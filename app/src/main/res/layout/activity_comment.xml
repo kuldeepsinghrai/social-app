@@ -96,9 +96,11 @@
                     android:id="@+id/like"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:drawablePadding="@dimen/dimen_4"
                     android:drawableLeft="@drawable/ic_favorite"
-                    android:text=""
-                    android:textSize="@dimen/text_size_12">
+                    android:textSize="@dimen/text_size_14"
+                    android:text="">
 
                 </TextView>
 
@@ -108,9 +110,11 @@
                     android:layout_height="wrap_content"
                     android:layout_alignRight="@id/like"
                     android:layout_marginStart="@dimen/dimen_16"
+                    android:gravity="center_vertical"
+                    android:drawablePadding="@dimen/dimen_4"
                     android:drawableLeft="@drawable/ic_comment"
-                    android:text=""
-                    android:textSize="@dimen/text_size_12">
+                    android:textSize="@dimen/text_size_14"
+                    android:text="">
 
                 </TextView>
 
