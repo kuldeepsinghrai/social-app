@@ -11,17 +11,18 @@
         android:layout_height="wrap_content"
         android:layout_weight="1">
 
-        <com.makeramen.roundedimageview.RoundedImageView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
+        <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/profileImage"
-            android:layout_width="@dimen/dimen_50"
-            android:layout_height="@dimen/dimen_50"
+            android:layout_width="@dimen/dimen_36"
+            android:layout_height="@dimen/dimen_36"
             android:scaleType="centerCrop"
             android:src="@drawable/placeholder"
-            app:riv_border_color="@android:color/darker_gray"
-            app:riv_border_width="2dip"
+            app:riv_border_color="@color/appBlueLight"
+            app:riv_border_width="@dimen/dimen_0_5"
             app:riv_corner_radius="30dip"
-            app:riv_mutate_background="true"
+            android:background="@color/white"
+            android:padding="@dimen/dimen_1"
+            app:riv_mutate_background="false"
             app:riv_oval="true">
 
         </com.makeramen.roundedimageview.RoundedImageView>
@@ -30,23 +31,42 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginStart="@dimen/dimen_12"
+            android:layout_marginStart="@dimen/dimen_6"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/comment"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Comment"
-                android:textColor="@color/black">
+                android:orientation="horizontal">
 
-            </TextView>
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black_90"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Name">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/comment"
+                    android:layout_marginLeft="@dimen/dimen_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Comment"
+                    android:textColor="@color/black_70">
+
+                </TextView>
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size_10">
+                android:textSize="@dimen/text_size_10"
+                android:visibility="gone">
 
             </TextView>
 

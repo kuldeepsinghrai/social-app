@@ -55,7 +55,8 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.viewHold
                 User user = snapshot.getValue(User.class);
                 //Picasso.get().load(user.getProfile()).placeholder(R.drawable.placeholder).into(holder.profileImage);
                 Glide.with(context).load(user.getProfile()).placeholder(R.drawable.placeholder).into(holder.profileImage);
-                holder.comment.setText(Html.fromHtml("<b>"+user.getName()+"</b>"+"  "+comment.getCommentBody()));
+                holder.name.setText(user.getName());
+                holder.comment.setText(comment.getCommentBody());
             }
 
             @Override
@@ -71,10 +72,11 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.viewHold
     }
 
     public class viewHolder extends RecyclerView.ViewHolder{
-        private TextView comment,time;
+        private TextView name, comment,time;
         private RoundedImageView profileImage;
         public viewHolder(@NonNull View itemView) {
             super(itemView);
+            name = itemView.findViewById(R.id.name);
             comment = itemView.findViewById(R.id.comment);
             time = itemView.findViewById(R.id.time);
             profileImage = itemView.findViewById(R.id.profileImage);

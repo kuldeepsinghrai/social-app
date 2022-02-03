@@ -84,6 +84,7 @@
 
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/postImage"
+        android:layout_marginTop="@dimen/dimen_8"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_460"
         android:layout_marginBottom="@dimen/dimen_8"
