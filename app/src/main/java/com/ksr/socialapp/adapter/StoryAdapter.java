@@ -22,7 +22,6 @@ import com.ksr.socialapp.model.Story;
 import com.ksr.socialapp.model.User;
 import com.ksr.socialapp.model.UserStories;
 import com.ksr.socialapp.tools.Methods;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Date;

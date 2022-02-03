@@ -23,7 +23,6 @@ import com.ksr.socialapp.R;
 import com.ksr.socialapp.activities.CommentActivity;
 import com.ksr.socialapp.model.Notification;
 import com.ksr.socialapp.model.User;
-import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 

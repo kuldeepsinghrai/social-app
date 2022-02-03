@@ -17,7 +17,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.ksr.socialapp.R;
 import com.ksr.socialapp.model.Follow;
 import com.ksr.socialapp.model.User;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 

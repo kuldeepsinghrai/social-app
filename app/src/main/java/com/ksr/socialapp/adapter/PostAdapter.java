@@ -24,7 +24,6 @@ import com.ksr.socialapp.model.Notification;
 import com.ksr.socialapp.model.Post;
 import com.ksr.socialapp.model.User;
 import com.makeramen.roundedimageview.RoundedImageView;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Date;
