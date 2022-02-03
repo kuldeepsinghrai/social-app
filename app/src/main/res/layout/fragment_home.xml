@@ -27,8 +27,8 @@
             <com.makeramen.roundedimageview.RoundedImageView
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/topProfileImage"
-                android:layout_width="@dimen/dimen_40"
-                android:layout_height="@dimen/dimen_40"
+                android:layout_width="@dimen/dimen_30"
+                android:layout_height="@dimen/dimen_30"
                 android:layout_marginStart="@dimen/dimen_16"
                 android:layout_marginTop="@dimen/dimen_8"
                 android:layout_marginEnd="@dimen/dimen_16"
@@ -110,8 +110,8 @@
                     app:shimmer_demo_child_count="10"
                     app:shimmer_demo_layout="@layout/shimmer_stories"
                     app:shimmer_demo_angle="20"
-                    android:layout_marginStart="@dimen/dimen_16"
-                    android:layout_marginEnd="@dimen/dimen_16">
+                    android:layout_marginStart="@dimen/dimen_8"
+                    android:layout_marginEnd="@dimen/dimen_8">
 
                 </com.cooltechworks.views.shimmer.ShimmerRecyclerView>
 
