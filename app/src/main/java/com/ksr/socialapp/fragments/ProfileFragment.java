@@ -148,7 +148,7 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        coverPhoto.setOnClickListener(new View.OnClickListener() {
+        changeCoverPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent();
