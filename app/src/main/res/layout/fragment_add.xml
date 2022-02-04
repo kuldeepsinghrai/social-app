@@ -30,9 +30,9 @@
                 android:id="@+id/postBT"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/StandardButton"
                 android:layout_gravity="center"
                 android:layout_marginHorizontal="@dimen/dimen_16"
-                android:background="@drawable/follow_btn_bg"
                 android:text="Post">
 
             </Button>
@@ -142,7 +142,7 @@
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Add to your post">
+                android:text="Select Image">
 
             </TextView>
 

@@ -4,8 +4,8 @@
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
 
-    <color name="appBlue">#0078ff</color>
-    <color name="appBlueLight">#800078FF</color>
+    <color name="appBlue">#0992FF</color>
+    <color name="appBlueLight">#800992FF</color>
     <color name="appGray">#D7D7D7</color>
     <color name="appLightGray">#EBEBEB</color>
 
@@ -17,5 +17,70 @@
     <color name="black_50">#80252525</color>
     <color name="white">#FFFFFFFF</color>
     <color name="off_white">#FAFAFA</color>
+
+
+
+    <color name="colorPrimary">#0992FF</color>
+    <color name="colorPrimaryDark">#0992FF</color>
+    <color name="colorPrimaryLight">#effffc</color>
+    <color name="colorPrimaryMedium">#abf2e5</color>
+    <color name="colorAccent">#1e88e5</color>
+    <color name="colorAccentDark">#1480E2</color>
+    <color name="colorAccentDisabled">#591E88E5</color>
+    <color name="white_70">#B3FFFFFF</color>
+    <color name="appLightGrey">#ffe5e4e4</color>
+    <color name="appDisabledBackgroundColor">#ffe5e4e4</color>
+    <color name="primaryButtonDisabledStateColor">#fdf3d0</color>
+    <color name="appSuperLightGrey">#f5f3f3</color>
+    <color name="appOffWhite">#f9f8f8</color>
+    <color name="appMediumGrey">#ffa6a6a6</color>
+    <color name="appMediumLightGrey">#ffb4b4b4</color>
+    <color name="colorLine">#dfdfdf</color>
+    <color name="roundedImageViewBorder">#ffd9d6c5</color>
+    <color name="notificationUnreadBgColor">#ffffff</color>
+    <color name="notificationReadBgColor">#fff6f0</color>
+    <color name="primaryBoxBackgroundColor">#fff6f0</color>
+    <color name="secondaryBoxBackgroundColor">#ffe5d4</color>
+    <color name="circleDisabledColor">#E0EEFB</color>
+    <color name="category_men_bg_color">#68b9f6</color>
+    <color name="category_women_bg_color">#c33b5c</color>
+    <color name="category_kids_bg_color">#00BA96</color>
+    <color name="category_men_bg_pdp_color">#D4E9FB</color>
+    <color name="category_women_bg_pdp_color">#FFE8EE</color>
+    <color name="category_kids_bg_pdp_color">#D8FAF3</color>
+    <color name="category_men_text_pdp_color">#13517e</color>
+    <color name="category_women_text_pdp_color">#C33B5C</color>
+    <color name="category_kids_text_pdp_color">#159980</color>
+    <color name="appStyle1ButtonColor">@color/colorAccent</color>
+    <color name="appStyle1ButtonSelectedColor">@color/colorAccent</color>
+    <color name="appStyle1ButtonPressedColor">@color/colorAccent</color>
+    <color name="appStyle1ButtonDisabledColor">@color/colorAccent</color>
+    <color name="appStyle2ButtonTitleColor">@color/colorAccent</color>
+    <color name="expandableSubtitleColor">#00ba96</color>
+    <color name="appTextColor_op_100">#252525</color>
+    <color name="appTextColor_op_90">#E6252525</color>
+    <color name="appTextColor_op_80">#CC252525</color>
+    <color name="appTextColor_op_70">#B3252525</color>
+    <color name="appTextColor_op_60">#99252525</color>
+    <color name="appTextColor_op_50">#80252525</color>
+    <color name="appTextColor_op_40">#66252525</color>
+    <color name="appTextColor_op_20">#33252525</color>
+    <color name="appSplitterColor">#1A252525</color>
+    <color name="appTitleColor">#252525</color>
+    <color name="appSubtitleColor">#E6252525</color>
+    <color name="appDescriptionColor">#B3252525</color>
+    <color name="appDisabledTextColor">#ffa6a6a6</color>
+    <color name="noPriorityTitleColor">#aaaaaa</color>
+    <color name="noPriorityDarkColor">#8F8A8A</color>
+    <color name="noPrioritySubtitleColor">#DCD9D9</color>
+    <color name="appBoxBackground">#fff6f0</color>
+    <color name="appBoxBackground2">#f9fcff</color>
+    <color name="appBackground">#f5f5f5</color>
     <color name="lightGreyBorder">#ebebeb</color>
+    <color name="lightBlue">#f2f5fa</color>
+    <color name="textErrorColor">#f04848</color>
+    <color name="disabledLineColor">@color/appTitleColor</color>
+
+
+
 </resources>

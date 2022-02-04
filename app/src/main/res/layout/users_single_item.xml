@@ -47,6 +47,7 @@
                 android:id="@+id/profession"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_12"
                 android:text="Android Developer">
 
             </TextView>
@@ -59,12 +60,12 @@
     <Button
         android:id="@+id/followBT"
         android:layout_gravity="center"
-        android:background="@drawable/follow_btn_bg"
+        style="@style/StandardButton"
         android:text="Follow"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/dimen_35">
+        android:layout_width="@dimen/dimen_130"
+        android:layout_height="wrap_content">
 
     </Button>
 </LinearLayout>

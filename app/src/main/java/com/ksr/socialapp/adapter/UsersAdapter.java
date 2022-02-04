@@ -63,7 +63,6 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.viewHolder> 
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.exists()) {
-                            holder.followBT.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.followed_btn_bg));
                             holder.followBT.setText("Following");
                             holder.followBT.setTextColor(context.getResources().getColor(R.color.white));
                             holder.followBT.setEnabled(false);

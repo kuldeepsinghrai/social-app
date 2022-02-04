@@ -106,5 +106,25 @@
     <dimen name="text_size_32">32sp</dimen>
     <dimen name="dimen_165">165dp</dimen>
 
+    <dimen name="theme_filled_button_radius">6.0dip</dimen>
+    <dimen name="theme_filled_button_stroke_width">1.0dip</dimen>
+    <dimen name="theme_border_button_radius">6.0dip</dimen>
+    <dimen name="theme_border_button_stroke_width">1.0dip</dimen>
+    <dimen name="accent_border_button_radius">6.0dip</dimen>
+    <dimen name="accent_filled_button_radius">2.0dip</dimen>
+    <dimen name="accent_border_button_stroke_width">1.0dip</dimen>
+    <dimen name="filled_error_button_radius">6.0dip</dimen>
+    <dimen name="filled_error_button_stroke_width">1.0dip</dimen>
+    <dimen name="empty_error_button_radius">6.0dip</dimen>
+    <dimen name="empty_error_button_stroke_width">1.0dip</dimen>
+    <dimen name="theme_button2_radius">6.0dip</dimen>
+    <dimen name="theme_button3_radius">9.0dip</dimen>
+
+
+    <dimen name="appStandardButtonMinHeight">50dip</dimen>
+    <dimen name="appSmallButtonMinHeight">20dip</dimen>
+    <dimen name="emptyStateTitleTextSize">15sp</dimen>
+    <dimen name="emptyStateSubtitleTextSize">12sp</dimen>
+    <dimen name="emptyStateDescriptionTextSize">10sp</dimen>
 
 </resources>
