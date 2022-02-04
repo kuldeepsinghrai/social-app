@@ -105,28 +105,6 @@ public class AddFragment extends Fragment {
                 });
 
 
-        postDescriptionET.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (postDescriptionET.getText().toString().length() > 0) {
-                    postBT.setEnabled(true);
-                } else {
-                    postBT.setEnabled(false);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
-
         addImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

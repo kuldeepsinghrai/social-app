@@ -33,7 +33,6 @@
                 android:layout_gravity="center"
                 android:layout_marginHorizontal="@dimen/dimen_16"
                 android:background="@drawable/follow_btn_bg"
-                android:enabled="false"
                 android:text="Post">
 
             </Button>
