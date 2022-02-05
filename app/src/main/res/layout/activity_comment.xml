@@ -33,7 +33,7 @@
                 <ImageView
                     android:id="@+id/postImage"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_300"
+                    android:layout_height="@dimen/dimen_460"
                     android:scaleType="centerCrop"
                     android:src="@drawable/placeholder">
 

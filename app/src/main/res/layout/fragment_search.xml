@@ -5,14 +5,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
    <com.cooltechworks.views.shimmer.ShimmerRecyclerView
-       android:layout_marginTop="@dimen/dimen_16"
        android:id="@+id/usersRecyclerView"
        android:layout_width="match_parent"
        android:layout_height="match_parent"
-       app:shimmer_demo_child_count="10"
-       app:shimmer_demo_layout="@layout/shimmer_search_users"
+       android:layout_centerHorizontal="true"
+       android:layout_marginTop="@dimen/dimen_16"
        app:shimmer_demo_angle="20"
-       android:layout_centerHorizontal="true">
+       app:shimmer_demo_child_count="10"
+       app:shimmer_demo_layout="@layout/shimmer_search_users">
 
    </com.cooltechworks.views.shimmer.ShimmerRecyclerView>
 

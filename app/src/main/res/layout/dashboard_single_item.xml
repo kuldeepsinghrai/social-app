@@ -60,7 +60,8 @@
                     android:id="@+id/about"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/dimen_4"
+                    android:layout_marginStart="@dimen/dimen_2"
+                    android:textSize="@dimen/text_size_12"
                     android:text="about">
 
                 </TextView>

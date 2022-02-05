@@ -68,6 +68,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.viewHolder>{
                 if (!post.getPostDescription().equals("")){
                     holder.postDescription.setVisibility(View.VISIBLE);
                     holder.postDescription.setText(Html.fromHtml("<b>"+user.getName()+"</b>"+"  "+post.getPostDescription()));
+                }else {
+                    holder.postDescription.setVisibility(View.GONE);
                 }
             }
 

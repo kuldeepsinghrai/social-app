@@ -93,8 +93,8 @@ public class HomeFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     User user = snapshot.getValue(User.class);
-                    Glide.with(getContext()).load(user.getProfile()).into(addStory);
-                    Glide.with(getContext()).load(user.getProfile()).into(topProfileImage);
+                    Glide.with(getContext()).load(user.getProfile()).placeholder(R.drawable.placeholder).into(addStory);
+                    Glide.with(getContext()).load(user.getProfile()).placeholder(R.drawable.placeholder).into(topProfileImage);
                 }
             }
 
@@ -113,7 +113,7 @@ public class HomeFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         storyRecyclerView.setLayoutManager(linearLayoutManager);
         storyRecyclerView.setNestedScrollingEnabled(false);
-
+        storyRecyclerView.setAdapter(storyAdapter);
 
         firebaseDatabase.getReference()
                 .child("stories")
@@ -137,7 +137,7 @@ public class HomeFragment extends Fragment {
                                 storyList.add(story);
                             }
                             storyAdapter.notifyDataSetChanged();
-                            storyRecyclerView.setAdapter(storyAdapter);
+                            shimmerStoriesRecycler.hideShimmerAdapter();
                         }
                     }
 
