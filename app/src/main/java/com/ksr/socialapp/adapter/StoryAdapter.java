@@ -55,20 +55,20 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.viewHolder>{
 
         holder.statusCircle.setPortionsCount(story.getUserStories().size());
 
+        //getting story data and showing
         FirebaseDatabase.getInstance().getReference()
                 .child("Users")
                 .child(story.getStoryBy()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User user = snapshot.getValue(User.class);
-                //Picasso.get().load(user.getProfile()).placeholder(R.drawable.placeholder).into(holder.story);
                 Glide.with(context).load(user.getProfile()).placeholder(R.drawable.placeholder).into(holder.story);
                 holder.name.setText(user.getName());
 
                 holder.story.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        //Open Stories here
+                        //Opening Stories here with the StoryView Library
                         ArrayList<MyStory> myStories = new ArrayList<>();
 
                         for(UserStories stories : story.getUserStories()){

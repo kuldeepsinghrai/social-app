@@ -70,6 +70,7 @@ public class AddFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_add, container, false);
 
+        //dialog to show when post is uploading
         dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         dialog.setTitle("Post Uploading...");
         dialog.setMessage("Please wait");
@@ -84,6 +85,7 @@ public class AddFragment extends Fragment {
         name = view.findViewById(R.id.name);
         profession = view.findViewById(R.id.profession);
 
+        //getting current logedin user data (profile name about) & storing it in User model and seting them
         firebaseDatabase.getReference().child("Users")
                 .child(FirebaseAuth.getInstance().getUid())
                 .addListenerForSingleValueEvent(new ValueEventListener() {
@@ -108,6 +110,7 @@ public class AddFragment extends Fragment {
         addImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //creating intent for result to pick image from gallery
                 Intent intent = new Intent();
                 intent.setAction(Intent.ACTION_GET_CONTENT);
                 intent.setType("image/*");
@@ -120,11 +123,14 @@ public class AddFragment extends Fragment {
             public void onClick(View view) {
                 if (uri != null) {
                     dialog.show();
+
+                    //In storage, making a new directory "posts" where we making directories according to user id and inside that storing image as current time
                     final StorageReference storageReference = firebaseStorage.getReference().child("posts")
                             .child(FirebaseAuth.getInstance().getUid())
                             .child(new Date().getTime() + "");
 
 
+                    //when image is stored successfully, storing image data in Post model
                     storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -137,11 +143,13 @@ public class AddFragment extends Fragment {
                                     post.setPostDescription(postDescriptionET.getText().toString());
                                     post.setPostedAt(new Date().getTime());
 
+                                    //creating new node of posts and storing all data from model in it
                                     firebaseDatabase.getReference().child("posts")
                                             .push()
                                             .setValue(post).addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void unused) {
+                                            //navigating user to home screen when posted successfully
                                             getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();
                                             dialog.dismiss();
                                             Toast.makeText(getContext(), "Posted Successfully!", Toast.LENGTH_SHORT).show();
@@ -166,6 +174,8 @@ public class AddFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+        //setting image to screen according to req
         if (requestCode == 101) {
             if (data != null) {
                 uri = data.getData();

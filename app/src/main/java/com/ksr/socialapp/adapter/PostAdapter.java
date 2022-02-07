@@ -51,17 +51,17 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.viewHolder>{
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
         Post post = arrayList.get(position);
 
-        //Picasso.get().load(post.getPostImage()).placeholder(R.drawable.placeholder).into(holder.postImage);
         Glide.with(context).load(post.getPostImage()).placeholder(R.drawable.placeholder).into(holder.postImage);
         holder.like.setText(post.getPostLike()+"");
         holder.comment.setText(post.getCommentCount()+"");
+
+        //getting User data storing it in User model then setting them in post
         FirebaseDatabase.getInstance().getReference()
                 .child("Users")
                 .child(post.getPostedBy()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User user = snapshot.getValue(User.class);
-                //Picasso.get().load(user.getProfile()).placeholder(R.drawable.placeholder).into(holder.profile);
                 Glide.with(context).load(user.getProfile()).placeholder(R.drawable.placeholder).into(holder.profile);
                 holder.userName.setText(user.getName());
                 holder.about.setText(user.getProfession());
@@ -112,6 +112,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.viewHolder>{
                                                 public void onSuccess(Void unused) {
                                                     holder.like.setCompoundDrawablesRelativeWithIntrinsicBounds(R.drawable.ic_favorite_filled,0,0,0);
 
+                                                    //sending notification when liking post is successfull
                                                     Notification notification = new Notification();
                                                     notification.setNotificationBy(FirebaseAuth.getInstance().getUid());
                                                     notification.setNotificationAt(new Date().getTime());

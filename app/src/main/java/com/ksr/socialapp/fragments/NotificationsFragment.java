@@ -47,7 +47,7 @@ public class NotificationsFragment extends Fragment {
 
         innerNotificationsRecyclerView = view.findViewById(R.id.innerNotificationsRecyclerView);
 
-
+        //showing shimmer effect until the data loads
         ShimmerRecyclerView shimmerNotificationRecycler = (ShimmerRecyclerView) view.findViewById(R.id.innerNotificationsRecyclerView);
         shimmerNotificationRecycler.showShimmerAdapter();
         notificationArrayList = new ArrayList<>();
@@ -57,7 +57,11 @@ public class NotificationsFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         innerNotificationsRecyclerView.setLayoutManager(linearLayoutManager);
 
-
+        /*
+        *getting all notifications of current logedin user and storing it to Notification model
+        * adding notfiacation in arraylist
+        *
+        */
         firebaseDatabase.getReference()
                 .child("notification")
                 .child(FirebaseAuth.getInstance().getUid())
@@ -71,6 +75,9 @@ public class NotificationsFragment extends Fragment {
                             notificationArrayList.add(notification);
                         }
                         notificationAdapter.notifyDataSetChanged();
+
+                        //hiding shimmer adapter and setting Notification adapter when data is load
+                        shimmerNotificationRecycler.hideShimmerAdapter();
                         innerNotificationsRecyclerView.setAdapter(notificationAdapter);
                     }
 

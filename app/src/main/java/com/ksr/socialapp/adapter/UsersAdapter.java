@@ -49,11 +49,12 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.viewHolder> 
     @Override
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
         User user = arrayList.get(position);
-        //Picasso.get().load(user.getProfile()).placeholder(R.drawable.placeholder).into(holder.profileImage);
+        //setting user data
         Glide.with(context).load(user.getProfile()).placeholder(R.drawable.placeholder).into(holder.profileImage);
         holder.name.setText(user.getName());
         holder.profession.setText(user.getProfession());
 
+        //getting follow data
         FirebaseDatabase.getInstance().getReference()
                 .child("Users")
                 .child(user.getUserID())
@@ -62,11 +63,13 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.viewHolder> 
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        //if user is already followed
                         if (snapshot.exists()) {
                             holder.followBT.setText("Following");
                             holder.followBT.setTextColor(context.getResources().getColor(R.color.white));
                             holder.followBT.setEnabled(false);
                         } else {
+                            //when user clicks follow button storing data in Follow model
                             holder.followBT.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {

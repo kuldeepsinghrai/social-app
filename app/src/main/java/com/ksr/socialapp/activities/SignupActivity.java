@@ -38,6 +38,7 @@ public class SignupActivity extends BaseActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
 
+        //hiding softkeyboard if user click out side of edittext
         mainParentContainer = findViewById(R.id.mainParentContainer);
         mainParentContainer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,6 +54,7 @@ public class SignupActivity extends BaseActivity {
         signUpBT = findViewById(R.id.signUpBT);
 
 
+        //eye button functionality in passwordET
         passwordET.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -64,6 +66,7 @@ public class SignupActivity extends BaseActivity {
         signUpBT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //validate user if tries to signup with empty fields
                 if (!nameET.getText().toString().equals("") && !professionET.getText().toString().equals("") && !emailET.getText().toString().equals("") && !passwordET.getText().toString().equals("")) {
                     attemptSignUp(nameET.getText().toString(), professionET.getText().toString(), emailET.getText().toString(), passwordET.getText().toString());
                 }else {
@@ -73,6 +76,7 @@ public class SignupActivity extends BaseActivity {
         });
 
 
+        //navigating user to login screen if wants to login or has already account
         findViewById(R.id.goToLogin).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -85,6 +89,10 @@ public class SignupActivity extends BaseActivity {
 
     }
 
+    /* Creating user with firebase auth which needs email and password to make a new user
+        and extra parameter we're giving are name and profession
+        and if the task is succesfull storing all the data in User model and storing all of them in firebase database
+     */
     private void attemptSignUp(String name, String profession, String email, String password) {
         firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override

@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    // changing fragments according to bottom navigation bar
     private BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override

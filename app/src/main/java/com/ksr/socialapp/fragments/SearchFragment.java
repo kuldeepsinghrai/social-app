@@ -48,7 +48,7 @@ public class SearchFragment extends Fragment {
 
         usersRecyclerView = view.findViewById(R.id.usersRecyclerView);
 
-
+        //showing simmer effect until data loads
         ShimmerRecyclerView shimmerSearchUsersRecycler = (ShimmerRecyclerView) view.findViewById(R.id.usersRecyclerView);
         shimmerSearchUsersRecycler.showShimmerAdapter();
 
@@ -56,6 +56,7 @@ public class SearchFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         usersRecyclerView.setLayoutManager(linearLayoutManager);
 
+        // getting all users of the app from database and showing them in the list
         firebaseDatabase.getReference().child("Users").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -63,12 +64,15 @@ public class SearchFragment extends Fragment {
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()){
                     User user = dataSnapshot.getValue(User.class);
                     user.setUserID(dataSnapshot.getKey());
+                    //excluding current logedin user from the list
                     if (!dataSnapshot.getKey().equals(FirebaseAuth.getInstance().getUid())){
                         userArrayList.add(user);
                     }
 
                 }
                 usersAdapter.notifyDataSetChanged();
+                //hiding shimmer adapter & showing our adapter when data is load
+                shimmerSearchUsersRecycler.hideShimmerAdapter();
                 usersRecyclerView.setAdapter(usersAdapter);
             }
 

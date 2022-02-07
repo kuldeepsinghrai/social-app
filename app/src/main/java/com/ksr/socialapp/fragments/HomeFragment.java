@@ -88,6 +88,7 @@ public class HomeFragment extends Fragment {
         storyRecyclerView = view.findViewById(R.id.storiesRecyclerView);
 
 
+        //getting current loged in users data and setting its profile in top of the home screen
         firebaseDatabase.getReference().child("Users").child(firebaseAuth.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -104,8 +105,8 @@ public class HomeFragment extends Fragment {
             }
         });
 
-
-        ShimmerRecyclerView shimmerStoriesRecycler = (ShimmerRecyclerView) view.findViewById(R.id.dashboardRecyclerView);
+        //showing shimmer until data is load
+        ShimmerRecyclerView shimmerStoriesRecycler = (ShimmerRecyclerView) view.findViewById(R.id.storiesRecyclerView);
         shimmerStoriesRecycler.showShimmerAdapter();
         storyList = new ArrayList<>();
 
@@ -113,7 +114,12 @@ public class HomeFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         storyRecyclerView.setLayoutManager(linearLayoutManager);
         storyRecyclerView.setNestedScrollingEnabled(false);
-        storyRecyclerView.setAdapter(storyAdapter);
+
+
+        /*getting stories data and Storing it in Story model and
+         *one user can have multiple story thats why the nested loop for userstories which will be stored in UserStories model
+         *
+         */
 
         firebaseDatabase.getReference()
                 .child("stories")
@@ -136,8 +142,11 @@ public class HomeFragment extends Fragment {
                                 story.setUserStories(stories);
                                 storyList.add(story);
                             }
+
                             storyAdapter.notifyDataSetChanged();
+                            //hiding shimmer adapter when data is load
                             shimmerStoriesRecycler.hideShimmerAdapter();
+                            storyRecyclerView.setAdapter(storyAdapter);
                         }
                     }
 
@@ -148,6 +157,7 @@ public class HomeFragment extends Fragment {
                 });
 
 
+        //showing shimmer effect until data is load
         ShimmerRecyclerView shimmerDashboardRecycler = (ShimmerRecyclerView) view.findViewById(R.id.dashboardRecyclerView);
         shimmerDashboardRecycler.showShimmerAdapter();
         postArrayList = new ArrayList<>();
@@ -158,6 +168,8 @@ public class HomeFragment extends Fragment {
         dashboardRecyclerView.setNestedScrollingEnabled(false);
 
 
+        /*getting all posts from the app and storing them to Post model
+         */
         firebaseDatabase.getReference().child("posts").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -168,6 +180,9 @@ public class HomeFragment extends Fragment {
                     postArrayList.add(post);
                 }
                 postAdapter.notifyDataSetChanged();
+
+                //hiding shimmer adapter when data is load
+                shimmerDashboardRecycler.hideShimmerAdapter();
                 dashboardRecyclerView.setAdapter(postAdapter);
             }
 
@@ -177,16 +192,22 @@ public class HomeFragment extends Fragment {
             }
         });
 
+
+
         galleryLauncher = registerForActivityResult(new ActivityResultContracts.GetContent(), new ActivityResultCallback<Uri>() {
             @Override
             public void onActivityResult(Uri result) {
                 if (result != null) {
                     progressDialog.show();
+                    /*making new directory in storage of stories inside that creating another directory of the user name
+                     * inside that storing all the stories of the user according to the time
+                     */
                     final StorageReference reference = firebaseStorage.getReference()
                             .child("stories")
                             .child(FirebaseAuth.getInstance().getUid())
                             .child(new Date().getTime() + "");
 
+                    //when story is successfully uploaded creating its url and storing stories data in Story model
                     reference.putFile(result).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -195,6 +216,13 @@ public class HomeFragment extends Fragment {
                                 public void onSuccess(Uri uri) {
                                     Story story = new Story();
                                     story.setStoryAt(new Date().getTime());
+
+                                    /*
+                                     *creating a new node stories in database and inside that creating another node of the user's id and then postedby
+                                     *and setting value as storyAt
+                                     * when its succeed, making another node in it as user stories which will contains all the stories of that user
+                                     * and when it will succeed progressDialog will be dismiss
+                                     */
                                     firebaseDatabase.getReference()
                                             .child("stories")
                                             .child(FirebaseAuth.getInstance().getUid())
@@ -226,6 +254,7 @@ public class HomeFragment extends Fragment {
         });
 
 
+        //opening gallery launcher to select images
         addStory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

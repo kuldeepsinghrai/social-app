@@ -73,6 +73,7 @@ public class CommentActivity extends BaseActivity {
         postCommentBT = findViewById(R.id.postCommentBT);
         commentRecyclerView = findViewById(R.id.commentRecyclerView);
 
+        // custom toolbar for comments screen
         setSupportActionBar(toolbar);
         CommentActivity.this.setTitle("Comments");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

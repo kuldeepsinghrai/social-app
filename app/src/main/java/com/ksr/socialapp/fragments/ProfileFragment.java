@@ -85,6 +85,7 @@ public class ProfileFragment extends Fragment {
         friendRecyclerView.setLayoutManager(linearLayoutManager);
         friendRecyclerView.setAdapter(friendAdapter);
 
+        //getting followers info of the user from database and storing them in Follow model and adding in list
         firebaseDatabase.getReference().child("Users")
                 .child(firebaseAuth.getUid())
                 .child("Followers").addValueEventListener(new ValueEventListener() {
@@ -104,6 +105,7 @@ public class ProfileFragment extends Fragment {
         });
 
 
+        // getting user data from database, storing it in User model and  getting user's detail from it and setting all of it
         firebaseDatabase.getReference().child("Users").child(firebaseAuth.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -123,6 +125,8 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+
+        //showing alert when user click on logout button and signing out & navigating to Login Activity if user selects yes
         logOutBT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -148,9 +152,11 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+
         changeCoverPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //creating intent for result to pick image from gallery
                 Intent intent = new Intent();
                 intent.setAction(Intent.ACTION_GET_CONTENT);
                 intent.setType("image/*");
@@ -159,6 +165,7 @@ public class ProfileFragment extends Fragment {
         });
 
         profileImage.setOnClickListener(new View.OnClickListener() {
+            //creating intent for result to pick image from gallery
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent();
@@ -175,6 +182,13 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+        /*
+        * setting image to the profile or cover according to req code
+        * making directories of cover_photo or profile_image and storing image as logedin user's id
+        * when the image is successfully uploaded, we are storing image url to our FirebaseDatabase in Users>{User id of the logedin user}>{coverPhoto or profile} and set value of that uri
+        */
+
         if (requestCode == 101) {
             if (data != null) {
                 Uri uri = data.getData();
@@ -184,6 +198,7 @@ public class ProfileFragment extends Fragment {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         Toast.makeText(getContext(), "Cover photo saved!", Toast.LENGTH_SHORT).show();
+                        //storing image url to our database in Users>{User id of the logedin user}>{coverPhoto}
                         storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
                             public void onSuccess(Uri uri) {
@@ -206,6 +221,7 @@ public class ProfileFragment extends Fragment {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         Toast.makeText(getContext(), "Profile photo saved!", Toast.LENGTH_SHORT).show();
+                        //storing image url to our database in Users>{User id of the logedin user}>{profile}
                         storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
                             public void onSuccess(Uri uri) {

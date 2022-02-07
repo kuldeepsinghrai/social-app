@@ -44,6 +44,7 @@ public class LoginActivity extends BaseActivity{
         firebaseCurrentUser = firebaseAuth.getCurrentUser();
         firebaseDatabase = FirebaseDatabase.getInstance();
 
+        //hiding softkeyboard if user click out side of edittext
         mainParentContainer = findViewById(R.id.mainParentContainer);
         mainParentContainer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,6 +57,7 @@ public class LoginActivity extends BaseActivity{
         passwordET = findViewById(R.id.passwordET);
         loginBT = findViewById(R.id.loginBT);
 
+        //eye button functionality in passwordET
         passwordET.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -76,6 +78,7 @@ public class LoginActivity extends BaseActivity{
         });
 
 
+        //navigating user to SignUp screen if wants to Register or doesn't have account
         findViewById(R.id.goToRegister).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -87,6 +90,10 @@ public class LoginActivity extends BaseActivity{
 
     }
 
+
+    /*
+        FirebaseAuth needs email and password to login, if data matches navigating user to Home screen
+     */
     private void attemptLogin(String email,String password) {
         firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
@@ -104,6 +111,7 @@ public class LoginActivity extends BaseActivity{
     @Override
     protected void onStart() {
         super.onStart();
+        //doesn't need to show login screen if current user is loged in before
         if (firebaseCurrentUser!=null){
             startActivity(new Intent(getActivity(),MainActivity.class));
         }

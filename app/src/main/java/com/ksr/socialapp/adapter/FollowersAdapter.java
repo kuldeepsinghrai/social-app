@@ -40,6 +40,7 @@ public class FollowersAdapter extends RecyclerView.Adapter<FollowersAdapter.view
     @Override
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
         Follow follow = arrayList.get(position);
+        //getting users data and storing it in User model then setting it
         FirebaseDatabase.getInstance().getReference()
                 .child("Users")
                 .child(follow.getFollowedBy()).addListenerForSingleValueEvent(new ValueEventListener() {

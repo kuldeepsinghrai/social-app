@@ -52,6 +52,9 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
         String type = notification.getType();
 
+        /*getting user Notifications  and storing that users data in User model
+         *showing notification and user's name according to notification's type
+         */
         FirebaseDatabase.getInstance().getReference()
                 .child("Users")
                 .child(notification.getNotificationBy())
