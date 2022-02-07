@@ -4,6 +4,11 @@ Social media demo app which can let people to Register and Login. User can store
 User can create post and it will be stored in database. We are fetching all user's posts data in Home, where user can like and comment on the picture.
 In search, we are showing all users from app where the current user can follow another users. We are showing current user's follower's Profile picture in his own profile.
 
+## Screenshots
+<img src="screenshots/ss_login.jpg" width=25% height=25%> <img src="screenshots/ss_signup.jpg" width=25% height=25%> <img src="screenshots/ss_home.jpg" width=25% height=25%> <img src="screenshots/ss_profile.jpg" width=25% height=25%> <img src="screenshots/ss_create_post.jpg" width=25% height=25%> <img src="screenshots/ss_notifications.jpg" width=25% height=25%>
+
+
+
 
 ## Technologies Used
 
