@@ -158,16 +158,6 @@ public class AddFragment extends Fragment implements OnSuccessListener<UploadTas
         CustomImage firstImage = imagesList.get(0);
         uploadSingleImage(firstImage);
 
-        //In storage, making a new directory "posts" where we making directories according to user id and inside that storing image as current time
-
-        /*for (int i = 0; i < imagesList.size(); i++) {
-            CustomImage customImage = imagesList.get(i);
-
-            if (!customImage.isUploaded()) {
-                //when image is stored successfully, storing image data in Post model
-                storageReference.child(String.valueOf(i + 1)).putFile(customImage.getUri()).addOnSuccessListener(AddFragment.this).addOnFailureListener(AddFragment.this);
-            }
-        }*/
 
     }
 
@@ -259,15 +249,10 @@ public class AddFragment extends Fragment implements OnSuccessListener<UploadTas
 
     private void createPost(List<String> imagesUrl) {
         Post post = new Post();
-        //post.setPostImage(uri.toString());
         post.setPostedBy(FirebaseAuth.getInstance().getUid());
         post.setPostDescription(postDescriptionET.getText().toString());
         post.setPostedAt(new Date().getTime());
 
-        //List<String> pImgList = new ArrayList<>();
-        //pImgList.add("https://images.pexels.com/photos/992734/pexels-photo-992734.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
-        //pImgList.add("https://images.pexels.com/photos/992734/pexels-photo-992734.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
-        //pImgList.add("https://images.pexels.com/photos/992734/pexels-photo-992734.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
 
         if (imagesUrl != null && !imagesUrl.isEmpty())
             post.setPostImages(imagesUrl);
@@ -277,7 +262,6 @@ public class AddFragment extends Fragment implements OnSuccessListener<UploadTas
                 .setValue(post).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
-                //navigating user to home screen when posted successfully
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();
                 dialog.dismiss();
                 Toast.makeText(getContext(), "Posted Successfully!", Toast.LENGTH_SHORT).show();
@@ -301,28 +285,31 @@ public class AddFragment extends Fragment implements OnSuccessListener<UploadTas
         //setting image to screen according to req
         if (requestCode == 101) {
             if (data.getClipData() != null) {
-                int count = data.getClipData().getItemCount();
-                final StorageReference storageReference = firebaseStorage.getReference().child("posts")
-                        .child(FirebaseAuth.getInstance().getUid())
-                        .child(new Date().getTime() + "");
+                if (data.getClipData().getItemCount() <= 4) {
+                    int count = data.getClipData().getItemCount();
+                    final StorageReference storageReference = firebaseStorage.getReference().child("posts")
+                            .child(FirebaseAuth.getInstance().getUid())
+                            .child(new Date().getTime() + "");
 
-                for (int i = 0; i < count; i++) {
-                    Uri imageUri = data.getClipData().getItemAt(i).getUri();
-                    String fName = getRandomString();
-                    CustomImage customImage = new CustomImage(storageReference.child(fName), imageUri, fName);
-                    imagesList.add(customImage);
+                    for (int i = 0; i < count; i++) {
+                        Uri imageUri = data.getClipData().getItemAt(i).getUri();
+                        String fName = getRandomString();
+                        CustomImage customImage = new CustomImage(storageReference.child(fName), imageUri, fName);
+                        imagesList.add(customImage);
+                    }
+
+
+
+                    CreatePostImageAdapter createPostImageAdapter = new CreatePostImageAdapter(imagesList, getContext());
+                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+                    postImageRecyclerView.setLayoutManager(linearLayoutManager);
+                    postImageRecyclerView.setAdapter(createPostImageAdapter);
+                    postBT.setEnabled(true);
+
+
+                }else {
+                    Toast.makeText(getContext(), "You can select maximum 15 images", Toast.LENGTH_SHORT).show();
                 }
-
-
-                CreatePostImageAdapter createPostImageAdapter = new CreatePostImageAdapter(imagesList, getContext());
-                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-                postImageRecyclerView.setLayoutManager(linearLayoutManager);
-                postImageRecyclerView.setAdapter(createPostImageAdapter);
-                postBT.setEnabled(true);
-
-//                uri = data.getData();
-//                postImage.setImageURI(uri);
-
             } else {
                 postBT.setEnabled(false);
             }
