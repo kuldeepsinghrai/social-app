@@ -1,10 +1,13 @@
 package com.ksr.socialapp.model;
 
+import java.util.List;
+
 public class Post {
     private String postID,postImage, postedBy,postDescription;
     private long postedAt;
     private int postLike;
     private int commentCount;
+    private List<String> postImages;
 
     public Post() {
     }
@@ -15,6 +18,14 @@ public class Post {
         this.postedBy = postedBy;
         this.postDescription = postDescription;
         this.postedAt = postedAt;
+    }
+
+    public List<String> getPostImages() {
+        return postImages;
+    }
+
+    public void setPostImages(List<String> postImages) {
+        this.postImages = postImages;
     }
 
     public String getPostID() {

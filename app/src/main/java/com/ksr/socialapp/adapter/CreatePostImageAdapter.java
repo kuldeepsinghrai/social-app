@@ -11,16 +11,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ksr.socialapp.R;
+import com.ksr.socialapp.fragments.AddFragment;
 import com.ksr.socialapp.model.Post;
 
 import java.util.ArrayList;
 
-public class CreatePostImageAdapter extends RecyclerView.Adapter<CreatePostImageAdapter.viewHolder>{
+public class CreatePostImageAdapter extends RecyclerView.Adapter<CreatePostImageAdapter.viewHolder> {
 
-    ArrayList<Uri> arrayList;
+    ArrayList<AddFragment.CustomImage> arrayList;
     Context context;
 
-    public CreatePostImageAdapter(ArrayList<Uri> arrayList, Context context) {
+    public CreatePostImageAdapter(ArrayList<AddFragment.CustomImage> arrayList, Context context) {
         this.arrayList = arrayList;
         this.context = context;
     }
@@ -28,14 +29,15 @@ public class CreatePostImageAdapter extends RecyclerView.Adapter<CreatePostImage
     @NonNull
     @Override
     public viewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.create_post_image_single_item,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.create_post_image_single_item, parent, false);
         return new viewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
-            Uri uri = arrayList.get(position);
-            holder.postImage.setImageURI(uri);
+        AddFragment.CustomImage customImage = arrayList.get(position);
+        Uri uri = customImage.getUri();
+        holder.postImage.setImageURI(uri);
     }
 
     @Override
@@ -43,8 +45,9 @@ public class CreatePostImageAdapter extends RecyclerView.Adapter<CreatePostImage
         return arrayList.size();
     }
 
-    public class viewHolder extends RecyclerView.ViewHolder{
+    public class viewHolder extends RecyclerView.ViewHolder {
         ImageView postImage;
+
         public viewHolder(@NonNull View itemView) {
             super(itemView);
             postImage = itemView.findViewById(R.id.postImage);
