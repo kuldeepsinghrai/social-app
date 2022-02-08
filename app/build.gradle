@@ -57,7 +57,7 @@ dependencies {
     implementation 'com.github.OMARIHAMZA:StoryView:1.0.2-alpha'
     implementation 'com.github.3llomi:CircularStatusView:V1.0.2'
 
-
+    implementation 'com.github.denzcoskun:ImageSlideshow:0.1.0'
 
 
     //noinspection GradleCompatible

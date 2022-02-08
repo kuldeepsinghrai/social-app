@@ -1,20 +1,30 @@
 package com.ksr.socialapp.model;
 
+import java.util.List;
+
 public class Post {
-    private String postID,postImage, postedBy,postDescription;
+    private String postID, postedBy,postDescription;
     private long postedAt;
     private int postLike;
     private int commentCount;
+    private List<String> postImages;
 
     public Post() {
     }
 
     public Post(String postID, String postImage, String postedBy, String postDescription, long postedAt) {
         this.postID = postID;
-        this.postImage = postImage;
         this.postedBy = postedBy;
         this.postDescription = postDescription;
         this.postedAt = postedAt;
+    }
+
+    public List<String> getPostImages() {
+        return postImages;
+    }
+
+    public void setPostImages(List<String> postImages) {
+        this.postImages = postImages;
     }
 
     public String getPostID() {
@@ -25,13 +35,7 @@ public class Post {
         this.postID = postID;
     }
 
-    public String getPostImage() {
-        return postImage;
-    }
 
-    public void setPostImage(String postImage) {
-        this.postImage = postImage;
-    }
 
     public String getPostedBy() {
         return postedBy;
