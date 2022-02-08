@@ -19,8 +19,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.models.SlideModel;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -31,10 +35,14 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.ksr.socialapp.R;
+import com.ksr.socialapp.adapter.CreatePostImageAdapter;
+import com.ksr.socialapp.adapter.FollowersAdapter;
 import com.ksr.socialapp.model.Post;
 import com.ksr.socialapp.model.User;
 import com.makeramen.roundedimageview.RoundedImageView;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 
 public class AddFragment extends Fragment {
@@ -46,10 +54,12 @@ public class AddFragment extends Fragment {
     private Button postBT;
     private EditText postDescriptionET;
     private ImageView postImage, addImage;
+    private RecyclerView postImageRecyclerView;
     private RoundedImageView profileImage;
     private TextView name, profession;
     private Uri uri;
 
+    private ArrayList<Uri> imagesList;
     private ProgressDialog dialog;
 
     public AddFragment() {
@@ -84,6 +94,9 @@ public class AddFragment extends Fragment {
         profileImage = view.findViewById(R.id.profileImage);
         name = view.findViewById(R.id.name);
         profession = view.findViewById(R.id.profession);
+        postImageRecyclerView = view.findViewById(R.id.postImageRecyclerView);
+
+        imagesList = new ArrayList<>();
 
         //getting current logedin user data (profile name about) & storing it in User model and seting them
         firebaseDatabase.getReference().child("Users")
@@ -112,9 +125,10 @@ public class AddFragment extends Fragment {
             public void onClick(View view) {
                 //creating intent for result to pick image from gallery
                 Intent intent = new Intent();
-                intent.setAction(Intent.ACTION_GET_CONTENT);
                 intent.setType("image/*");
-                startActivityForResult(intent, 101);
+                intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE,true);
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent,"Select File "), 101);
             }
         });
 
@@ -177,10 +191,23 @@ public class AddFragment extends Fragment {
 
         //setting image to screen according to req
         if (requestCode == 101) {
-            if (data != null) {
-                uri = data.getData();
-                postImage.setImageURI(uri);
+            if (data.getClipData() != null) {
+                    int count =data.getClipData().getItemCount();
+                    for (int i=0;i<count;i++){
+                        Uri imageUri = data.getClipData().getItemAt(i).getUri();
+                        imagesList.add(imageUri);
+                    }
+
+
+                CreatePostImageAdapter createPostImageAdapter = new CreatePostImageAdapter(imagesList, getContext());
+                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+                postImageRecyclerView.setLayoutManager(linearLayoutManager);
+                postImageRecyclerView.setAdapter(createPostImageAdapter);
                 postBT.setEnabled(true);
+
+//                uri = data.getData();
+//                postImage.setImageURI(uri);
+
             } else {
                 postBT.setEnabled(false);
             }

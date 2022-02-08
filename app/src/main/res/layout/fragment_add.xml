@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <LinearLayout
@@ -110,13 +111,23 @@
 
         </EditText>
 
-        <ImageView
-            android:id="@+id/postImage"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/postImageRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dimen_400"
-            android:layout_marginHorizontal="@dimen/dimen_8">
+            app:iss_auto_cycle="true"
+            app:iss_period="1000"
+            app:iss_delay="0">
 
-        </ImageView>
+        </androidx.recyclerview.widget.RecyclerView>
+
+<!--        <ImageView-->
+<!--            android:id="@+id/postImage"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="@dimen/dimen_400"-->
+<!--            android:layout_marginHorizontal="@dimen/dimen_8">-->
+
+<!--        </ImageView>-->
     </LinearLayout>
 
     <LinearLayout
