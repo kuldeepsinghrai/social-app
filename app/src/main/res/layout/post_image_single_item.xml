@@ -6,7 +6,8 @@
     <ImageView
         android:id="@+id/postImage"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_400">
+        android:scaleType="centerCrop"
+        android:layout_height="@dimen/dimen_460">
 
     </ImageView>
 

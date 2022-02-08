@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -51,7 +52,14 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.viewHolder>{
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
         Post post = arrayList.get(position);
 
-        Glide.with(context).load(post.getPostImage()).placeholder(R.drawable.placeholder).into(holder.postImage);
+        if (post.getPostImages()!=null){
+
+        PostImagesAdapter postImagesAdapter = new PostImagesAdapter(post.getPostImages(),context);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
+        holder.postImageRecyclerView.setLayoutManager(linearLayoutManager);
+        holder.postImageRecyclerView.setAdapter(postImagesAdapter);
+        }
+
         holder.like.setText(post.getPostLike()+"");
         holder.comment.setText(post.getCommentCount()+"");
 
@@ -158,13 +166,13 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.viewHolder>{
 
     public class viewHolder extends RecyclerView.ViewHolder{
         private ImageView profile;
-        private RoundedImageView postImage;
+        private RecyclerView postImageRecyclerView;
         private TextView userName,about,postDescription, like,comment,share;
         public viewHolder(@NonNull View itemView) {
             super(itemView);
 
             profile = itemView.findViewById(R.id.profileImage);
-            postImage  =itemView.findViewById(R.id.postImage);
+            postImageRecyclerView  =itemView.findViewById(R.id.postImageRecyclerView);
             userName = itemView.findViewById(R.id.userName);
             about = itemView.findViewById(R.id.about);
             postDescription = itemView.findViewById(R.id.postDescription);

@@ -1,7 +1,6 @@
 package com.ksr.socialapp.adapter;
 
 import android.content.Context;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,18 +9,19 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.ksr.socialapp.R;
-import com.ksr.socialapp.fragments.AddFragment;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class CreatePostImageAdapter extends RecyclerView.Adapter<CreatePostImageAdapter.viewHolder> {
+public class PostImagesAdapter extends RecyclerView.Adapter<PostImagesAdapter.viewHolder> {
 
-    ArrayList<AddFragment.CustomImage> arrayList;
+    List<String> list;
     Context context;
 
-    public CreatePostImageAdapter(ArrayList<AddFragment.CustomImage> arrayList, Context context) {
-        this.arrayList = arrayList;
+    public PostImagesAdapter(List<String> list, Context context) {
+        this.list = list;
         this.context = context;
     }
 
@@ -34,14 +34,12 @@ public class CreatePostImageAdapter extends RecyclerView.Adapter<CreatePostImage
 
     @Override
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
-        AddFragment.CustomImage customImage = arrayList.get(position);
-        Uri uri = customImage.getUri();
-        holder.postImage.setImageURI(uri);
+        Glide.with(context).load(list.get(position)).placeholder(R.drawable.placeholder).into(holder.postImage);
     }
 
     @Override
     public int getItemCount() {
-        return arrayList.size();
+        return list.size();
     }
 
     public class viewHolder extends RecyclerView.ViewHolder {

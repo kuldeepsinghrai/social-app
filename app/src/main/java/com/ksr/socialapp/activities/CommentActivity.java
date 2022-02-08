@@ -25,6 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.ksr.socialapp.R;
 import com.ksr.socialapp.adapter.CommentAdapter;
+import com.ksr.socialapp.adapter.PostImagesAdapter;
 import com.ksr.socialapp.model.Comment;
 import com.ksr.socialapp.model.Notification;
 import com.ksr.socialapp.model.Post;
@@ -44,9 +45,9 @@ public class CommentActivity extends BaseActivity {
     private String postedBy;
 
     private Toolbar toolbar;
-    private RecyclerView commentRecyclerView;
+    private RecyclerView postImageRecyclerView, commentRecyclerView;
 
-    private ImageView postImage,postCommentBT;
+    private ImageView postCommentBT;
     private RoundedImageView profileImage;
     private TextView name,postDescription,like,comment,share;
     private EditText commentET;
@@ -63,7 +64,7 @@ public class CommentActivity extends BaseActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
 
         toolbar = findViewById(R.id.toolbar);
-        postImage = findViewById(R.id.postImage);
+        postImageRecyclerView = findViewById(R.id.postImageRecyclerView);
         profileImage = findViewById(R.id.profileImage);
         name = findViewById(R.id.name);
         postDescription = findViewById(R.id.postDescription);
@@ -92,8 +93,15 @@ public class CommentActivity extends BaseActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         Post post = snapshot.getValue(Post.class);
-                       // Picasso.get().load(post.getPostImage()).placeholder(R.drawable.placeholder).into(postImage);
-                        Glide.with(getActivity()).load(post.getPostImage()).placeholder(R.drawable.placeholder).into(postImage);
+
+                        if (post.getPostImages()!=null){
+
+                            PostImagesAdapter postImagesAdapter = new PostImagesAdapter(post.getPostImages(),getActivity());
+                            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+                            postImageRecyclerView.setLayoutManager(linearLayoutManager);
+                            postImageRecyclerView.setAdapter(postImagesAdapter);
+                        }
+
                         postDescription.setText(post.getPostDescription());
                         like.setText(post.getPostLike()+"");
                         comment.setText(post.getCommentCount()+"");
