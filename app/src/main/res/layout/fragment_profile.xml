@@ -39,7 +39,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="My Profile"
+            android:text="@string/profile_screen_top_title"
             android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="@dimen/text_size_18"
@@ -172,7 +172,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Followers"
+                    android:text="@string/followers"
                     android:textSize="@dimen/text_size_14">
 
                 </TextView>
@@ -201,7 +201,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Friends"
+                    android:text="@string/friends"
                     android:textSize="@dimen/text_size_14">
 
                 </TextView>
@@ -230,7 +230,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Photos"
+                    android:text="@string/photos"
                     android:textSize="@dimen/text_size_14">
 
                 </TextView>
@@ -279,7 +279,7 @@
             android:textStyle="bold"
             android:textSize="@dimen/dimen_18"
             android:textColor="@color/black"
-            android:text="Friends">
+            android:text="@string/friends">
 
         </TextView>
 

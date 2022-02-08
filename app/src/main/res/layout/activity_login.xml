@@ -32,7 +32,7 @@
                 android:textSize="@dimen/dimen_24"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:text="Welcome to CodezLab">
+                android:text="@string/welcome_msg_tv">
             </TextView>
             <TextView
                 android:layout_width="wrap_content"
@@ -40,7 +40,7 @@
                 android:layout_gravity="center"
                 android:textSize="@dimen/dimen_12"
                 android:textColor="@color/black"
-                android:text="Keep Connected with your friends">
+                android:text="@string/welcome_subtitle_tv">
             </TextView>
 
             <LinearLayout
@@ -58,7 +58,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-medium"
-                        android:text="Email Address"
+                        android:text="@string/email_address_tv"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_size_20">
 
@@ -71,7 +71,7 @@
                         android:layout_height="@dimen/dimen_45"
                         android:layout_marginTop="@dimen/dimen_14"
                         android:background="@drawable/shape_rect_box_et"
-                        android:hint="Enter your email"
+                        android:hint="@string/email_hint"
                         android:inputType="textEmailAddress"
                         android:paddingLeft="@dimen/dimen_20"
                         android:selectAllOnFocus="true">
@@ -90,7 +90,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-medium"
-                        android:text="Password"
+                        android:text="@string/password_tv"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_size_20">
 
@@ -105,7 +105,7 @@
                         android:background="@drawable/shape_rect_box_et"
                         android:drawableRight="@drawable/eye_off"
                         android:drawablePadding="@dimen/dimen_16"
-                        android:hint="Enter your password"
+                        android:hint="@string/password_hint"
                         android:inputType="textPassword"
                         android:minHeight="@dimen/dimen_45"
                         android:paddingLeft="@dimen/dimen_20"
@@ -123,7 +123,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dimen_50"
-                    android:text="Login"
+                    android:text="@string/login"
                     android:textSize="@dimen/text_size_16"
                     android:textStyle="bold">
 
@@ -143,7 +143,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Don't have an Account?">
+                    android:text="@string/don_t_have_an_account">
 
                 </TextView>
 
@@ -154,7 +154,7 @@
                     android:layout_width="wrap_content"
                     android:clickable="true"
                     android:layout_height="wrap_content"
-                    android:text="Register!"
+                    android:text="@string/go_to_register_bt"
                     android:textColor="@color/appBlue">
 
                 </TextView>

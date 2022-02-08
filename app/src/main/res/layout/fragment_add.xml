@@ -107,7 +107,7 @@
             android:layout_marginHorizontal="@dimen/dimen_16"
             android:layout_marginTop="@dimen/dimen_16"
             android:background="@android:color/transparent"
-            android:hint="What's on your mind?">
+            android:hint="@string/what_s_on_your_mind">
 
         </EditText>
 

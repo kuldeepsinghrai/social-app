@@ -8,5 +8,28 @@
     <string name="profile">Profile</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="email_address_tv">Email Address</string>
+    <string name="password_tv">Password</string>
+    <string name="welcome_msg_tv">Welcome to CodezLab</string>
+    <string name="welcome_subtitle_tv">Keep Connected with your friends</string>
+    <string name="email_hint">Enter your email</string>
+    <string name="password_hint">Enter your password</string>
+    <string name="login">Login</string>
+    <string name="don_t_have_an_account">Don\'t have an Account?</string>
+    <string name="go_to_register_bt">Register!</string>
+    <string name="name">Name</string>
+    <string name="name_hint">Enter your name</string>
+    <string name="profession">Profession</string>
+    <string name="profession_hint">Enter your profession</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="already_have_an_account">Already have an Account?</string>
+    <string name="go_to_login">Login!</string>
+    <string name="what_s_on_your_mind">What\'s on your mind?</string>
+    <string name="home_screen_top_title">Feed</string>
+    <string name="notifications">Notifications</string>
+    <string name="profile_screen_top_title">My Profile</string>
+    <string name="followers">Followers</string>
+    <string name="friends">Friends</string>
+    <string name="photos">Photos</string>
 
 </resources>

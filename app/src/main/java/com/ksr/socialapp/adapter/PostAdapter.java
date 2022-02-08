@@ -50,7 +50,10 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.viewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
+
+
         Post post = arrayList.get(position);
+
 
         if (post.getPostImages()!=null){
 
