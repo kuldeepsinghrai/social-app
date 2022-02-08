@@ -310,6 +310,22 @@ public class AddFragment extends Fragment implements OnSuccessListener<UploadTas
                 }else {
                     Toast.makeText(getContext(), "You can select maximum 15 images", Toast.LENGTH_SHORT).show();
                 }
+            }else if(data.getData()!=null){
+                final StorageReference storageReference = firebaseStorage.getReference().child("posts")
+                        .child(FirebaseAuth.getInstance().getUid())
+                        .child(new Date().getTime() + "");
+
+                Uri imageUri = data.getData();
+                String fName = getRandomString();
+                CustomImage customImage = new CustomImage(storageReference.child(fName), imageUri, fName);
+                imagesList.add(customImage);
+
+                CreatePostImageAdapter createPostImageAdapter = new CreatePostImageAdapter(imagesList, getContext());
+                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+                postImageRecyclerView.setLayoutManager(linearLayoutManager);
+                postImageRecyclerView.setAdapter(createPostImageAdapter);
+                postBT.setEnabled(true);
+
             } else {
                 postBT.setEnabled(false);
             }

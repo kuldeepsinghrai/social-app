@@ -114,10 +114,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/postImageRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_400"
-            app:iss_auto_cycle="true"
-            app:iss_period="1000"
-            app:iss_delay="0">
+            android:layout_height="@dimen/dimen_400">
 
         </androidx.recyclerview.widget.RecyclerView>
 

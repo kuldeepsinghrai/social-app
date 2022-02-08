@@ -163,7 +163,7 @@ public class HomeFragment extends Fragment {
         postArrayList = new ArrayList<>();
 
         PostAdapter postAdapter = new PostAdapter(postArrayList, getContext());
-        LinearLayoutManager dasboardLlm = new LinearLayoutManager(getContext());
+        LinearLayoutManager dasboardLlm = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         dashboardRecyclerView.setLayoutManager(dasboardLlm);
         dashboardRecyclerView.setNestedScrollingEnabled(false);
 
