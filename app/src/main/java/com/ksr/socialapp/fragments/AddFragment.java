@@ -148,7 +148,7 @@ public class AddFragment extends Fragment implements OnSuccessListener<UploadTas
                     dialog.show();
                     startUploadingImages();
                 } else {
-                    Toast.makeText(getContext(), "PLease select photo!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Please select photo!", Toast.LENGTH_SHORT).show();
                 }
             }
         });

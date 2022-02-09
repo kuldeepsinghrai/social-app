@@ -69,37 +69,49 @@ public class FragmentManager implements androidx.fragment.app.FragmentManager.On
 
     public void openHomeFragment(boolean addToBackStack, boolean clearBackStack) {
         String fragmentTag = HomeFragment.class.getSimpleName();
-        Fragment fragment = new HomeFragment();
-        if (addToBackStack) {
-            addFragment(fragment, R.id.container, fragmentTag, clearBackStack);
-        } else {
-            replaceFragment(fragment, R.id.container, fragmentTag, clearBackStack);
+
+        if (!(fragmentManager.findFragmentById(R.id.container) instanceof HomeFragment)) {
+
+            Fragment fragment = new HomeFragment();
+            if (addToBackStack) {
+                addFragment(fragment, R.id.container, fragmentTag, clearBackStack);
+            } else {
+                replaceFragment(fragment, R.id.container, fragmentTag, clearBackStack);
+            }
         }
     }
 
 
     public void openAddFragment(boolean addToBackStack, boolean clearBackStack) {
         String fragmentTag = AddFragment.class.getSimpleName();
-        Fragment fragment = new AddFragment();
-        if (addToBackStack) {
-            addFragment(fragment, R.id.container, fragmentTag, clearBackStack);
-        } else {
-            replaceFragment(fragment, R.id.container, fragmentTag, clearBackStack);
+
+        if (!(fragmentManager.findFragmentById(R.id.container) instanceof AddFragment)) {
+            Fragment fragment = new AddFragment();
+            if (addToBackStack) {
+                addFragment(fragment, R.id.container, fragmentTag, clearBackStack);
+            } else {
+                replaceFragment(fragment, R.id.container, fragmentTag, clearBackStack);
+            }
         }
     }
 
     public void openNotificationsFragment(boolean addToBackStack, boolean clearBackStack) {
         String fragmentTag = NotificationsFragment.class.getSimpleName();
-        Fragment fragment = new NotificationsFragment();
-        if (addToBackStack) {
-            addFragment(fragment, R.id.container, fragmentTag, clearBackStack);
-        } else {
-            replaceFragment(fragment, R.id.container, fragmentTag, clearBackStack);
+
+        if (!(fragmentManager.findFragmentById(R.id.container) instanceof NotificationsFragment)) {
+            Fragment fragment = new NotificationsFragment();
+            if (addToBackStack) {
+                addFragment(fragment, R.id.container, fragmentTag, clearBackStack);
+            } else {
+                replaceFragment(fragment, R.id.container, fragmentTag, clearBackStack);
+            }
         }
     }
 
     public void openProfileFragment(boolean addToBackStack, boolean clearBackStack) {
-            String fragmentTag = ProfileFragment.class.getSimpleName();
+        String fragmentTag = ProfileFragment.class.getSimpleName();
+
+        if (!(fragmentManager.findFragmentById(R.id.container) instanceof ProfileFragment)) {
             Fragment fragment = new ProfileFragment();
             if (addToBackStack) {
                 addFragment(fragment, R.id.container, fragmentTag, clearBackStack);
@@ -107,9 +119,11 @@ public class FragmentManager implements androidx.fragment.app.FragmentManager.On
                 replaceFragment(fragment, R.id.container, fragmentTag, clearBackStack);
             }
         }
+    }
 
     public void openSearchFragment(boolean addToBackStack, boolean clearBackStack) {
-            String fragmentTag = SearchFragment.class.getSimpleName();
+        String fragmentTag = SearchFragment.class.getSimpleName();
+        if (!(fragmentManager.findFragmentById(R.id.container) instanceof SearchFragment)) {
             Fragment fragment = new SearchFragment();
             if (addToBackStack) {
                 addFragment(fragment, R.id.container, fragmentTag, clearBackStack);
@@ -117,7 +131,7 @@ public class FragmentManager implements androidx.fragment.app.FragmentManager.On
                 replaceFragment(fragment, R.id.container, fragmentTag, clearBackStack);
             }
         }
-
+    }
 
 
 }

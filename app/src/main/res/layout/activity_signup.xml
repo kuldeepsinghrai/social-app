@@ -226,7 +226,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_gravity="center"
-                android:layout_marginTop="@dimen/dimen_80"
+                android:layout_marginTop="@dimen/dimen_20"
                 android:layout_marginBottom="@dimen/dimen_14"
                 android:orientation="vertical">
 

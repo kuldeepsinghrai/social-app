@@ -163,9 +163,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:layout_marginBottom="@dimen/dimen_14"
-                android:layout_marginTop="@dimen/dimen_80"
                 android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dimen_20"
+                android:layout_marginBottom="@dimen/dimen_14"
                 android:orientation="vertical">
 
                 <TextView
@@ -173,10 +173,10 @@
                     android:layout_height="wrap_content"
                     android:layout_above="@+id/logo"
                     android:layout_gravity="center"
-                    android:textSize="@dimen/text_size_6"
-                    android:text="Powered By"
                     android:layout_marginBottom="@dimen/dimen_6"
-                    android:textColor="@color/black_90">
+                    android:text="Powered By"
+                    android:textColor="@color/black_90"
+                    android:textSize="@dimen/text_size_6">
 
                 </TextView>
 
@@ -195,11 +195,11 @@
                     android:layout_height="wrap_content"
                     android:layout_above="@+id/logo"
                     android:layout_gravity="center"
-                    android:textSize="@dimen/text_size_16"
-                    android:fontFamily="sans-serif-medium"
                     android:layout_marginTop="@dimen/dimen_2"
+                    android:fontFamily="sans-serif-medium"
                     android:text="CODEZLAB"
-                    android:textColor="@color/black">
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_16">
 
                 </TextView>
 
