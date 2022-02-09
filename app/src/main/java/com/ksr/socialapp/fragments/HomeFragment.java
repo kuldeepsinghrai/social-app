@@ -42,6 +42,8 @@ import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.ListIterator;
 
 public class HomeFragment extends Fragment {
 
@@ -143,6 +145,8 @@ public class HomeFragment extends Fragment {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.exists()) {
                             storyList.clear();
+
+                            List<Story> tList = new ArrayList<>();
                             for (DataSnapshot storySnapshot : snapshot.getChildren()) {
                                 Story story = new Story();
                                 story.setStoryBy(storySnapshot.getKey());
@@ -155,8 +159,15 @@ public class HomeFragment extends Fragment {
                                 }
 
                                 story.setUserStories(stories);
-                                storyList.add(story);
+                                tList.add(story);
+                                //storyList.add(story);
                             }
+
+                            for (int i = tList.size()-1;i>=0;i--){
+                                storyList.add(tList.get(i));
+                            }
+
+
 
                             storyAdapter.notifyDataSetChanged();
                             //hiding shimmer adapter when data is load
@@ -189,11 +200,19 @@ public class HomeFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 postArrayList.clear();
+
+                List<Post> tList=new ArrayList<>();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Post post = dataSnapshot.getValue(Post.class);
                     post.setPostID(dataSnapshot.getKey());
-                    postArrayList.add(post);
+                    tList.add(post);
+                    //postArrayList.add(post);
                 }
+
+                for (int i = tList.size()-1;i>=0;i--){
+                    postArrayList.add(tList.get(i));
+                }
+
                 postAdapter.notifyDataSetChanged();
 
                 //hiding shimmer adapter when data is load

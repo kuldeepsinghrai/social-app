@@ -153,6 +153,7 @@
         android:layout_marginTop="@dimen/dimen_16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:layout_gravity="center_horizontal"
         diagonal:cardCornerRadius="@dimen/dimen_6">
 

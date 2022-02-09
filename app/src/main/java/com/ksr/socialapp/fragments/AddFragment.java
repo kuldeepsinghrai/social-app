@@ -42,6 +42,7 @@ import com.ksr.socialapp.adapter.CreatePostImageAdapter;
 import com.ksr.socialapp.adapter.FollowersAdapter;
 import com.ksr.socialapp.model.Post;
 import com.ksr.socialapp.model.User;
+import com.ksr.socialapp.tools.Methods;
 import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.util.ArrayList;
@@ -144,6 +145,7 @@ public class AddFragment extends Fragment implements OnSuccessListener<UploadTas
         postBT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Methods.hideSoftKeyboard(getActivity());
                 if (imagesList != null && imagesList.size()!=0) {
                     dialog.show();
                     startUploadingImages();
@@ -410,5 +412,11 @@ public class AddFragment extends Fragment implements OnSuccessListener<UploadTas
             this.fileName = fileName;
         }
 
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Methods.hideSoftKeyboard(getActivity());
     }
 }

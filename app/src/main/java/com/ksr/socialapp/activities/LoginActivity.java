@@ -118,7 +118,7 @@ public class LoginActivity extends BaseActivity{
                 }else {
                     loginBT.setEnabled(true);
                     dialog.dismiss();
-                    Toast.makeText(getActivity(), "Error Occured", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Please Enter valid Details", Toast.LENGTH_SHORT).show();
                 }
             }
         });

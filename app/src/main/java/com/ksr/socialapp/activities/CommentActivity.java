@@ -30,6 +30,7 @@ import com.ksr.socialapp.model.Comment;
 import com.ksr.socialapp.model.Notification;
 import com.ksr.socialapp.model.Post;
 import com.ksr.socialapp.model.User;
+import com.ksr.socialapp.tools.Methods;
 import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.util.ArrayList;
@@ -164,6 +165,7 @@ public class CommentActivity extends BaseActivity {
                                     @Override
                                     public void onSuccess(Void unused) {
                                         commentET.setText("");
+                                        Methods.hideSoftKeyboard(getActivity());
                                         Toast.makeText(getActivity(), "Commented!", Toast.LENGTH_SHORT).show();
 
                                         Notification notification = new Notification();
