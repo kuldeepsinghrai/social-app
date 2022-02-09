@@ -15,38 +15,32 @@
             android:id="@+id/mainParentContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dimen_80"
             android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="@dimen/dimen_250"
-                android:layout_height="@dimen/dimen_180"
-                android:layout_gravity="center"
-                android:src="@drawable/codezlab_logo">
 
-            </ImageView>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:textSize="@dimen/dimen_24"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:text="@string/welcome_msg_tv">
-            </TextView>
+                android:text="@string/welcome_msg_tv"
+                android:textColor="@color/appBlue"
+                android:textSize="@dimen/dimen_30"
+                android:textStyle="bold"></TextView>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:textSize="@dimen/dimen_12"
+                android:text="@string/welcome_subtitle_tv"
                 android:textColor="@color/black"
-                android:text="@string/welcome_subtitle_tv">
-            </TextView>
+                android:textSize="@dimen/dimen_12"></TextView>
 
             <LinearLayout
-                android:layout_margin="@dimen/dimen_18"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_margin="@dimen/dimen_18"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -111,9 +105,9 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_marginTop="@dimen/dimen_8"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_8"
                     android:orientation="vertical">
 
                     <TextView
@@ -178,7 +172,6 @@
                 </LinearLayout>
 
 
-
                 <Button
                     android:id="@+id/signUpBT"
                     android:layout_width="match_parent"
@@ -191,15 +184,12 @@
                 </Button>
 
 
-
-
-
             </LinearLayout>
 
             <LinearLayout
-                android:layout_gravity="center"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -210,18 +200,45 @@
 
                 <TextView
                     android:id="@+id/goToLogin"
-                    android:layout_marginStart="@dimen/dimen_4"
-                    android:textSize="@dimen/text_size_18"
                     android:layout_width="wrap_content"
-                    android:clickable="true"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_4"
+                    android:clickable="true"
                     android:text="@string/go_to_login"
-                    android:textColor="@color/appBlue">
+                    android:textColor="@color/appBlue"
+                    android:textSize="@dimen/text_size_18">
 
                 </TextView>
 
 
             </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dimen_30">
+
+                <ImageView
+                    android:layout_width="@dimen/dimen_200"
+                    android:layout_height="@dimen/dimen_120"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:layout_weight="0"
+                    android:src="@drawable/codezlab_logo">
+
+                </ImageView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="Powered By"
+                    android:textColor="@color/black_90">
+
+                </TextView>
+            </RelativeLayout>
+
 
         </LinearLayout>
     </ScrollView>

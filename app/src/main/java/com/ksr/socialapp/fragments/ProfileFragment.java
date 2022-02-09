@@ -131,7 +131,7 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getContext());
-                alertDialogBuilder.setTitle("Confirm Exit..!!!");
+                alertDialogBuilder.setTitle("Confirm Logout..!!!");
                 alertDialogBuilder.setMessage("Are you sure, You want to logout?");
                 alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override

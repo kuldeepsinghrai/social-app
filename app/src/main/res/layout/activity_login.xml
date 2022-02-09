@@ -15,23 +15,16 @@
             android:id="@+id/mainParentContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dimen_100"
             android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="@dimen/dimen_250"
-                android:layout_height="@dimen/dimen_180"
-                android:layout_gravity="center"
-                android:src="@drawable/codezlab_logo">
-
-            </ImageView>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:textSize="@dimen/dimen_24"
+                android:textSize="@dimen/dimen_30"
                 android:textStyle="bold"
-                android:textColor="@color/black"
+                android:textColor="@color/appBlue"
                 android:text="@string/welcome_msg_tv">
             </TextView>
             <TextView
@@ -161,6 +154,34 @@
 
 
             </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dimen_30">
+
+                <ImageView
+                    android:layout_width="@dimen/dimen_200"
+                    android:layout_height="@dimen/dimen_120"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:layout_weight="0"
+                    android:src="@drawable/codezlab_logo">
+
+                </ImageView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="Powered By"
+                    android:textColor="@color/black_90">
+
+                </TextView>
+            </RelativeLayout>
+
+
 
         </LinearLayout>
     </ScrollView>
