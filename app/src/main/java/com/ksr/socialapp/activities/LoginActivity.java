@@ -80,6 +80,7 @@ public class LoginActivity extends BaseActivity{
             @Override
             public void onClick(View view) {
                 if (!emailET.getText().toString().equals("")&&!passwordET.getText().toString().equals("")) {
+                    loginBT.setEnabled(false);
                     dialog.show();
                     attemptLogin(emailET.getText().toString(), passwordET.getText().toString());
                 }else {
@@ -110,10 +111,12 @@ public class LoginActivity extends BaseActivity{
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
+                    loginBT.setEnabled(true);
                     dialog.dismiss();
                     startActivity(new Intent(getActivity(),MainActivity.class));
                     finish();
                 }else {
+                    loginBT.setEnabled(true);
                     dialog.dismiss();
                     Toast.makeText(getActivity(), "Error Occured", Toast.LENGTH_SHORT).show();
                 }
