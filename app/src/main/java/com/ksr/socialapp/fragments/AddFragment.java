@@ -28,6 +28,7 @@ import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -62,6 +63,8 @@ public class AddFragment extends Fragment implements OnSuccessListener<UploadTas
     private RoundedImageView profileImage;
     private TextView name, profession;
     //private Uri uri;
+
+    private BottomNavigationView bottomNavigationView;
 
     private ArrayList<CustomImage> imagesList;
     private ProgressDialog dialog;
@@ -99,6 +102,8 @@ public class AddFragment extends Fragment implements OnSuccessListener<UploadTas
         name = view.findViewById(R.id.name);
         profession = view.findViewById(R.id.profession);
         postImageRecyclerView = view.findViewById(R.id.postImageRecyclerView);
+
+        bottomNavigationView = getActivity().findViewById(R.id.bottomNavigation);
 
         imagesList = new ArrayList<>();
 
@@ -263,7 +268,7 @@ public class AddFragment extends Fragment implements OnSuccessListener<UploadTas
                 .setValue(post).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();
+                bottomNavigationView.setSelectedItemId(R.id.nav_home);
                 dialog.dismiss();
                 Toast.makeText(getContext(), "Posted Successfully!", Toast.LENGTH_SHORT).show();
             }

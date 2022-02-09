@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.cooltechworks.views.shimmer.ShimmerRecyclerView;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -36,6 +37,7 @@ import com.ksr.socialapp.model.Post;
 import com.ksr.socialapp.model.Story;
 import com.ksr.socialapp.model.User;
 import com.ksr.socialapp.model.UserStories;
+import com.ksr.socialapp.tools.FragmentManager;
 import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.util.ArrayList;
@@ -46,6 +48,9 @@ public class HomeFragment extends Fragment {
     private FirebaseDatabase firebaseDatabase;
     private FirebaseStorage firebaseStorage;
     private FirebaseAuth firebaseAuth;
+
+    private BottomNavigationView bottomNavigationView;
+    private FragmentManager fragmentManager;
 
     private ShimmerRecyclerView dashboardRecyclerView,storyRecyclerView;
     private ArrayList<Story> storyList;
@@ -86,6 +91,16 @@ public class HomeFragment extends Fragment {
         addStory = view.findViewById(R.id.addStory);
         dashboardRecyclerView = view.findViewById(R.id.dashboardRecyclerView);
         storyRecyclerView = view.findViewById(R.id.storiesRecyclerView);
+        bottomNavigationView = getActivity().findViewById(R.id.bottomNavigation);
+
+
+
+        topProfileImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                bottomNavigationView.setSelectedItemId(R.id.nav_profile);
+            }
+        });
 
 
         //getting current loged in users data and setting its profile in top of the home screen

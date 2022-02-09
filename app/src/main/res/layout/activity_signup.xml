@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,7 +9,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_above="@+id/logoLinear">
 
         <LinearLayout
             android:id="@+id/mainParentContainer"
@@ -19,227 +20,253 @@
             android:orientation="vertical">
 
 
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/welcome_msg_tv"
-                android:textColor="@color/appBlue"
-                android:textSize="@dimen/dimen_30"
-                android:textStyle="bold"></TextView>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/welcome_subtitle_tv"
-                android:textColor="@color/black"
-                android:textSize="@dimen/dimen_12"></TextView>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="@dimen/dimen_18"
                 android:orientation="vertical">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-medium"
-                        android:text="@string/name"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/text_size_20">
-
-                    </TextView>
-
-
-                    <EditText
-                        android:id="@+id/nameET"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/dimen_45"
-                        android:layout_marginTop="@dimen/dimen_14"
-                        android:background="@drawable/shape_rect_box_et"
-                        android:hint="@string/name_hint"
-                        android:inputType="text"
-                        android:paddingLeft="@dimen/dimen_20"
-                        android:selectAllOnFocus="true">
-
-                    </EditText>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimen_8"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-medium"
-                        android:text="@string/profession"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/text_size_20">
-
-                    </TextView>
-
-
-                    <EditText
-                        android:id="@+id/professionET"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/dimen_45"
-                        android:layout_marginTop="@dimen/dimen_14"
-                        android:background="@drawable/shape_rect_box_et"
-                        android:hint="@string/profession_hint"
-                        android:inputType="text"
-                        android:paddingLeft="@dimen/dimen_20"
-                        android:selectAllOnFocus="true">
-
-                    </EditText>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimen_8"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-medium"
-                        android:text="@string/email_address_tv"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/text_size_20">
-
-                    </TextView>
-
-
-                    <EditText
-                        android:id="@+id/emailET"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/dimen_45"
-                        android:layout_marginTop="@dimen/dimen_14"
-                        android:background="@drawable/shape_rect_box_et"
-                        android:hint="@string/email_hint"
-                        android:inputType="textEmailAddress"
-                        android:paddingLeft="@dimen/dimen_20"
-                        android:selectAllOnFocus="true">
-
-                    </EditText>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimen_8"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-medium"
-                        android:text="@string/password_tv"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/text_size_20">
-
-                    </TextView>
-
-
-                    <EditText
-                        android:id="@+id/passwordET"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/dimen_14"
-                        android:background="@drawable/shape_rect_box_et"
-                        android:drawableRight="@drawable/eye_off"
-                        android:drawablePadding="@dimen/dimen_16"
-                        android:hint="@string/password_hint"
-                        android:inputType="textPassword"
-                        android:minHeight="@dimen/dimen_45"
-                        android:paddingLeft="@dimen/dimen_20"
-                        android:paddingRight="@dimen/dimen_16"
-                        android:selectAllOnFocus="true">
-
-                    </EditText>
-
-                </LinearLayout>
-
-
-                <Button
-                    android:id="@+id/signUpBT"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimen_8"
-                    android:text="@string/sign_up"
-                    android:textSize="@dimen/text_size_16"
-                    android:textStyle="bold">
-
-                </Button>
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center">
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/already_have_an_account">
-
-                </TextView>
-
-                <TextView
-                    android:id="@+id/goToLogin"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/dimen_4"
-                    android:clickable="true"
-                    android:text="@string/go_to_login"
-                    android:textColor="@color/appBlue"
-                    android:textSize="@dimen/text_size_18">
-
-                </TextView>
-
-
-            </LinearLayout>
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/dimen_30">
-
-                <ImageView
-                    android:layout_width="@dimen/dimen_200"
-                    android:layout_height="@dimen/dimen_120"
-                    android:layout_centerInParent="true"
                     android:layout_gravity="center"
-                    android:layout_weight="0"
-                    android:src="@drawable/codezlab_logo">
-
-                </ImageView>
+                    android:text="@string/welcome_msg_tv"
+                    android:textColor="@color/appBlue"
+                    android:textSize="@dimen/dimen_30"
+                    android:textStyle="bold"></TextView>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:text="Powered By"
-                    android:textColor="@color/black_90">
+                    android:layout_gravity="center"
+                    android:text="@string/welcome_subtitle_tv"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/dimen_12"></TextView>
 
-                </TextView>
-            </RelativeLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/dimen_18"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="@string/name"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_20">
+
+                        </TextView>
 
 
+                        <EditText
+                            android:id="@+id/nameET"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dimen_45"
+                            android:layout_marginTop="@dimen/dimen_14"
+                            android:background="@drawable/shape_rect_box_et"
+                            android:hint="@string/name_hint"
+                            android:inputType="text"
+                            android:paddingLeft="@dimen/dimen_20"
+                            android:selectAllOnFocus="true">
+
+                        </EditText>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_8"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="@string/profession"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_20">
+
+                        </TextView>
+
+
+                        <EditText
+                            android:id="@+id/professionET"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dimen_45"
+                            android:layout_marginTop="@dimen/dimen_14"
+                            android:background="@drawable/shape_rect_box_et"
+                            android:hint="@string/profession_hint"
+                            android:inputType="text"
+                            android:paddingLeft="@dimen/dimen_20"
+                            android:selectAllOnFocus="true">
+
+                        </EditText>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_8"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="@string/email_address_tv"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_20">
+
+                        </TextView>
+
+
+                        <EditText
+                            android:id="@+id/emailET"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dimen_45"
+                            android:layout_marginTop="@dimen/dimen_14"
+                            android:background="@drawable/shape_rect_box_et"
+                            android:hint="@string/email_hint"
+                            android:inputType="textEmailAddress"
+                            android:paddingLeft="@dimen/dimen_20"
+                            android:selectAllOnFocus="true">
+
+                        </EditText>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_8"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="@string/password_tv"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_20">
+
+                        </TextView>
+
+
+                        <EditText
+                            android:id="@+id/passwordET"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimen_14"
+                            android:background="@drawable/shape_rect_box_et"
+                            android:drawableRight="@drawable/eye_off"
+                            android:drawablePadding="@dimen/dimen_16"
+                            android:hint="@string/password_hint"
+                            android:inputType="textPassword"
+                            android:minHeight="@dimen/dimen_45"
+                            android:paddingLeft="@dimen/dimen_20"
+                            android:paddingRight="@dimen/dimen_16"
+                            android:selectAllOnFocus="true">
+
+                        </EditText>
+
+                    </LinearLayout>
+
+
+                    <Button
+                        android:id="@+id/signUpBT"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_8"
+                        android:text="@string/sign_up"
+                        android:textSize="@dimen/text_size_16"
+                        android:textStyle="bold">
+
+                    </Button>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/already_have_an_account">
+
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/goToLogin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_4"
+                        android:clickable="true"
+                        android:text="@string/go_to_login"
+                        android:textColor="@color/appBlue"
+                        android:textSize="@dimen/text_size_18">
+
+                    </TextView>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
-</LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/logoLinear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/dimen_14"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/logo"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/dimen_6"
+            android:text="Powered By"
+            android:textColor="@color/black_90"
+            android:textSize="@dimen/text_size_6">
+
+        </TextView>
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dimen_65"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:src="@drawable/codezlab_logo">
+
+        </ImageView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/logo"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dimen_2"
+            android:fontFamily="sans-serif-medium"
+            android:text="CODEZLAB"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16">
+
+        </TextView>
+
+    </LinearLayout>
+
+</RelativeLayout>
