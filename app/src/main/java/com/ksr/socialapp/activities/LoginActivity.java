@@ -3,6 +3,7 @@ package com.ksr.socialapp.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -35,6 +36,8 @@ public class LoginActivity extends BaseActivity{
     private EditText emailET,passwordET;
     private Button loginBT;
 
+    private ProgressDialog dialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +45,14 @@ public class LoginActivity extends BaseActivity{
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
+
+        dialog = new ProgressDialog(getActivity());
+
+        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        dialog.setTitle("Login...");
+        dialog.setMessage("Please wait");
+        dialog.setCancelable(false);
+        dialog.setCanceledOnTouchOutside(false);
 
         //hiding softkeyboard if user click out side of edittext
         mainParentContainer = findViewById(R.id.mainParentContainer);
@@ -69,6 +80,7 @@ public class LoginActivity extends BaseActivity{
             @Override
             public void onClick(View view) {
                 if (!emailET.getText().toString().equals("")&&!passwordET.getText().toString().equals("")) {
+                    dialog.show();
                     attemptLogin(emailET.getText().toString(), passwordET.getText().toString());
                 }else {
                     Toast.makeText(getActivity(), "Please fill all the fields!", Toast.LENGTH_SHORT).show();
@@ -98,9 +110,11 @@ public class LoginActivity extends BaseActivity{
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
+                    dialog.dismiss();
                     startActivity(new Intent(getActivity(),MainActivity.class));
                     finish();
                 }else {
+                    dialog.dismiss();
                     Toast.makeText(getActivity(), "Error Occured", Toast.LENGTH_SHORT).show();
                 }
             }
