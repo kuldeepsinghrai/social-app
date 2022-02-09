@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -35,6 +36,12 @@ public class PostImagesAdapter extends RecyclerView.Adapter<PostImagesAdapter.vi
     @Override
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
         Glide.with(context).load(list.get(position)).placeholder(R.drawable.placeholder).into(holder.postImage);
+
+
+        if (list.size()!=1){
+            holder.imageCountTV.setText((position + 1) + "/" + list.size());
+            holder.imageCountTV.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -43,11 +50,12 @@ public class PostImagesAdapter extends RecyclerView.Adapter<PostImagesAdapter.vi
     }
 
     public class viewHolder extends RecyclerView.ViewHolder {
-        ImageView postImage;
-
+        private ImageView postImage;
+        private TextView imageCountTV;
         public viewHolder(@NonNull View itemView) {
             super(itemView);
             postImage = itemView.findViewById(R.id.postImage);
+            imageCountTV = itemView.findViewById(R.id.imageCountTV);
         }
     }
 }

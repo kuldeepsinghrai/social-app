@@ -1,8 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+   <TextView
+       android:layout_marginTop="@dimen/dimen_22"
+       android:layout_gravity="center"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="@string/discover_people"
+       android:textColor="@color/black"
+       android:textStyle="bold"
+       android:textSize="@dimen/text_size_30">
+   </TextView>
+
+   <View
+       android:layout_marginTop="@dimen/dimen_16"
+       android:layout_marginHorizontal="@dimen/dimen_26"
+       android:layout_width="match_parent"
+       android:background="@android:color/darker_gray"
+       android:layout_height="@dimen/dimen_1">
+
+   </View>
+
 
    <com.cooltechworks.views.shimmer.ShimmerRecyclerView
        android:id="@+id/usersRecyclerView"
@@ -17,4 +39,4 @@
    </com.cooltechworks.views.shimmer.ShimmerRecyclerView>
 
 
-</RelativeLayout>
+</LinearLayout>

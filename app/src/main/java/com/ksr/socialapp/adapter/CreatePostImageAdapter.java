@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -37,6 +38,11 @@ public class CreatePostImageAdapter extends RecyclerView.Adapter<CreatePostImage
         AddFragment.CustomImage customImage = arrayList.get(position);
         Uri uri = customImage.getUri();
         holder.postImage.setImageURI(uri);
+
+        if (arrayList.size()!=1) {
+            holder.imageCountTV.setText((position + 1) + "/" + arrayList.size());
+            holder.imageCountTV.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -45,11 +51,12 @@ public class CreatePostImageAdapter extends RecyclerView.Adapter<CreatePostImage
     }
 
     public class viewHolder extends RecyclerView.ViewHolder {
-        ImageView postImage;
-
+        private ImageView postImage;
+        private TextView imageCountTV;
         public viewHolder(@NonNull View itemView) {
             super(itemView);
             postImage = itemView.findViewById(R.id.postImage);
+            imageCountTV = itemView.findViewById(R.id.imageCountTV);
         }
     }
 }

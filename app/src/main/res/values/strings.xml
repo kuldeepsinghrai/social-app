@@ -26,10 +26,11 @@
     <string name="go_to_login">Login!</string>
     <string name="what_s_on_your_mind">What\'s on your mind?</string>
     <string name="home_screen_top_title">Feed</string>
-    <string name="notifications">Notifications</string>
+    <string name="notifications">My Notifications</string>
     <string name="profile_screen_top_title">My Profile</string>
     <string name="followers">Followers</string>
     <string name="friends">Friends</string>
     <string name="photos">Photos</string>
+    <string name="discover_people">Discover People</string>
 
 </resources>

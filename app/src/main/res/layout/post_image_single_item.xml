@@ -3,12 +3,34 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/postImage"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:scaleType="centerCrop"
         android:layout_height="@dimen/dimen_460">
 
-    </ImageView>
+        <ImageView
+            android:id="@+id/postImage"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_460"
+            android:scaleType="centerCrop">
+
+        </ImageView>
+
+        <TextView
+            android:id="@+id/imageCountTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/dimen_14"
+            android:gravity="center"
+            android:visibility="gone"
+            android:textColor="@color/white_80"
+            android:paddingHorizontal="@dimen/dimen_6"
+            android:paddingVertical="@dimen/dimen_2"
+            android:layout_margin="@dimen/dimen_12"
+            android:background="@drawable/shape_black_corners_round_bg"
+            android:layout_alignParentRight="true">
+
+        </TextView>
+
+    </RelativeLayout>
 
 </LinearLayout>
