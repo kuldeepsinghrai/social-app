@@ -14,7 +14,8 @@
         android:theme="@style/Theme.SocialApp">
         <activity
             android:name=".activities.CommentActivity"
-            android:exported="true" >
+            android:exported="true"
+            android:screenOrientation="portrait">
 
         </activity>
 
