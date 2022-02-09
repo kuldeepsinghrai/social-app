@@ -139,7 +139,7 @@ public class AddFragment extends Fragment implements OnSuccessListener<UploadTas
         postBT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (imagesList != null) {
+                if (imagesList != null && imagesList.size()!=0) {
                     dialog.show();
                     startUploadingImages();
                 } else {
@@ -154,6 +154,7 @@ public class AddFragment extends Fragment implements OnSuccessListener<UploadTas
     }
 
     private void startUploadingImages() {
+
 
         CustomImage firstImage = imagesList.get(0);
         uploadSingleImage(firstImage);
@@ -283,7 +284,7 @@ public class AddFragment extends Fragment implements OnSuccessListener<UploadTas
         super.onActivityResult(requestCode, resultCode, data);
 
         //setting image to screen according to req
-        if (requestCode == 101) {
+        if (requestCode == 101 && data!=null) {
             if (data.getClipData() != null) {
                 if (data.getClipData().getItemCount() <= 4) {
                     int count = data.getClipData().getItemCount();
