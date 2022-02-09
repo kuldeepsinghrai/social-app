@@ -29,7 +29,6 @@ public class LoginActivity extends BaseActivity{
 
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
-    private FirebaseUser firebaseCurrentUser;
 
     private LinearLayout mainParentContainer;
     private EditText emailET,passwordET;
@@ -41,7 +40,6 @@ public class LoginActivity extends BaseActivity{
         setContentView(R.layout.activity_login);
 
         firebaseAuth = FirebaseAuth.getInstance();
-        firebaseCurrentUser = firebaseAuth.getCurrentUser();
         firebaseDatabase = FirebaseDatabase.getInstance();
 
         //hiding softkeyboard if user click out side of edittext
@@ -108,14 +106,6 @@ public class LoginActivity extends BaseActivity{
         });
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        //doesn't need to show login screen if current user is loged in before
-        if (firebaseCurrentUser!=null){
-            startActivity(new Intent(getActivity(),MainActivity.class));
-        }
-    }
 
     @Override
     protected BaseActivity getActivity() {

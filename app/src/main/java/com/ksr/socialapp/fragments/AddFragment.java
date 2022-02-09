@@ -308,7 +308,7 @@ public class AddFragment extends Fragment implements OnSuccessListener<UploadTas
 
 
                 }else {
-                    Toast.makeText(getContext(), "You can select maximum 15 images", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "You can select maximum 4 images", Toast.LENGTH_SHORT).show();
                 }
             }else if(data.getData()!=null){
                 final StorageReference storageReference = firebaseStorage.getReference().child("posts")
