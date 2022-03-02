@@ -107,6 +107,7 @@ public class LoginActivity extends BaseActivity{
         FirebaseAuth needs email and password to login, if data matches navigating user to Home screen
      */
     private void attemptLogin(String email,String password) {
+        email = email.trim();
         firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
